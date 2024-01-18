@@ -1,0 +1,30 @@
+{
+   "presets": [
+      [
+         "@babel/preset-env", {
+            "browserslistEnv": "production",
+            "useBuiltIns": "entry",
+            "corejs": 2
+         }
+      ]
+   ],
+   "plugins": [
+      "@babel/plugin-transform-arrow-functions",
+      "@babel/plugin-transform-block-scoping",
+      "@babel/plugin-transform-destructuring",
+      "@babel/plugin-transform-parameters",
+      "@babel/plugin-transform-spread",
+      "transform-array-prototype-find",
+      "@babel/plugin-transform-for-of"
+   ],
+   "ignore": [
+      "src/book/libraries",
+      "src/book/assets",
+      "src/book/brains",
+      "src/book/mobile",
+      "src/book/routes",
+      "src/book/dist",
+      "src/database",
+      "src/server.js"
+   ]
+}

@@ -1,0 +1,672 @@
+:root {
+  --blue: #007bff;
+  --purple: #6f42c1;
+  --pink: #e83e8c;
+  --red: #dc3545;
+  --orange: #fd7e14;
+  --yellow: #ffc107;
+  --green: #28a745;
+  --cyan: #17a2b8;
+  --white: #fff;
+  --gray: #6c757d;
+  --gray-dark: #343a40;
+}
+
+/* fonts mathlive */
+@font-face {
+  font-family: openSans-regular;
+  src: url(fonts/OpenSans-Regular.ttf);
+}
+
+@font-face {
+  font-display: "swap";
+  font-family: KaTeX_AMS;
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/KaTeX_AMS-Regular.woff2) format("woff2");
+}
+
+@font-face {
+  font-display: "swap";
+  font-family: KaTeX_Caligraphic;
+  font-style: normal;
+  font-weight: 700;
+  src: url(fonts/KaTeX_Caligraphic-Bold.woff2) format("woff2");
+}
+
+@font-face {
+  font-display: "swap";
+  font-family: KaTeX_Caligraphic;
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/KaTeX_Caligraphic-Regular.woff2) format("woff2");
+}
+
+@font-face {
+  font-display: "swap";
+  font-family: KaTeX_Fraktur;
+  font-style: normal;
+  font-weight: 700;
+  src: url(fonts/KaTeX_Fraktur-Bold.woff2) format("woff2");
+}
+
+@font-face {
+  font-display: "swap";
+  font-family: KaTeX_Fraktur;
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/KaTeX_Fraktur-Regular.woff2) format("woff2");
+}
+
+@font-face {
+  font-display: "swap";
+  font-family: KaTeX_Main;
+  font-style: italic;
+  font-weight: 700;
+  src: url(fonts/KaTeX_Main-BoldItalic.woff2) format("woff2");
+}
+
+@font-face {
+  font-display: "swap";
+  font-family: KaTeX_Main;
+  font-style: normal;
+  font-weight: 700;
+  src: url(fonts/KaTeX_Main-Bold.woff2) format("woff2");
+}
+
+@font-face {
+  font-display: "swap";
+  font-family: KaTeX_Main;
+  font-style: italic;
+  font-weight: 400;
+  src: url(fonts/KaTeX_Main-Italic.woff2) format("woff2");
+}
+
+@font-face {
+  font-display: "swap";
+  font-family: KaTeX_Main;
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/KaTeX_Main-Regular.ttf) format("ttf");
+}
+
+@font-face {
+  font-display: "swap";
+  font-family: KaTeX_Math;
+  font-style: italic;
+  font-weight: 700;
+  src: url(fonts/KaTeX_Math-BoldItalic.woff2) format("woff2");
+}
+
+@font-face {
+  font-display: "swap";
+  font-family: "KaTeX_Math";
+  font-style: italic;
+  font-weight: 400;
+  src: url(fonts/KaTeX_Math-Italic.ttf) format("ttf");
+}
+
+@font-face {
+  font-display: "swap";
+  font-family: "KaTeX_SansSerif";
+  font-style: normal;
+  font-weight: 700;
+  src: url(fonts/KaTeX_SansSerif-Bold.woff2) format("woff2");
+}
+
+@font-face {
+  font-display: "swap";
+  font-family: "KaTeX_SansSerif";
+  font-style: italic;
+  font-weight: 400;
+  src: url(fonts/KaTeX_SansSerif-Italic.woff2) format("woff2");
+}
+
+@font-face {
+  font-display: "swap";
+  font-family: "KaTeX_SansSerif";
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/KaTeX_SansSerif-Regular.woff2) format("woff2");
+}
+
+@font-face {
+  font-display: "swap";
+  font-family: KaTeX_Script;
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/KaTeX_Script-Regular.woff2) format("woff2");
+}
+
+@font-face {
+  font-display: "swap";
+  font-family: KaTeX_Size1;
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/KaTeX_Size1-Regular.woff2) format("woff2");
+}
+
+@font-face {
+  font-display: "swap";
+  font-family: KaTeX_Size2;
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/KaTeX_Size2-Regular.woff2) format("woff2");
+}
+
+@font-face {
+  font-display: "swap";
+  font-family: KaTeX_Size3;
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/KaTeX_Size3-Regular.woff2) format("woff2");
+}
+
+@font-face {
+  font-display: "swap";
+  font-family: KaTeX_Size4;
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/KaTeX_Size4-Regular.woff2) format("woff2");
+}
+
+@font-face {
+  font-display: "swap";
+  font-family: KaTeX_Typewriter;
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/KaTeX_Typewriter-Regular.woff2) format("woff2");
+}
+/* fin fonts mathlive */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+  box-sizing: none;
+}
+
+/* Aqui comienza los iconos es formato unicode de los botones*/
+.check::after {
+  display: inline-block;
+  color: #fff;
+  content: " ✓";
+  font-weight: bolder;
+  font-size: 26px;
+}
+
+.reset::after {
+  color: black;
+  content: "\021bb";
+  font-weight: bolder;
+  font-size: 26px;
+}
+
+.conect::after {
+  color: #d65d06;
+  content: "\2933";
+  font-weight: bolder;
+  font-size: 26px;
+}
+
+.infinite::after {
+  color: #d65d06;
+  content: "\221E";
+  font-weight: bolder;
+  font-size: 26px;
+}
+
+.pointOpen::before {
+  color: #d65d06;
+  content: "○";
+  font-weight: bolder;
+  font-size: 26px;
+}
+
+.pointClose::after {
+  color: #d65d06;
+  content: "●";
+  font-weight: bolder;
+  font-size: 26px;
+}
+
+.mayorEqual::after {
+  color: #646363;
+  content: "\2265";
+  font-weight: bolder;
+  font-size: 26px;
+}
+
+.minorEqual::after {
+  color: #646363;
+  content: "\2264";
+  font-weight: bolder;
+  font-size: 26px;
+}
+
+.mayor::after {
+  color: #646363;
+  content: "\003E";
+  font-weight: bolder;
+  font-size: 26px;
+}
+
+.minor::after {
+  color: #646363;
+  content: "\003C";
+  font-weight: bolder;
+  font-size: 26px;
+}
+
+.equal::after {
+  color: #646363;
+  content: "\003D";
+  font-weight: bolder;
+  font-size: 26px;
+}
+
+.notEqual::after {
+  color: #646363;
+  content: "\2260";
+  font-weight: bolder;
+  font-size: 26px;
+}
+
+.empty::after {
+  color: #646363;
+  content: "\2205";
+  font-weight: bolder;
+  font-size: 26px;
+}
+
+.setOf::after {
+  color: #646363;
+  content: "\22C3";
+  font-weight: bolder;
+  font-size: 26px;
+}
+
+.notExist::after {
+  color: #646363;
+  content: "\2204";
+  font-weight: bolder;
+  font-size: 26px;
+}
+
+.gear::after {
+  color: #000000;
+  content: "\2699";
+  font-family: Noto Emoji;
+  font-weight: bolder;
+  font-size: 26px;
+}
+
+/*dominio*/
+.domKey::after {
+  position: relative;
+  top: -5px;
+  left: 3.5px;
+  color: #d65d06;
+  content: "\2847";
+  font-weight: bolder;
+  font-size: 30px;
+}
+
+.rangKey::after {
+  position: relative;
+  top: -12px;
+  left: 0px;
+  color: #d65d06;
+  content: "\2508";
+  font-weight: bolder;
+  font-size: 45px;
+}
+
+/*cota superior*/
+.coteTop::after {
+  color: #d65d06;
+  content: "\2912";
+  font-weight: bolder;
+  font-size: 26px;
+}
+
+/*cota inferior*/
+.coteDown::after {
+  color: #d65d06;
+  content: "\2913";
+  font-weight: bolder;
+  font-size: 26px;
+}
+
+/* retroceder */
+.back::after {
+  color: var(--color, #000000);
+  content: "\21B6";
+  /* ó    ---> 21BA*/
+  font-weight: bolder;
+  font-size: 26px;
+}
+
+/*unicode del boton para abrir el keyboard*/
+.keyBoard::after {
+  color: rgb(0, 0, 0);
+  content: "⌨";
+  font-size: 30px;
+  position: relative;
+  top: -12px;
+  left: -6px;
+}
+
+/*unicode de la X para cerrar el keyboard cap 0*/
+.closed::after {
+  color: #000000;
+  content: "\2715";
+  font-size: 24px;
+  position: relative;
+  top: -5px;
+}
+
+/* /////////////////////////////////// unicode motor de caminos //////////////////////*/
+
+.road::before {
+  color: var(--color, #d65d06);
+  content: "\2608";
+  font-weight: bolder;
+  font-size: 30px;
+}
+
+.finishRoad::after {
+  color: var(--color, black);
+  content: " \0298";
+  font-weight: lighter;
+  font-size: 26px;
+}
+
+/* unicode Asymptotas */
+.btnAsymptotes::after {
+  color: var(--color, #d65d06);
+  content: "|";
+  font-size: 26px;
+  position: relative;
+  /*   top: -14px; */
+}
+
+/* boton de ayuda */
+.help::after {
+  color: #000000;
+  content: "\2691";
+  font-weight: bolder;
+  font-size: 26px;
+}
+
+/* boton para cerrrar la ayuda */
+.btnCloseMsg::after {
+  content: "\00AB";
+}
+
+.arrowUp::after {
+  color: black;
+  content: "\2191";
+  font-weight: 900;
+  font-size: 60px;
+}
+
+.arrowDown::after {
+  color: black;
+  content: "\2193";
+  font-weight: 900;
+  font-size: 60px;
+}
+
+/* Aqui Termina los iconos es formato unicode de los botones*/
+
+/* --------------------------------------------------------------------- */
+
+/* Termina Estilos de los botones primarios, secuandarios y tercearios */
+
+math-field::part(virtual-keyboard-toggle) {
+  display: none;
+}
+
+.colorInput {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  border-radius: 5px;
+  min-width: 45px;
+  min-height: 25px;
+  background-color: #ffffff;
+  -webkit-border-radius: 10px;
+  z-index: 100;
+}
+
+.textCenter {
+  text-align: center;
+  font-size: 12px;
+  padding: 2px;
+}
+
+/*////////////////
+agregado boton para las curvas
+centrado de texto
+copia de del borde de la libreria
+agregado estilo de incorrecto y correcto sin opasidad para usarlo en el board
+//////////////*/
+.curve::before {
+  color: #d65d06;
+  content: "\007E";
+  font-weight: bolder;
+  font-size: 30px;
+}
+/* ///////////////////////////////////////////\/\\\
+/////////////////////////////////////////////////
+///////////////////////////////////////////////
+///////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/
+
+/*borde negro del board*/
+.border-board-dark {
+  position: relative;
+  overflow: hidden;
+  background-color: #fff;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #000000;
+  border-radius: 10px;
+  margin: 0;
+  -webkit-border-radius: 10px;
+  -ms-touch-action: none;
+}
+
+/* centrar contenedor */
+.itemContenFlex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* clase para el efecto de los botones */
+/* base color buttons */
+/* Inicio de Estilos de los botones primarios, secuandarios y tercearios */
+
+.buttonKey {
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  box-shadow: 0 3px #999;
+}
+
+/*hover de los botones */
+.buttonKey:hover {
+  background-color: #899c;
+}
+
+/* al pulsar el boton se mueve hacia abajo 2 pixeles y cambia el fondo*/
+.buttonKey:active {
+  background-color: #797c;
+  box-shadow: 0 2px #666;
+  transform: translateY(2px);
+}
+
+/* estado active de los botones mantiene pulsado el boton */
+.buttonDownActive {
+  background-color: #797c;
+  box-shadow: 0 2px #666;
+  transform: translateY(2px);
+}
+
+.buttonPrimary {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-color: #006ebb;
+  border: none;
+  border-radius: 0.25rem;
+}
+
+.buttonSecundary {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-color: #a4abb1;
+  border: none;
+  border-radius: 0.25rem;
+}
+
+/* #a4abb1 */
+.buttonTertiary {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+  border: 1px solid #646363;
+  border-radius: 0.25rem;
+}
+
+.buttonAux {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+  border: 1px solid #e17055;
+  border-radius: 0.25rem;
+}
+
+.margen-button {
+  line-height: normal;
+  margin-bottom: 20px;
+}
+
+/* estatusValidate colors */
+
+.failedInLibrary {
+  border: solid #000000 1px;
+  background-color: #eab8a5;
+}
+
+.warnInLibrary {
+  border: solid #ffb11f 1px;
+  background-color: #eab8a5;
+}
+.passInLibrary {
+  border: solid #000000 1px;
+  background-color: #b6f3bf;
+}
+
+.pass {
+  background-color: rgba(73, 225, 94, 0.4) !important;
+  accent-color: rgba(73, 225, 94, 0.4);
+}
+
+.failed {
+  background-color: rgba(203, 78, 31, 0.4) !important;
+  accent-color: rgba(203, 78, 31, 0.4);
+}
+
+.pass:hover {
+  background-color: rgba(35, 194, 53, 0.6);
+}
+
+.failed:hover {
+  background-color: rgba(167, 62, 22, 0.6);
+}
+
+.yellow {
+  background-color: rgba(236, 184, 12, 0.4) !important;
+  accent-color: rgba(236, 184, 12, 0.4);
+}
+
+/* inputs  si no son interactives tanto validado o sin validar */
+.input-default {
+  background-color: #f6f3c9;
+}
+
+.input-sended {
+  background-color: #f5d101;
+}
+
+.input_invalid {
+  background-color: #eab8a5;
+}
+
+.input_valid {
+  background-color: #b6f3bf;
+}
+
+/*------ base board --------*/
+.artifacBase {
+  width: fit-content;
+  max-width: 400px;
+  height: fit-content;
+  max-height: 600px;
+  margin: 4px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.btnBaseArtifact {
+  gap: 4px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
+.settionBtn {
+  width: fit-content;
+}
+/* Estilos nuevos del capitulo 3 --- FIN */
+.baseBoard {
+  min-height: 100px;
+  min-width: 260px;
+  height: 70%;
+}
+
+.statement-top {
+  display: none;
+}

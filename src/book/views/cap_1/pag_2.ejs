@@ -1,0 +1,114 @@
+
+<style>
+
+   .excersice{
+      border: 2px solid #949494;
+   }
+        
+   
+         @media screen and (max-width: 500px) {
+            .questionInputs{
+            flex-direction: column !important;
+         }
+         .questionInputs label{
+            margin-left: 0 !important;
+            width: 100% !important;
+            display: flex;
+            justify-content: center;
+            letter-spacing: 1px;
+            font-weight: 700;
+            align-items: center;
+            border-bottom: .5px dashed #e2e0e0;
+   
+   
+         }
+         .excersice{
+            width: 100%;
+            margin-bottom: 60px !important;
+            padding-bottom: 8px;
+            border-radius: 0.5rem !important;
+         }
+         input{
+            width: 50px !important;
+            height: 40px;
+            margin: 8px;
+         }
+         #example{
+            font-weight: 700;
+            letter-spacing: 1px;
+            padding-top: 8px;
+         }
+         }
+   
+      </style>
+    
+   
+   <div class="containerNormal  background-gray">
+   
+      <div class="d-flex flex-column">
+         <div class="w-10 mt-2">
+            <h3>Estudio de Curvas</h3>
+            <hr>
+            <H2 class="superTitle mt-5 ">EJEMPLO DE CURVAS.</H2>
+            
+             <div class="infoText">
+   
+               <p>Complete de acuerdo a lo que observa en cada curva. alt(-2) significa altura de la curva <span class="expression"> x = -2</span>. <br>
+                  Cuando aparece <span class="expression">alt( )= -2</span> , hay que poner en el paréntesis el x (en caso de que exista) donde la altura de la
+                  curva
+   
+                  es -2 </p>
+             </div>
+   
+        
+         </div>
+         <div class="d-flex justify-content-center">
+            <div id="main" class="containerNormal  justify-content-center"></div>
+         </div>
+      </div>
+   
+      <template id="template">
+   
+         <div id="ejercicio" class="excersice d-flex flex-column rounded m-2 justify-content-center">
+            <div class="w-100 d-flex justify-content-center">
+               <p id="example"></p>
+            </div>
+            <div id="board" class="defBoard jxgbox m-2" data-board="board_1"></div>
+   
+            <div id="inputs" class="d-flex flex-column mr-2 ml-2">
+   
+               <div class="questionInputs d-flex flex-row justify-content-center">
+   
+                  <label> alt(
+                     <input id="input_1" class="input-zise" type="text"></input> ) =
+                     <input id="input_2" class="input-zise" type="text"></input>
+                  </label>
+                  <label class="ml-3"> alt(
+                     <input id="input_3" class="input-zise" type="text"></input> ) =
+                     <input id="input_4" class="input-zise" type="text"></input>
+                  </label>
+   
+               </div>
+               <div class="questionInputs d-flex flex-row justify-content-center">
+   
+                  <label> alt(
+                     <input id="input_5" class="input-zise" type="text"></input> ) =
+                     <input id="input_6" class="input-zise" type="text"></input>
+                  </label>
+                  <label class="ml-3"> alt(
+                     <input id="input_7" class="input-zise" type="text"></input> ) =
+                     <input id="input_8" class="input-zise" type="text"></input>
+                  </label>
+   
+               </div>
+   
+            </div>
+            <div class="d-flex flex-row justify-content-center">
+   
+               <button id="void" class="notExist buttonTertiary button-marg buttonKey" title="No existe"></button>
+               <button id="reset" class="reset buttonSecundary button-marg buttonKey" title="Reset"></button>
+               <button id="send" class="check buttonPrimary button-marg buttonKey" title="Validar"></button>
+            </div>
+         </div>
+      </template>
+   

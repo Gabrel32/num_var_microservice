@@ -1,0 +1,394 @@
+<style>
+
+   .boardExample {
+      width: 300px;
+      height: 300px;
+      margin: auto;
+      border: 1px solid #000;
+   }
+
+   .subcontainer {
+      display: flex;
+      justify-content: center;
+      width: 300px !important;
+      height: 300px !important;
+      margin:auto !important;
+  
+   }
+
+   .Element__tables {
+      max-width: 430px !important;
+
+      width: fit-content !important;
+     
+         display: flex;
+         justify-content: center;
+
+   }
+
+   * {
+      box-sizing: border-box;
+   }
+
+   .questions {
+      display: block !important;
+      justify-content: center !important;
+   }
+.question__content{
+margin:auto
+}
+
+   math-field {
+      margin: 2px !important;
+   }
+
+   #question__Forms {
+      display: flex;
+ justify-content: center;
+ /* flex-direction: column; */
+ flex-wrap: wrap;
+ align-content: space-around;
+     
+   }
+   .containerNormal{
+      padding: 0 !important;
+   }
+   .excesice {
+     
+        display: flex;
+        justify-content: center;
+        /* margin:auto;   */
+      outline:2px solid rgb(100, 172, 255);
+      border-radius: 0.5rem;
+      margin-bottom: 50px;
+      width: fit-content;
+      align-items: center;
+      
+   flex-direction: column;
+   }
+
+   .cont {
+      display: flex;
+      flex-wrap:wrap;
+      width: 100%;
+   }
+
+   /* #artifact-container {
+      width: 100%;
+      background-color: #fefefe;
+      border-radius: .2rem;
+      letter-spacing: 1px;
+
+   } */
+
+   .c-2{
+      width: 90% !important;
+      margin:10px;
+      border: 1px solid rgb(19, 67, 90);
+      border-radius: 0.5rem;
+   }
+
+   
+
+   @media screen and (max-width: 700px) {
+
+      .containerNormal{
+   padding: 0px;
+   margin:auto
+}
+      #question__Forms {
+         flex-direction: column;
+         
+      }
+
+      .excesice {
+         box-sizing: border-box;
+         justify-content: center;
+      }
+
+      .Element__tables {
+         width: 100%;
+         display: flex;
+         justify-content: center;
+
+      }
+
+      #content {
+         width: 100%;
+      }
+      .cont {
+
+      width: 100%;
+   }
+
+      .question__forms {
+         width: 100% !important;
+         margin: 0;
+      }
+
+   }
+
+   @media screen and (max-width: 400px) {
+      .subcontainer {
+         height: 200px !important;
+      }
+
+  
+   }
+
+
+   @media screen and (max-width: 350px) {
+      .excesice {
+         box-sizing: border-box;
+         justify-content: center;
+
+      }
+
+      .question__forms {
+         width: 100% !important;
+         margin: 0;
+      }
+
+      .Element__tables {
+         max-width: 250px !important;
+         display: flex;
+         margin: auto;
+      }
+
+      .questions #artifact-container {
+         width: 240px !important;
+      }
+
+      #content {
+         width: 250px !important;
+         overflow-x: scroll;
+         text-align: center;
+         font-size: 10px;
+      }
+
+      #artifact-container {
+         margin: auto;
+      }
+
+   }
+</style>
+
+<!--   <nav class="mb-5 border-bottom border-dark ">
+   <div class="d-flex justify-content-between">
+      <p class="navbar-brand font-italic text-break">
+         Estudio de Curvas
+      </p>
+   </div>
+</nav>
+-->
+<div class=" containerNormal background-gray fix-container ">
+   <h3>Estudio de Curvas</h3>
+   <hr>
+   <p class="textInfo textInfo--first">
+      Responda, de acuerdo a la curva <strong>f</strong>, seleccionando <strong>V</strong> (verdadero) o
+      <strong>F</strong> (falso) en cada pregunta.
+   </p>
+
+   <div id="asd">
+
+   </div>
+   <div id="mainOwner">
+
+   </div>
+
+   <div class="questions">
+
+   </div>
+
+   <hr>
+
+
+   <p class="textInfo">
+      Visualice y estudie la gráfica y posterior a eso, responda en la tabla, la información de las cotas de la curva
+      en
+      los intervalos establecidos.
+   </p>
+<div class="d-flex justify-content-center">
+   <div class="cont d-flex justify-content center">
+
+   
+   
+   </div>
+</div>
+      <div class="d-flex flex-wrap">
+         <div class="artifact_3" ></div>
+         <div class="artifact_4"></div>
+         <div class="artifact_5"></div>
+         <div class="artifact_6"></div>
+         <div class="artifact_7"></div>
+         <div class="artifact_8"></div>
+      </div>
+
+
+
+
+   </template>
+   <!-- template para operation curves -->
+   <template id="tmp-SRP">
+      <div id="artifacts" class="d-flex flex-column border-board-dark m-2 big4-board squares-div">
+
+         <div class="defRoadBoard jxgbox mb-1 w-100 big4-board boardResp" data-board="board_0"
+            data-artifact="artifact_1">
+
+         </div>
+
+         <div class="d-flex w-100 flex-wrap justify-content-center border border-dark rounded btn-all">
+            <div class="d-flex flex-row">
+               <div class="d-flex flex-column">
+                  <div class="d-flex flex-wrap justify-content-center">
+
+                     <button class="curve button-marg buttonTertiary buttonKey"
+                        title="Crear curva con los puntos finales"></button>
+                     <button class="pointClose button-marg buttonTertiary buttonKey"
+                        title="Punto para la curva"></button>
+                     <button class="btnAsymptotes button-marg buttonTertiary buttonKey" title="Asintota"></button>
+
+                  </div>
+                  <div class="d-flex flex-wrap">
+                     <button class="help buttonSecundary button-marg  buttonKey" title="Ayuda"></button>
+                     <button class="gear buttonSecundary button-marg  buttonKey"> </button>
+                     <button class="infinite buttonSecundary button-marg  buttonKey"> </button>
+                     <button class="back buttonSecundary button-marg  buttonKey" title="Retornar"></button>
+                     <button class="reset button-marg buttonSecundary buttonKey" title="Reiniciar"></button>
+                     <button class="check button-marg buttonPrimary buttonKey" title="Validar"></button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </template>
+
+
+   <template id="tableTemplate">
+
+      <table class="table table-bordered">
+
+      </table>
+
+   </template>
+   <template id="simpleTemplateInput">
+      <math-field style=" width:100%;">
+
+      </math-field>
+
+   </template>
+   <template id="simpleTemplateSelect">
+      <div>
+         <select class="form-select form-control" name="opciones" id="opciones"
+            style="max-width:100%; max-height:100%; border:none; ">
+
+
+      </div>
+      </select>
+   </template>
+   <template id="simpleTemplateRadio">
+      <div class="form-check ml-3 mr-4 mt-1" style="display:inline-block !important; ">
+         <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+         <label class="form-check-label " for="flexRadioDefault1">
+            Test
+         </label>
+      </div>
+   </template>
+
+
+
+   <template id="tmp-config">
+      <div
+         class="centerFloat pr-1 pl-1 toggleDisplay divConfig d-flex flex-row justify-content-left align-items-center">
+         <div class="configTop">
+            <h5 style="margin-top: 10px; border-bottom: solid 2px black;">
+               Configuraciones
+            </h5>
+            <button class="btnClose closed buttonKey button-marg"></button>
+         </div>
+         <ul>
+            <li>
+               <p>
+                  Holgura de la curva
+                  <input class="rangeConfig" min="0.0" max="1" step="0.1" ; orient="vertical" type="range" />
+               </p>
+            </li>
+            <li>
+               <p>
+                  Color: <input class="colorConfig" type="color" name="" id="" />
+               </p>
+            </li>
+         </ul>
+      </div>
+   </template>
+   <!-- fin templates necesarios para opreration curves -->
+   <!-- TEMPLATE PPREGUNTAS -->
+   <template id="globalTemplate">
+      <div id="artifact-container"
+         class="d-flex w-100 flex-wrap justify-content-center rounded btn-all artifact-container question">
+         <div id="content" class="">
+         </div>
+         <div class="d-flex w-100 flex-wrap justify-content-center  rounded btn-all question__footer">
+            <div class="d-flex flex-row">
+               <div class="d-flex flex-wrap justify-content-start "></div>
+               <button class="reset button-marg buttonSecundary buttonKey question__footer__reset"
+                  title="Reiniciar"></button>
+               <button class="check button-marg buttonPrimary buttonKey question__footer__check"
+                  title="Validar"></button>
+
+            </div>
+         </div>
+
+      </div>
+
+   </template>
+
+
+   <template id="cardCol">
+      <div class="col-6">
+
+      </div>
+      <div>
+
+      </div>
+
+   </template>
+
+   <template id="templateSelect">
+      <div class='' id="selectq">
+         <div class="">
+            <label for="opciones"></label>
+         </div>
+         <div class="">
+            <select class="form-select form-control" name="opciones" id="opciones">
+         </div>
+         </select>
+      </div>
+   </template>
+   <template id="templateCheck">
+
+      <div class="" id="radioContainer">
+         <div class="title ">
+         </div>
+         <div class="content  ">
+         </div>
+      </div>
+   </template>
+   <template id="templateInput">
+      <div class="row">
+         <div id="title" class=""></div>
+         <div id="content" class=""></div>
+      </div>
+
+   </template>
+   <template id="template">
+      <div class="content_1">
+         <div class="content_2">
+         </div>
+      </div>
+   </template>
+
+
+
+
+</div>

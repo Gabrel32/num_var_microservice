@@ -1,0 +1,20 @@
+{
+  "alcaravan": {
+    "port": 3000,
+    "db": "dbMongo",
+    "url": "urlMongo",
+    "collection": "myCollection",
+    "tokenMoodle": "tokenMoodle",
+    "urlRegister": "urlregister",
+    "urlLogin": "urlLogin",
+    "indexField": "indexField",
+    "collectionCounters": "collectionCounters"
+  },
+  "psql": {
+    "host": "localhost",
+    "database": "NAME_DB",
+    "user": "USER_DB",
+    "password": "PASSWORD_USER_DB",
+    "port": 5432
+  }
+}
