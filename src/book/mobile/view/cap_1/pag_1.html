@@ -30,54 +30,54 @@
       <div class="diagramVertical" data-definition="artifact_1" data-board="board_1"></div>
       <div class="diagramVertical" data-definition="artifact_2" data-board="board_2"></div>
     </section>
-    <div id="artifacts" class="d-flex flex-column border-board-dark m-2 verticalDiagram">
-      <div class="statement-top border-board-dark w-100 h-100 textCenter" style="min-height: 30px">
 
-        <button class=" button-marg buttonTertiary buttonKey" title="value 1">1</button>
-        <button class="button-marg buttonTertiary buttonKey" title="value 2">2</button>
-        <button class=" button-marg buttonTertiary buttonKey" title="value 3">3</button>
-        <button class=" button-marg buttonTertiary buttonKey" title="value 4">4</button>
-      </div>
+    <template id="temp-segment"><!-- elemento template -->
+      <div class="d-flex flex-column border-board-dark verticalDiagram">
+        <div class="statement-top border-board-dark w-100 textCenter">
+          <button class="styleBtn buttonTertiary" title="value 1">1</button>
+          <button class="styleBtn buttonTertiary" title="value 2">2</button>
+          <button class="styleBtn buttonTertiary" title="value 3">3</button>
+          <button class="styleBtn buttonTertiary" title="value 4">4</button>
+        </div>
 
-      <div id="jxgbox" class="jxgbox baseBoard boardDiagram align-self-center"></div>
-      <div class="statement-bottom border-board-dark w-100 h-100 textCenter mt-1 mb-1"
-        style="height: 100%; min-height: 30px; display: none;"></div>
+        <div id="jxgbox" class="jxgbox baseBoard boardDiagram w-100"></div><!-- board donde tiene que ir el-->
+        <div class="statement statement-bottom border-board-dark w-100 h-100 textCenter mt-1 mb-1"
+          style="height: 100%; min-height: 30px; display: none;"></div>
 
-      <div class="align-self-center w-100 border-board-dark">
-        <div class="btnBaseArtifact border-dark rounded">
-          <div class="settionBtn interactive-btn">
-
-            <button class="infinite button-marg buttonTertiary buttonKey" title="Infinito"></button>
-
-            <button class="curve button-marg buttonTertiary buttonKey" title="Crear curva"></button>
-
-          </div>
-
-          <div class="settionBtn default-btn">
-            <button class="reset button-marg buttonSecundary buttonKey" title="Reset"></button>
-            <button class="check button-marg buttonPrimary buttonKey" title="Validar"></button>
-
+        <div class="all-btn w-100 border-board-dark">
+          <div class="btnBaseArtifact border-dark rounded">
+            <div class="sectionBtn interactive-btn"> </div>
+            <div class="sectionBtn default-btn gap-2">
+              <button class="reset styleBtn buttonSecundary" title="Reset"></button>
+              <button class="check styleBtn buttonPrimary" title="Validar"></button>
+            </div>
           </div>
         </div>
       </div>
 
-      <script src="../../../libraries/jsxgraphcore.js"></script>
-      <script src="../../../engines/genericEngines/mod_G.js"></script>
-      <!--  <script src="../../../libraries/mathLive.js"></script> -->
+    </template>
+    <div class="main"></div>
+    <h1> > Esta antes o despues < </h1>
+        <div class="main_2"></div>
 
-      <!-- class -->
-      <script src="../../../engines/genericEngines/baseBoards.js"></script>
+        <script src="../../../libraries/jsxgraphcore.js"></script>
+        <!-- class -->
+        <script src="../../../engines/genericEngines/baseBoards.js"></script>
 
-      <!-- Motores -->
-      <script src="../../../engines/genericEngines/mathKeyboard.js"></script>
+        <script src="../../../engines/cap_1/horizontalSegment.js"></script>
 
-      <script src="../../../engines/cap_1/horizontalSegment.js"></script>
+        <script src="../../../libraries/computeEngine.js"></script>
+        <script src="../../../libraries/mathLive.js"></script>
 
-      <script src="../../../libraries/computeEngine.js"></script>
-      <script src="../../../libraries/mathLive.js"></script>
+        <script src="../../../definitions/cap_1/pag_1.js"></script>
 
-      <script src="../../../definitions/cap_1/pag_1.js"></script>
-      <script src="../../../engines/cap_1/tests/horizontalTest.js"></script>
+
+
+
+        <script src="../../../engines/genericEngines/CreateView.js"></script>
+
+
+        <!--  <script src="../../../engines/cap_1/tests/horizontalTest.js"></script> -->
 
 
 

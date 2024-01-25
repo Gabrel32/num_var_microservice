@@ -103,7 +103,10 @@
                       ? true
                       : false,
                   label: {
-                    visible: ((styles?.axies?.y?.visible ?? false) || (styles?.axies?.y?.label ?? false)) ?? true,
+                    visible:
+                      ((styles?.axies?.y?.visible ?? false) ||
+                        (styles?.axies?.y?.label ?? false)) ??
+                      true,
                   },
                 },
                 ...styles?.axies?.y,
@@ -154,10 +157,9 @@
         createPoints(params = {}) {
           const { styles, points } = params;
           const resultPoints = points.map((point, i) => {
-            console.log(point?.style)
             const newPoint = this.addPoint(point);
             if (!Array.isArray(point)) {
-              const style = { ...{ ...styles, visible: false, ...point?.style } }
+              const style = { ...{ ...styles, visible: false, ...point?.style } };
               newPoint.setAttribute(style);
             }
             return newPoint;
@@ -294,7 +296,6 @@
           const element = { ...point };
       
           if (Array.isArray(point)) {
-      
             element.x = point[0];
             element.y = point[1];
       
@@ -313,7 +314,7 @@
                 typeof point[5] == "string" ? point[5] : point[5] ? "white" : "black",
               strokeColor: typeof point[5] == "string" ? point[5] : "black",
               color: typeof point[6] == "string" ? point[6] : "black",
-              ...point?.style
+              ...point?.style,
             };
           }
           const newPoint = this.board.create("point", [element.x, element.y], {
@@ -329,13 +330,13 @@
             visible: true,
             color: "black",
             ...style,
-      
           });
       
           newPoint.ignore = point.ignore;
           newPoint.notEliminate = true;
           newPoint.iMod = point.i;
           newPoint.label.ignore = true;
+      
           return newPoint;
         }
       
@@ -379,7 +380,6 @@
           cAux.typeCurve = curve.typeCurve || "curve";
       
           if (curve.interactive) {
-      
           }
           return cAux;
         }
@@ -419,45 +419,50 @@
         }
       
         createInputs(params) {
-          const { inputs } = params
+          const { inputs } = params;
           inputs.map((input) => {
-      
-            const { x, y, value, style } = input
-  
-            const newInput = this.board.create('text',
+            const { x, y, value, style } = input;
+            const newInput = this.board.create(
+              "text",
               [
                 x + (style?.input?.noiseX ?? 0),
-                y + (style?.input?.noiseY ?? 0)
-                , `<math-field
-              class='colorInput'
-              style=' ${style?.mathStyle ?? ''}'
-               ${(style?.disabled||value&& style?.disabled!==false) ? 'disabled' : ''}
-               ></math-field>`
-      
-              ], { anchorX: 'middle', anchorY: 'middle', ...style, fixed: true, layer: 20 }
+                y + (style?.input?.noiseY ?? 0),
+                `<math-field
+                          class='colorInput'
+                          style=' ${style?.mathStyle ?? ""}'
+                           ${style?.disabled || (value && style?.disabled === true)
+                  ? "disabled"
+                  : ""
+                }
+                           ></math-field>`,
+              ],
+              {
+                anchorX: "middle",
+                anchorY: "middle",
+                ...style,
+                fixed: true,
+                layer: 20,
+              }
             );
       
             const mathfield = newInput.rendNode.childNodes[0];
       
-          const math=  new MathfieldElement()
-
-          if (style?.disabled||!value) {
-            mathfield.addEventListener("focusin", () => {
-              console.log('se pulsa 3')
-              mathVirtualKeyboard.layouts = ['numeric-only'];
-             /*  mathVirtualKeyboard.visible = false; */
-              mathVirtualKeyboard.show()
-            });
-          }
-
+            if (style?.disabled || !value) {
+              mathfield.addEventListener("focusin", () => {
+      
+                mathVirtualKeyboard.layouts = ["numeric-only"];
+      
+                mathVirtualKeyboard.show();
+              });
+            }
+      
             mathfield.value = value ?? "";
             //resuelve el peo de la escritura de caracteres especiales con el teclado que seria los shorkcuts
-            mathfield.inlineShortcutTimeout = 1
+            mathfield.inlineShortcutTimeout = 1;
       
             mathfield.layouts = ["minimalist"];
-          })
-      
-      
+          });
+          MathLive.renderMathInDocument();
         }
       
         addEllipses(point) {
@@ -469,12 +474,11 @@
         }
       }
       
-      
-      // test esta prueba revisa la creacion de todos los 
-      // objetos y ademas los llamados de los metodos 
+      // test esta prueba revisa la creacion de todos los
+      // objetos y ademas los llamados de los metodos
       // Objeto literal que contiene las características del tablero y las listas indicadas
       
-      const definition = {
+      const definitionTest = {
         id: "jxgbox",
         styles: {
           boundingbox: [-5, 5, 5, -5],
@@ -487,14 +491,11 @@
             x: {
               visible: true,
               strokeColor: "red",
-              label: { visible: false }
+              label: { visible: false },
             },
           },
         },
-        points: [
-          { x: 1, y: 1, style: { visible: true } },
-          [3, 2, true],
-        ],
+        points: [{ x: 1, y: 1, style: { visible: true } }, [3, 2, true]],
         lines: [
           //{ points: [[0, 2], [2, 2]], style: { dash: 2 } },
           {
@@ -502,18 +503,13 @@
               color: "blue",
               visible: true,
             },
-            points: [[-2, -3, true],
-            { x: 2, y: -3, style: { visible: true } }],
+            points: [[-2, -3, true], { x: 2, y: -3, style: { visible: true } }],
           },
         ],
         curves: [
           {
-            points: [
-              [-3, -1, true],
-              { x: 1.5, y: -1 },
-              { x: 2, y: -2 }]
-          }
-          
+            points: [[-3, -1, true], { x: 1.5, y: -1 }, { x: 2, y: -2 }],
+          },
         ],
         polygons: [
           {
@@ -522,7 +518,7 @@
             },
             styles: { fillOpacity: 1 },
             points: [
-              { x: 3, y: 3, style: { visible: false, color: 'red' } },
+              { x: 3, y: 3, style: { visible: false, color: "red" } },
               { x: 1, y: 1 },
               { x: -2, y: 1 },
             ],
@@ -544,9 +540,14 @@
             ],
           },
         ],
+        inputs: [
+          { x: 0, y: 1, value: '1' },
+          { x: -1, y: -1, value: '3', },
+          { x: 1, y: -1, value: '2' },
+        ],
       };
-      
       // Crear una instancia de la clase baseBoards con el objeto literal definition
-      //const baseBoardsX = new baseBoards(definition);
+      //const baseBoardsX = new baseBoards(definitionTest);
       
       //baseBoardsX.addPoint({ x: 2, y: 3, style: { color: "green" } });
+      

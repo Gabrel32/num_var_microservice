@@ -1,5 +1,6 @@
 class HorizontalSegment extends baseBoards {
   constructor(definition, board) {
+    console.log(board);
     super(board);
     this.conditions = definition.conditions;
     this.allPoints = [];
