@@ -3,6 +3,7 @@
 class CreateView {
     constructor(allDef, defBoard) {
         this.initVIew(allDef)
+
     }
 
     initVIew = (allDef) => {
@@ -11,10 +12,10 @@ class CreateView {
         if (!allDef || Object?.keys(artifacts).length <= 0) {
             return
         }
-        Object.keys(artifacts).forEach(def => {
 
+        this.allArtifacts = Object.keys(artifacts).map(def => {
             const artifact = artifacts[def]
-            this.addArtefact({ id: def, ...artifact, parent, style }, fragment)
+            return this.addArtefact({ id: def, ...artifact, parent, style }, fragment)
 
         });
 
@@ -30,16 +31,17 @@ class CreateView {
 
     addArtefact = (artifact, fragment) => {
 
-        const { template, id, parent, style = { class: [] } } = artifact
-        console.log(style);
-        const $template = template.nodo ?? document.querySelector(`#${template.id},.${template.class}`);
+        const { template = {}, engine, id, parent, style = { class: [] } } = artifact
+
+        const artClass = new Artifact(artifact, {}, engine)
+
+        const $template = template?.nodo ?? document.querySelector(`${artClass.engine.idTemplate},#${template.id},.${template.class}`);
         const cloneTmp = $template.content.firstElementChild.cloneNode(true);
 
         cloneTmp.id = id
         cloneTmp.querySelector('#jxgbox').id = id + '_board'
         cloneTmp.classList.add(...style?.class ?? '')
-
-        const artClass = new Artifact(artifact, {}, cloneTmp)
+        artClass.htmlNode = cloneTmp
 
         if (fragment) {
             fragment.appendChild(cloneTmp)
@@ -52,36 +54,27 @@ class CreateView {
                 document.body.appendChild(cloneTmp)
             }
         }
+        return artClass
 
     }
+
+    initArtifats = () => {
+        this.allArtifacts.forEach((artifact) => {
+            artifact.initArtifact()
+        });
+    }
 }
-
-class Artifact {
-    constructor(def, board, htmlNode) {
-        this.engine = def?.engine?.insertTmp();
-        console.log(this.engine);
-        this.allbtn = htmlNode.querySelector('.all-btn')
-    };
-
-    initArtifact = () => {
-        this.allbtn.addEventListener('click', (e) => {
-            console.log(e.target);
-        })
-    };
-
-    initEngine = () => {
-        this.engine.initEngine(def, board)
-    };
-};
-
-
 
 
 
 const def = {
     artifacts: {
-        artifact_1: { template: { id: 'temp-segment' } },
-        artifact_2: { template: { id: 'temp-segment' } },
+        /*   artifact_1: { template: { id: 'temp-segment' } },
+          artifact_2: { template: { id: 'temp-segment' } }, */
+        artifact_3: {
+            engine: HorizontalSegment,
+            /*   template: { id: 'temp-segment' } */
+        },
     }
 
 }
@@ -92,21 +85,17 @@ contentMain.initVIew({
     style: { class: ['passInLibrary'] },
     parent: 'main_2',
     artifacts: {
-        artifact_3: {
-            engine: {
-                insertTmp: () => {
-                    console.log('inserta template');
-                }
-            },
+        artifact_4: {
+            engine: HorizontalSegment,
             template: { id: 'temp-segment' }
         },
-        artifact_4: { template: { id: 'temp-segment' } },
     }
 
 })
 
 contentMain.addArtefact({
     parent: 'main_2',
+    engine: HorizontalSegment,
     template: {
         nodo: document.querySelector('#temp-segment')
     },

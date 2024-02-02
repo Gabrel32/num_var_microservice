@@ -26,12 +26,9 @@
       </div>
     </nav>
 
-    <section class="containerNormal flexGrid">
-      <div class="diagramVertical" data-definition="artifact_1" data-board="board_1"></div>
-      <div class="diagramVertical" data-definition="artifact_2" data-board="board_2"></div>
-    </section>
 
-    <template id="temp-segment"><!-- elemento template -->
+    <!-- 
+    <template id="temp-segment">
       <div class="d-flex flex-column border-board-dark verticalDiagram">
         <div class="statement-top border-board-dark w-100 textCenter">
           <button class="styleBtn buttonTertiary" title="value 1">1</button>
@@ -40,7 +37,7 @@
           <button class="styleBtn buttonTertiary" title="value 4">4</button>
         </div>
 
-        <div id="jxgbox" class="jxgbox baseBoard boardDiagram w-100"></div><!-- board donde tiene que ir el-->
+        <div id="jxgbox" class="jxgbox baseBoard boardDiagram w-100"></div>
         <div class="statement statement-bottom border-board-dark w-100 h-100 textCenter mt-1 mb-1"
           style="height: 100%; min-height: 30px; display: none;"></div>
 
@@ -55,7 +52,8 @@
         </div>
       </div>
 
-    </template>
+    </template> -->
+
     <div class="main"></div>
     <h1> > Esta antes o despues < </h1>
         <div class="main_2"></div>
@@ -63,7 +61,6 @@
         <script src="../../../libraries/jsxgraphcore.js"></script>
         <!-- class -->
         <script src="../../../engines/genericEngines/baseBoards.js"></script>
-
         <script src="../../../engines/cap_1/horizontalSegment.js"></script>
 
         <script src="../../../libraries/computeEngine.js"></script>
@@ -73,7 +70,7 @@
 
 
 
-
+        <script src="../../../engines/genericEngines/Artifact.js"></script>
         <script src="../../../engines/genericEngines/CreateView.js"></script>
 
 

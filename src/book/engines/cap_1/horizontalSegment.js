@@ -1,23 +1,61 @@
 class HorizontalSegment extends baseBoards {
   constructor(definition, board) {
-    console.log(board);
     super(board);
+    this.idTemplate = '#temp-segment'
     this.conditions = definition.conditions;
     this.allPoints = [];
     this.definition = { ...definition };
     //this.addInterval(definition.intervals[0])
-    this.createIntervals({ intervals: board.intervals });
+
+  }
+
+  templateInsert = () => {
+    if (!document.querySelector('#temp-segment')) {
+      const $templateDefaults = null ?? `<template id="temp-segment"><
+        <div class="d-flex flex-column border-board-dark verticalDiagram">
+          <div class="statement-top border-board-dark w-100 textCenter">
+            <button class="styleBtn buttonTertiary" title="value 1">1</button>
+            <button class="styleBtn buttonTertiary" title="value 2">2</button>
+            <button class="styleBtn buttonTertiary" title="value 3">3</button>
+            <button class="styleBtn buttonTertiary" title="value 4">4</button>
+          </div>
+    
+          <div id="jxgbox" class="jxgbox baseBoard boardDiagram w-100"></div><!-- board donde tiene que ir el-->
+          <div class="statement statement-bottom border-board-dark w-100 h-100 textCenter mt-1 mb-1"
+            style="height: 100%; min-height: 30px; display: none;"></div>
+    
+          <div class="all-btn w-100 border-board-dark">
+            <div class="btnBaseArtifact border-dark rounded">
+              <div class="sectionBtn interactive-btn"> </div>
+              <div class="sectionBtn default-btn gap-2">
+                <button class="reset styleBtn buttonSecundary" title="Reset"></button>
+                <button class="check styleBtn buttonPrimary" title="Validar"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+      </template>`;
+      document.body.insertAdjacentHTML('afterend', $templateDefaults);
+    }
+    return document.querySelector('#temp-segment').content.firstElementChild.cloneNode(true);
   }
 
   initArtifact() {
     super.initArtifact();
   }
+
+  initEngine() {
+    this.createIntervals({ intervals: board.intervals });
+  }
+
   createIntervals(params) {
     const { intervals } = params;
     intervals.forEach((interval) => {
       this.addInterval(interval);
     });
   }
+
   addInterval({
     height = 1.5,
     interval = [-2, 2],
@@ -99,7 +137,9 @@ class HorizontalSegment extends baseBoards {
         { x: interval[1], y: -1, value: values.c },
       ],
     });
-    /* vuelve a llamar el render de mathlive */
-    MathLive.renderMathInDocument();
+
+    if (MathLive) {
+      MathLive.renderMathInDocument();
+    }
   }
 }

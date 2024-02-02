@@ -10,28 +10,15 @@
      */
       class baseBoards {
         constructor(definition) {
-          const {
-            points = [],
-            curves = [],
-            polygons = [],
-            ellipses = [],
-            arcs = [],
-            lines = [],
-            inputs = [],
-          } = definition;
-          this.board = this.initBoardBase(definition); //JXG.JSXGraph.initBoard(definition.container, definition.attributes);
-          if (!this.board) {
-            console.error("ID no identificado definir un id en el objeto enviado");
-            return;
-          }
-      
-          this.pointsDefault = this.createPoints({ points });
-          this.linesDefault = this.createLines({ lines });
-          this.curvesDefault = this.createCurves({ curves });
-          this.polygonsDefault = this.createPolygons({ polygons });
-          // this.ellipsesDefault = this.createEllipses({ ellipses });
-          this.arcsDefault = this.createArcs({ arcs });
-          this.inputsDefault = this.createInputs({ inputs });
+         
+          this.points=definition.points
+          this.curves=definition.curves
+          this.polygons=definition.polygons
+          this.ellipses=definition.ellipses
+          this.arcs=definition.arcs
+          this.inputs=definition.inputs
+          this.lines=definition.lines
+
         }
       
         initBoardBase(definition) {
@@ -136,7 +123,7 @@
             },
           };
       
-          let board = JXG.JSXGraph.initBoard(id, { ...style });
+          this.board = JXG.JSXGraph.initBoard(id, { ...style });
       
           JXG.Options.navbar = {
             fillColor: "transparent",
@@ -151,6 +138,19 @@
             ...style.navbar,
           };
       
+          if (!this.board) {
+            console.error("ID no identificado definir un id en el objeto enviado");
+            return;
+          }
+      
+          this.pointsDefault = this.createPoints({ points });
+          this.linesDefault = this.createLines({ lines });
+          this.curvesDefault = this.createCurves({ curves });
+          this.polygonsDefault = this.createPolygons({ polygons });
+          // this.ellipsesDefault = this.createEllipses({ ellipses });
+          this.arcsDefault = this.createArcs({ arcs });
+          this.inputsDefault = this.createInputs({ inputs });
+          
           return board;
         }
       
