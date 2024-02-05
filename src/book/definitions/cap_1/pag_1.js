@@ -74,20 +74,40 @@ const defBoards = {
     }
 };
 //si se va a agregar algo al objeto tiene que declararce la propiedad por defecto en el mod.js
-const rDef = {
-    artifact_1: {
-        buttonsActive: { points: true, infinities: true },
-        conditions: {},
+const def = {
+    artifacts: {
+        /*   artifact_1: { template: { id: 'temp-segment' } },
+          artifact_2: { template: { id: 'temp-segment' } }, */
+        artifact_1: {
+            board: 'board_1',
+            engine: HorizontalSegment,
+            /*   template: { id: 'temp-segment' } */
+        },
+    }
+
+}
+
+const contentMain = new CreateView(def, defBoards);
+
+contentMain.initVIew({
+    style: { class: ['passInLibrary'] },
+    parent: 'main_2',
+    artifacts: {
+        artifact_2: {
+            board: 'board_1',
+            engine: HorizontalSegment,
+            template: { id: 'temp-segment' }
+        },
+    }
+
+})
+
+contentMain.addArtefact({
+    parent: 'main_2',
+    board: 'board_1',
+    engine: HorizontalSegment,
+    template: {
+        nodo: document.querySelector('#temp-segment')
     },
-
-    artifact_2: {
-        buttonsActive: { points: true, infinities: true },
-        conditions: {},
-    },
-
-};
-
-//generator(rDef);
-//const newHorizontal = new HorizontalSegment(defBoards.board_1)
-//horizontalSegment(rDef, defBoards)
-//mainOperation(defBoards, rDef);
+    name: 'artifact_3'
+})
