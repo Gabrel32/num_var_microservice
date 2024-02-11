@@ -30,7 +30,7 @@ const defBoards = {
             {
                 height: 1,
                 fillInterval: true,
-                values: { a: '1', b: '2', /* c: '3'  */ },
+                values: { a: '1', b: '2' },
                 style: { disabled: true }
             }
         ],
@@ -80,6 +80,11 @@ const def = {
           artifact_2: { template: { id: 'temp-segment' } }, */
         artifact_1: {
             board: 'board_1',
+            engine: HorizontalSegment,
+            /*   template: { id: 'temp-segment' } */
+        },
+        artifact_5: {
+            board: 'board_2',
             engine: HorizontalSegment,
             /*   template: { id: 'temp-segment' } */
         },

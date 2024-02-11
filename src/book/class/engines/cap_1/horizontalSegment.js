@@ -1,8 +1,8 @@
 class HorizontalSegment extends baseBoards {
   constructor(definition, defBoard) {
-
     super(defBoard);
     this.defBoard = defBoard
+
     this.idTemplate = '#temp-segment'
     this.conditions = definition.conditions;
     this.allPoints = [];
@@ -44,15 +44,14 @@ class HorizontalSegment extends baseBoards {
   }
 
   initEngine() {
-    console.log(this);
-    console.log(this.defBoard);
-    console.log(this.defBoard.intervals);
-
-    this.createIntervals({ intervals: this.defBoard.intervals });
+    if (this.initBoardBase({ id: this.idboard, ...this.defBoard })) {
+      this.createIntervals({ intervals: this.defBoard.intervals });
+    }
+    this.addTimer()
   }
 
   createIntervals(params) {
-    const { intervals } = params;
+    const { intervals = [] } = params;
     intervals.forEach((interval) => {
       this.addInterval(interval);
     });

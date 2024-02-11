@@ -1,6 +1,5 @@
 class Artifact {
     constructor(def, board) {
-        console.log('board', board);
         this.name = def.name
         this.engine = new def.engine(def, board)
         this.board = board
