@@ -8,20 +8,36 @@
       - polygons
       - ellipses
      */
-class baseBoards extends BaseEngine {
-  constructor(defBoard = {}) {
-    super()
-    this.points = defBoard.points ?? []
-    this.curves = defBoard.curves ?? []
-    this.polygons = defBoard.polygons ?? []
-    this.ellipses = defBoard.ellipses ?? []
-    this.arcs = defBoard.arcs ?? []
-    this.inputs = defBoard.inputs ?? []
-    this.lines = defBoard.lines ?? []
 
+class baseBoards extends BaseEngine {
+
+  constructor(params) {
+    const { defBoard, def } = params;
+    super();
+    this.def = def;
+    this.points = defBoard.points ?? [];
+    this.curves = defBoard.curves ?? [];
+    this.polygons = defBoard.polygons ?? [];
+    this.ellipses = defBoard.ellipses ?? [];
+    this.arcs = defBoard.arcs ?? [];
+    this.inputs = defBoard.inputs ?? [];
+    this.lines = defBoard.lines ?? [];
+  }
+
+  setBoard(idBoard = 'jxgbox', nameBoard = 'board', node) {
+    if (node) {
+      this[nameBoard] = node;
+    } else if (!this.htmlNode?.querySelector(`#${idBoard}`)) {
+      this[nameBoard] = null;
+      return;
+    } else {
+      this[nameBoard] = this?.htmlNode?.querySelector('#jxgbox');
+      this[nameBoard].id = this.name + '_board';
+    }
   }
 
   initBoardBase(defBoard) {
+    this.setBoard();
     const { id = defBoard?.id ?? "jxgbox", styles } = defBoard;
     if (!document.getElementById(id)) {
       return;
@@ -175,7 +191,6 @@ class baseBoards extends BaseEngine {
 
   createLines(params) {
     const { lines, styles } = params;
-    console.log('>>', params);
     if (!Array.isArray(params.lines)) {
       params.lines = [params.lines];
     }
@@ -430,12 +445,7 @@ class baseBoards extends BaseEngine {
         [
           x + (style?.input?.noiseX ?? 0),
           y + (style?.input?.noiseY ?? 0),
-          `<math-field
-                          class='colorInput'
-                          style=' ${style?.mathStyle ?? ""}'
-                           ${style?.disabled || (value && style?.disabled === true)
-            ? "disabled"
-            : ""
+          `<math-field class='colorInput' style=' ${style?.mathStyle ?? ""}' ${value && style?.disabled || (value && style?.disabled === true) ? "disabled" : ""
           }
                            ></math-field>`,
         ],
@@ -450,7 +460,7 @@ class baseBoards extends BaseEngine {
 
       const mathfield = newInput.rendNode.childNodes[0];
 
-      if (style?.disabled || !value) {
+      if (!style?.disabled || !value) {
         mathfield.addEventListener("focusin", () => {
 
           mathVirtualKeyboard.layouts = ["numeric-only"];

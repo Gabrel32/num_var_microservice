@@ -10,6 +10,7 @@
   --white: #fff;
   --gray: #6c757d;
   --gray-dark: #343a40;
+  --borderBaseColor: #000000;
 }
 
 /* fonts mathlive */
@@ -177,6 +178,7 @@
   font-weight: 400;
   src: url(fonts/KaTeX_Typewriter-Regular.woff2) format("woff2");
 }
+
 /* fin fonts mathlive */
 
 * {
@@ -459,6 +461,7 @@ agregado estilo de incorrecto y correcto sin opasidad para usarlo en el board
   font-weight: bolder;
   font-size: 30px;
 }
+
 /* ///////////////////////////////////////////\/\\\
 /////////////////////////////////////////////////
 ///////////////////////////////////////////////
@@ -495,8 +498,8 @@ agregado estilo de incorrecto y correcto sin opasidad para usarlo en el board
   overflow: hidden;
   background-color: #fff;
   border-style: solid;
-  border-width: 1px;
-  border-color: #000000;
+  border-width: 2px;
+  border-color: var(--borderBaseColor);
   border-radius: 10px;
   margin: 0;
   -webkit-border-radius: 10px;
@@ -593,6 +596,7 @@ agregado estilo de incorrecto y correcto sin opasidad para usarlo en el board
   border: solid #ffb11f 1px;
   background-color: #eab8a5;
 }
+
 .passInLibrary {
   border: solid #000000 1px;
   background-color: #b6f3bf;
@@ -649,17 +653,21 @@ agregado estilo de incorrecto y correcto sin opasidad para usarlo en el board
 }
 
 .btnBaseArtifact {
+
+  padding: 4px;
   gap: 4px;
-  width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
   align-content: center;
   flex-wrap: wrap;
+
 }
+
 .settionBtn {
   width: fit-content;
 }
+
 /* Estilos nuevos del capitulo 3 --- FIN */
 .baseBoard {
   min-height: 100px;

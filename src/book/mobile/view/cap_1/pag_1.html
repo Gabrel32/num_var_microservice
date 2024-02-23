@@ -9,68 +9,48 @@
   <link rel="stylesheet" href="../../../css/mathlive.css">
 
   <link rel="stylesheet" href="../../../css/cap_1/styles.css" />
-  <link rel="stylesheet" href="../../../css/styles.css" />
+  <link rel="stylesheet" href="../../../css/generic/display.css" />
+  <link rel="stylesheet" href="../../../css/generic/styles.css" />
 
 </head>
 
 <body>
+  <!-- contenedor base de toda la pagina -->
   <div class="containerNormal background-gray">
     <nav class="mb-5 border-bottom border-dark">
       <div class="d-flex justify-content-between">
         <p class="navbar-brand font-italic text-break">
-          Operaciones con curvas
+          <!-- el titulo de la pagina -->
+          Numero y variable
         </p>
       </div>
     </nav>
 
 
-    <!-- 
-    <template id="temp-segment">
-      <div class="d-flex flex-column border-board-dark verticalDiagram">
-        <div class="statement-top border-board-dark w-100 textCenter">
-          <button class="styleBtn buttonTertiary" title="value 1">1</button>
-          <button class="styleBtn buttonTertiary" title="value 2">2</button>
-          <button class="styleBtn buttonTertiary" title="value 3">3</button>
-          <button class="styleBtn buttonTertiary" title="value 4">4</button>
-        </div>
 
-        <div id="jxgbox" class="jxgbox baseBoard boardDiagram w-100"></div>
-        <div class="statement statement-bottom border-board-dark w-100 h-100 textCenter mt-1 mb-1"
-          style="height: 100%; min-height: 30px; display: none;"></div>
-
-        <div class="all-btn w-100 border-board-dark">
-          <div class="btnBaseArtifact border-dark rounded">
-            <div class="sectionBtn interactive-btn"> </div>
-            <div class="sectionBtn default-btn gap-2">
-              <button class="reset styleBtn buttonSecundary" title="Reset"></button>
-              <button class="check styleBtn buttonPrimary" title="Validar"></button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </template> -->
-
-    <div class="main"></div>
-    <h1> > Esta antes o despues < </h1>
-        <div class="main_2"></div>
-
-        <script src="../../../libraries/jsxgraphcore.js"></script>
-        <!-- class -->
-        <script src="../../../class/abstract/BaseEngine.js"></script>
-        <script src="../../../class/abstract/baseBoards.js"></script>
-
-        <script src="../../../class/engines/cap_1/horizontalSegment.js"></script>
-
-        <script src="../../../libraries/computeEngine.js"></script>
-        <script src="../../../libraries/mathLive.js"></script>
-
-        <script src="../../../class/generictClass/Artifact.js"></script>
+    <!-- en este ejemplo hay dos posibles padres  -->
+    <div id="main" class="mainContainer "></div>
+    <h1> Esta antes o despues </h1>
+    <div id="main_2" class="main_2"></div>
 
 
-        <script src="../../../class/generictClass/CreateView.js"></script>
-
-        <script src="../../../definitions/cap_1/pag_1.js"></script>
+    <script src="../../../libraries/jsxgraphcore.js"></script>
+    <!-- class  abstractas-->
+    <script src="../../../class/engines/abstract/BaseEngine.js"></script>
+    <script src="../../../class/engines/abstract/baseBoards.js"></script>
+    <!-- validation -->
+    <script src="../../../class/validation/cap_1/validateInterval.js"></script>
+    <!-- class engine -->
+    <script src="../../../class/engines/cap_1/horizontalSegment.js"></script>
+    <!-- librerias -->
+    <script src="../../../libraries/computeEngine.js"></script>
+    <script src="../../../libraries/mathLive.js"></script>
+    <!-- class generica artifact -->
+    <script src="../../../class/generictClass/Artifact.js"></script>
+    <!-- clase generica para generar las vistas -->
+    <script src="../../../class/generictClass/CreateView.js"></script>
+    <!-- definicion que se usa en la pagina -->
+    <script src="../../../definitions/cap_1/pag_1.js"></script>
 
 
 </body>

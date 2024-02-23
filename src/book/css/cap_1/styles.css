@@ -1,4 +1,5 @@
 .verticalDiagram {
+  display: block;
   max-width: 420px;
   width: 280px;
 }

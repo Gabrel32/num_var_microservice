@@ -1,14 +1,20 @@
 class HorizontalSegment extends baseBoards {
-  constructor(definition, defBoard) {
-    super(defBoard);
-    this.defBoard = defBoard
-
-    this.idTemplate = '#temp-segment'
-    this.conditions = definition.conditions;
+  constructor(def, defBoard) {
+    super({ def, defBoard });
+    this.name = def.name;
+    this.defBoard = defBoard;
+    this.idTemplate = '#temp-segment';
+    this.conditions = def.conditions;
     this.allPoints = [];
-    this.definition = { ...definition };
-    this.idboard = definition.name + "_board"
-  }
+    this.def = { ...def };
+    this.idboard = def.name + "_board";
+    this.validation = new ValidationHorizontal(this.def);
+    this.templateInsert();
+  };
+
+  validate() {
+    this.validation.iniMainValidations();
+  };
 
   templateInsert = () => {
     if (!document.querySelector('#temp-segment')) {
@@ -39,23 +45,24 @@ class HorizontalSegment extends baseBoards {
       </template>`;
       document.body.insertAdjacentHTML('afterend', $templateDefaults);
     }
-    this.htmlNode = document.querySelector('#temp-segment').content.firstElementChild.cloneNode(true);
-    return this.htmlNode
-  }
+
+    this.htmlNode ??= document.querySelector('#temp-segment').content.firstElementChild.cloneNode(true);
+    return this.htmlNode;
+  };
 
   initEngine() {
     if (this.initBoardBase({ id: this.idboard, ...this.defBoard })) {
       this.createIntervals({ intervals: this.defBoard.intervals });
     }
-    this.addTimer()
-  }
+    this.addTimer();
+  };
 
   createIntervals(params) {
     const { intervals = [] } = params;
     intervals.forEach((interval) => {
       this.addInterval(interval);
     });
-  }
+  };
 
   addInterval({
     height = 1.5,
@@ -126,21 +133,23 @@ class HorizontalSegment extends baseBoards {
         styles: { strokeWith: 8 },
       });
     };
-
+    const style = { disabled: true };
     this.createInputs({
       inputs: [
         {
           x: (interval[0] + interval[1]) / 2,
           y: height + 0.7,
           value: values.b,
+          style
         },
-        { x: interval[0], y: -1, value: values.a },
-        { x: interval[1], y: -1, value: values.c },
+        { x: interval[0], y: -1, value: values.a, style },
+        { x: interval[1], y: -1, value: values.c, style },
       ],
     });
 
     if (MathLive) {
       MathLive.renderMathInDocument();
     }
-  }
+  };
+
 }
