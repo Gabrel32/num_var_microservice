@@ -1,24 +1,22 @@
 class HorizontalSegment extends baseBoards {
   constructor(def, defBoard) {
-    super({ def, defBoard });
-    this.name = def.name;
-    this.defBoard = defBoard;
-    this.idTemplate = '#temp-segment';
+    super(defBoard);
+    this.defBoard = defBoard
+    this.idTemplate = '#temp-segment'
     this.conditions = def.conditions;
     this.allPoints = [];
     this.def = { ...def };
-    this.idboard = def.name + "_board";
+    this.idboard = def.name + "_board"
     this.validation = new ValidationHorizontal(this.def);
     this.templateInsert();
-  };
-
+  }
   validate() {
     this.validation.iniMainValidations();
   };
 
   templateInsert = () => {
     if (!document.querySelector('#temp-segment')) {
-      const $templateDefaults = null ?? `<template id="temp-segment"><
+      const $templateDefaults = `<template id="temp-segment"><
         <div class="d-flex flex-column border-board-dark verticalDiagram">
           <div class="statement-top border-board-dark w-100 textCenter">
             <button class="styleBtn buttonTertiary" title="value 1">1</button>
@@ -43,26 +41,28 @@ class HorizontalSegment extends baseBoards {
         </div>
     
       </template>`;
+      this.template ??= $templateDefaults
       document.body.insertAdjacentHTML('afterend', $templateDefaults);
     }
-
     this.htmlNode ??= document.querySelector('#temp-segment').content.firstElementChild.cloneNode(true);
-    return this.htmlNode;
-  };
+    return this.htmlNode
+  }
 
   initEngine() {
     if (this.initBoardBase({ id: this.idboard, ...this.defBoard })) {
-      this.createIntervals({ intervals: this.defBoard.intervals });
+      if (this.defBoard?.intervals) {
+        this.createIntervals({ intervals: this.defBoard.intervals });
+      }
     }
-    this.addTimer();
-  };
+    this.addTimer()
+  }
 
   createIntervals(params) {
     const { intervals = [] } = params;
     intervals.forEach((interval) => {
       this.addInterval(interval);
     });
-  };
+  }
 
   addInterval({
     height = 1.5,
@@ -133,23 +133,21 @@ class HorizontalSegment extends baseBoards {
         styles: { strokeWith: 8 },
       });
     };
-    const style = { disabled: true };
+
     this.createInputs({
       inputs: [
         {
           x: (interval[0] + interval[1]) / 2,
           y: height + 0.7,
           value: values.b,
-          style
         },
-        { x: interval[0], y: -1, value: values.a, style },
-        { x: interval[1], y: -1, value: values.c, style },
+        { x: interval[0], y: -1, value: values.a },
+        { x: interval[1], y: -1, value: values.c },
       ],
     });
 
     if (MathLive) {
       MathLive.renderMathInDocument();
     }
-  };
-
+  }
 }

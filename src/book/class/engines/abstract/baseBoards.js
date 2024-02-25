@@ -8,20 +8,17 @@
       - polygons
       - ellipses
      */
-
 class baseBoards extends BaseEngine {
+  constructor(defBoard = {}) {
+    super()
+    this.points = defBoard.points ?? []
+    this.curves = defBoard.curves ?? []
+    this.polygons = defBoard.polygons ?? []
+    this.ellipses = defBoard.ellipses ?? []
+    this.arcs = defBoard.arcs ?? []
+    this.inputs = defBoard.inputs ?? []
+    this.lines = defBoard.lines ?? []
 
-  constructor(params) {
-    const { defBoard, def } = params;
-    super();
-    this.def = def;
-    this.points = defBoard.points ?? [];
-    this.curves = defBoard.curves ?? [];
-    this.polygons = defBoard.polygons ?? [];
-    this.ellipses = defBoard.ellipses ?? [];
-    this.arcs = defBoard.arcs ?? [];
-    this.inputs = defBoard.inputs ?? [];
-    this.lines = defBoard.lines ?? [];
   }
 
   setBoard(idBoard = 'jxgbox', nameBoard = 'board', node) {
@@ -37,11 +34,11 @@ class baseBoards extends BaseEngine {
   }
 
   initBoardBase(defBoard) {
-    this.setBoard();
     const { id = defBoard?.id ?? "jxgbox", styles } = defBoard;
     if (!document.getElementById(id)) {
+      console.warn('no existe el contenedor para el board');
       return;
-    }
+    };
 
     const style = {
       label: { visible: false },
@@ -191,6 +188,7 @@ class baseBoards extends BaseEngine {
 
   createLines(params) {
     const { lines, styles } = params;
+    console.log('>>', params);
     if (!Array.isArray(params.lines)) {
       params.lines = [params.lines];
     }
@@ -445,9 +443,7 @@ class baseBoards extends BaseEngine {
         [
           x + (style?.input?.noiseX ?? 0),
           y + (style?.input?.noiseY ?? 0),
-          `<math-field class='colorInput' style=' ${style?.mathStyle ?? ""}' ${value && style?.disabled || (value && style?.disabled === true) ? "disabled" : ""
-          }
-                           ></math-field>`,
+          `<math-field class='colorInput' style='${style?.mathStyle ?? ""}'  ${((value && !style?.disabled) || (!value && style?.disabled === true)) ? "disabled" : ""}></math-field>`,
         ],
         {
           anchorX: "middle",
@@ -460,7 +456,7 @@ class baseBoards extends BaseEngine {
 
       const mathfield = newInput.rendNode.childNodes[0];
 
-      if (!style?.disabled || !value) {
+      if (!style?.disabled && !value) {
         mathfield.addEventListener("focusin", () => {
 
           mathVirtualKeyboard.layouts = ["numeric-only"];

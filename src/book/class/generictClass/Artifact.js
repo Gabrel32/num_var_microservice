@@ -1,43 +1,38 @@
 class Artifact {
+    constructor(def, board) {
+        this.name = def.name
+        this.status = false
+        this.engine = new def.engine(def, board)
+        this.board = board
+        this.htmlNode = this.engine.templateInsert()
+        this.htmlNode.id = def.name
+        this.htmlNode.querySelector('#jxgbox').id = def.name + '_board'
+        this.htmlNode.classList.add(...def.style?.class ?? '')
+    };
 
-  constructor(def, custom) {
-    this.name = def.name;
-    this.engine = new def.engine(def, custom);
-    this.htmlNode = this.engine.templateInsert();
-    this.customHtmlNode();
-  };
+    initArtifact = () => {
+        if (this.status) {
+            return;
+        }
+        this.status = true
+        this.allbtn = this.htmlNode.querySelector('.all-btn')
+        this.allbtn.addEventListener('click', (e) => {
 
-  customHtmlNode() {
-    this.htmlNode.id = def.name;
-    this.htmlNode.classList.add(...def.style?.class ?? '');
-  }
+            const button = e.target;
+            if (button.classList.contains('check')) {
+                console.log('validate');
 
-  initArtifact = () => {
-    console.log('initArtifact');
-    this.allbtn = this.htmlNode.querySelector('.all-btn');
-    this.allbtn.addEventListener('click', (e) => {
+            } else if (button.classList.contains('reset')) {
+                console.log('reset');
 
-      const button = e.target;
-      if (button.classList.contains('check')) {
+            } else if (button.classList.contains('back')) {
+                console.log('back');
 
-        console.log('validate');
-        this.engine.validate();
+            };
+        })
+    };
 
-      } else if (button.classList.contains('reset')) {
-
-        console.log('reset');
-        this.engine.reset();
-      } else if (button.classList.contains('back')) {
-
-        console.log('back');
-        this.engine.back();
-
-      };
-    });
-
-  };
-
-  initEngine = () => {
-    this.engine.initEngine(this.def, this.board);
-  };
+    initEngine = () => {
+        this.engine.initEngine(this.def, this.board);
+    };
 };
