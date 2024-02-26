@@ -1,49 +1,60 @@
 class BaseEngine {
-    constructor() {
-        this.def = {}
-        this.htmlNode = null
+  constructor() {
+    this.def = {};
+    this.htmlNode = null;
+    this.timerInteraction = 0;
+    this.Timer = null;
+    this.timerActive = false;
+    this.onFocus = null;
+  }
+
+  initTimer() {
+    /* agregar todos los eventos necesarios o que peudan tener el ejercicio */
+    this.htmlNode.addEventListener('mouseenter', this.iniciarTimer);
+    this.htmlNode.addEventListener('mouseleave', this.detenerTimer);
+    this.htmlNode.addEventListener("click", (event) => {
+      if (event.target.matches(".check")) {
+        this.resetTimer();
+        this.detenerTimer();
+      }
+    });
+    this.htmlNode.addEventListener('input', this.iniciarTimer);
+    this.htmlNode.addEventListener('blur', this.detenerTimer);
+
+  }
+
+  iniciarTimer = (e) => {
+
+    if (this.timerActive) {
+      // console.log('se llama pero no se crea otro timer');
+      return;
     }
+    this.onFocus = e.target;
+    const onFocus = e.target;
+    this.timerActive = true;
+    this.Timer = setInterval(() => {
 
-    timer(def, mode = true, reset = true) {
-        if (!def) { return; };
-        def.timeInteraction = def?.timeInteraction ?? 0;
-        if (def.statusValidate === undefined) {
-            def.statusValidate = false;
-        };
+      if (this.onFocus.hasFocus && !this.onFocus.hasFocus()) {
+        this.detenerTimer();
+        return;
+      }
 
-        if (!def.statusValidate) {
-            if (mode) {
-                if (!def.timerState) {
+      this.timerInteraction = this.timerInteraction + 1;
+      console.log(this.timerInteraction);
+    }, 1000);
+  };
 
-                    def.timer = setInterval(function () {
-                        if (def.statusValidate) {
-                            clearInterval(def.timer);
-                            def.timeInteraction = 0;
-                            return;
-                        };
-                        def.timeInteraction++;
-                        if (def.debug) {
-                            console.log(def.timeInteraction);
-                        };
-                    }, 1000);
+  detenerTimer = () => {
+    console.log('detener');
+    this.timerActive = false;
+    clearInterval(this.Timer);
+    this.Timer = null;
+  };
 
-                    def.timerState = true;
-                };
-            } else {
-                if (def.timer) {
-                    clearInterval(def.timer);
-                    def.timerState = false;
-                }
-                if (reset) {
-                    def.timeInteraction = 0;
-                    def.statusValidate = true;
-                };
-            };
-        };
-    }
-
-    addTimer() {
-        console.log('timer');
-    }
+  resetTimer = () => {
+    console.log(`Tiempo transcurrido: ${this.timerInteraction} segundos;`);
+    clearInterval(this.Timer);
+    this.timerInteraction = 0;
+  };
 
 }

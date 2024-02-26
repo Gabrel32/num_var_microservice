@@ -7,7 +7,7 @@ class ValidationHorizontal {
   }
 
   iniMainValidations() {
-
+    return 'desde validar';
   }
 
 };

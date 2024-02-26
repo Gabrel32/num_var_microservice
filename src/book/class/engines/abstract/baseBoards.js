@@ -10,14 +10,14 @@
      */
 class baseBoards extends BaseEngine {
   constructor(defBoard = {}) {
-    super()
-    this.points = defBoard.points ?? []
-    this.curves = defBoard.curves ?? []
-    this.polygons = defBoard.polygons ?? []
-    this.ellipses = defBoard.ellipses ?? []
-    this.arcs = defBoard.arcs ?? []
-    this.inputs = defBoard.inputs ?? []
-    this.lines = defBoard.lines ?? []
+    super();
+    this.points = defBoard.points ?? [];
+    this.curves = defBoard.curves ?? [];
+    this.polygons = defBoard.polygons ?? [];
+    this.ellipses = defBoard.ellipses ?? [];
+    this.arcs = defBoard.arcs ?? [];
+    this.inputs = defBoard.inputs ?? [];
+    this.lines = defBoard.lines ?? [];
 
   }
 
@@ -188,7 +188,6 @@ class baseBoards extends BaseEngine {
 
   createLines(params) {
     const { lines, styles } = params;
-    console.log('>>', params);
     if (!Array.isArray(params.lines)) {
       params.lines = [params.lines];
     }

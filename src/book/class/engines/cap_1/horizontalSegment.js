@@ -1,17 +1,27 @@
 class HorizontalSegment extends baseBoards {
   constructor(def, defBoard) {
     super(defBoard);
-    this.defBoard = defBoard
-    this.idTemplate = '#temp-segment'
+    this.defBoard = defBoard;
+    this.idTemplate = '#temp-segment';
     this.conditions = def.conditions;
     this.allPoints = [];
     this.def = { ...def };
-    this.idboard = def.name + "_board"
+    this.idboard = def.name + "_board";
     this.validation = new ValidationHorizontal(this.def);
     this.templateInsert();
   }
   validate() {
-    this.validation.iniMainValidations();
+    if (this.validateStatus) {
+
+      //status: posibles estatus
+      //1: Correct
+      //2: incorrect
+      //3: notCHange
+
+      return { status: 1 };
+    } else {
+      return this.validation.iniMainValidations();
+    }
   };
 
   templateInsert = () => {
@@ -41,12 +51,12 @@ class HorizontalSegment extends baseBoards {
         </div>
     
       </template>`;
-      this.template ??= $templateDefaults
+      this.template ??= $templateDefaults;
       document.body.insertAdjacentHTML('afterend', $templateDefaults);
     }
     this.htmlNode ??= document.querySelector('#temp-segment').content.firstElementChild.cloneNode(true);
-    return this.htmlNode
-  }
+    return this.htmlNode;
+  };
 
   initEngine() {
     if (this.initBoardBase({ id: this.idboard, ...this.defBoard })) {
@@ -54,7 +64,7 @@ class HorizontalSegment extends baseBoards {
         this.createIntervals({ intervals: this.defBoard.intervals });
       }
     }
-    this.addTimer()
+    this.initTimer();
   }
 
   createIntervals(params) {
