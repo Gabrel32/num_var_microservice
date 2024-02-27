@@ -2,11 +2,12 @@ class HorizontalSegment extends baseBoards {
   constructor(def, defBoard) {
     super(defBoard);
     this.defBoard = defBoard;
-    this.idTemplate = '#temp-segment';
+    this.idTemplate = def?.template?.id ?? 'temp-segment';
     this.conditions = def.conditions;
     this.allPoints = [];
     this.def = { ...def };
     this.idboard = def.name + "_board";
+    this.htmlNode = def?.template?.node ?? null
     this.validation = new ValidationHorizontal(this.def);
     this.templateInsert();
   }
@@ -52,9 +53,10 @@ class HorizontalSegment extends baseBoards {
     
       </template>`;
       this.template ??= $templateDefaults;
-      document.body.insertAdjacentHTML('afterend', $templateDefaults);
-    }
-    this.htmlNode ??= document.querySelector('#temp-segment').content.firstElementChild.cloneNode(true);
+      document.body.insertAdjacentHTML('afterend', this.template);
+    };
+
+    this.htmlNode ??= document.querySelector('#' + this.idTemplate).content.firstElementChild.cloneNode(true);
     return this.htmlNode;
   };
 
