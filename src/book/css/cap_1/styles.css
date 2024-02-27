@@ -1,4 +1,223 @@
+:root {
+  --blue: #007bff;
+  --purple: #6f42c1;
+  --pink: #e83e8c;
+  --red: #dc3545;
+  --orange: #fd7e14;
+  --yellow: #ffc107;
+  --green: #28a745;
+  --cyan: #17a2b8;
+  --white: #fff;
+  --gray: #6c757d;
+  --gray-dark: #343a40;
+    /* boton de validar */
+    --primaryColor-bg: #006ebb;
+    /* boton de resetear */
+    --secundaryColor-bg: #a4abb1;
+    /* colores de boton terciario */
+    --TertiaryColor-bg: #fff;
+    --TertiaryColor-b: #646363;
+    /* color del hover a algun boton */
+    --keyColor-bg: #797c;
+    --keyColor-sb: #666;
+    /* boton de herramienta o utilidad */
+    --auxBtnColor-bg: #fff;
+    --auxBtnColor-b: #e17055;
+    /* color del unicode de verificar */
+    --checkColor: #fff;
+    /* color del unicode de resetear el artefacto */
+    --resetColor: black;
+    /* color de la clase border dark */
+    --borderDark-bg: #fff;
+    --borderDark-b: #000000;
+    --colorBorder: #696262;
+}
 .verticalDiagram {
   max-width: 420px;
   width: 280px;
 }
+
+.contenedorTabla{
+  width: fit-content;
+  border: 4px solid var(--primaryColor-bg) ;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+
+
+.contendorButtonTabla{
+  display: flex;
+  align-items:center;
+  justify-content: right;
+  gap: 4px;
+  padding:  5px 15px;
+  width: 93%;
+  margin-top: 10px;
+
+
+
+}
+.styleBtn {
+  box-shadow: 0 3px var(--keyColor-sb);
+  border-radius: 0.25rem;
+  display: inline-block;
+  line-height: normal;
+  cursor: pointer;
+  outline: none;
+  height: 40px;
+  width: 40px;
+  
+}
+/* cuando se pulsa un boton */
+.styleBtn:active {
+  background-color: var(--keyColor-bg);
+  box-shadow: 0 2px var(--keyColor-sb);
+  transform: translateY(2px);
+}
+.btnV ,.btnTableV{
+  height: 100%;
+  background-color:var(--primaryColor-bg);
+}
+.btnV::after, .btnTableV::after {
+  color: var(--checkColor);
+  content: " ✓";
+  font-weight: bolder;
+  font-size: 26px;
+}
+.btnR ,.btnTableR{
+  height: 100%;
+  background-color: var(--keyColor-sb);
+}
+.btnR::after ,.btnTableR::after {
+  color: var(--resetColor);
+  content: "\021bb";
+  font-weight: bolder;
+  font-size: 26px;
+}
+
+/* estilos dela tabla */
+
+.tabla {
+  height: max-content;
+  border-collapse: collapse;
+  border: 1.5px solid var(--borderDark-b);
+  font-size: 13px;
+  text-align: center;
+  letter-spacing: normal;
+  @media(min-width:786px) {
+      font-size: 18px;
+      font-weight: 500;
+  }
+}
+
+.th,.td {
+
+  border: 1px solid var(--borderDark-b);
+  text-transform: capitalize;
+  width:fit-content;
+  text-align: center;
+  padding: 2px 5px;
+  @media (min-width:786px) {
+      height: 30px;
+      border: 1.5px solid var(--borderDark-b);
+  }
+}
+
+
+
+.secctionBtn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.contenedorTabla{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: fit-content;
+  height: fit-content;
+}
+
+.textCenter {
+  text-align: center;
+  font-size: 12px;
+  padding: 2px;
+}
+
+.input{
+  height: 100%;
+  width: 40px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  text-align: center;
+  font-size:11px ;
+  @media(min-width:786px) {
+    font-size: 18px;
+    width: 100px;
+  }
+}
+.select{
+  background-color: transparent;
+  height: 100%;
+  border: none;
+  outline: none;
+  font-size:12px ;
+  @media(min-width:786px) {
+    font-size: 18px;
+  }
+
+}
+.main{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 1rem;
+}
+.headerText{
+  text-align: center;
+  padding: auto;
+  text-transform: capitalize;
+}
+
+
+.celdaEncabezado{
+    width:100%;
+
+    /*background-color: #f2f597;*/
+}
+
+.text{
+  margin-right: 1rem;
+  font-style: italic;
+  text-align: right;
+  text-transform: uppercase;
+  color: var(--gray-dark);
+  @media (min-height:786px) {
+    margin-right: 2rem;
+  }
+}
+
+
+
+
+math-field::part(virtual-keyboard-toggle) {
+  display: none;
+}
+
+math-field::part(menu-toggle) {
+  display: none;
+}
+.mathfield{
+  text-align: center;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+

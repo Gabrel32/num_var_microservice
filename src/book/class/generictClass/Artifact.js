@@ -6,7 +6,9 @@ class Artifact {
         this.board = board
         this.htmlNode = this.engine.templateInsert()
         this.htmlNode.id = def.name
-        this.htmlNode.querySelector('#jxgbox').id = def.name + '_board'
+        if (this.htmlNode.querySelector('#jxgbox')) {
+            this.htmlNode.querySelector('#jxgbox').id = def.name + '_board' 
+        }
         this.htmlNode.classList.add(...def.style?.class ?? '')
     };
 
@@ -16,23 +18,27 @@ class Artifact {
         }
         this.status = true
         this.allbtn = this.htmlNode.querySelector('.all-btn')
-        this.allbtn.addEventListener('click', (e) => {
-
-            const button = e.target;
-            if (button.classList.contains('check')) {
-                console.log('validate');
-
-            } else if (button.classList.contains('reset')) {
-                console.log('reset');
-
-            } else if (button.classList.contains('back')) {
-                console.log('back');
-
-            };
-        })
+        if (this.allbtn) {   
+            this.allbtn.addEventListener('click', (e) => {
+    
+                const button = e.target;
+                if (button.classList.contains('check')) {
+                    console.log('validate');
+    
+                } else if (button.classList.contains('reset')) {
+                    console.log('reset');
+    
+                } else if (button.classList.contains('back')) {
+                    console.log('back');
+    
+                };
+            })
+        }
     };
 
     initEngine = () => {
-        this.engine.initEngine(this.def, this.board);
+        if (this.allbtn) {
+            this.engine.initEngine(this.def, this.board);
+        }
     };
 };
