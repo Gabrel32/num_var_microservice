@@ -1,5 +1,6 @@
 
 const def = {
+    // parent: "main_2",
     artifacts: {
         artifact_1:{
             head:[
@@ -33,6 +34,7 @@ const def = {
             
         },
         artifact_3:{
+            parent:"main_2",
             body:[
                 ["6 = a",{tag:"select", row:"2", column:"1",text:"12 =",default:[{valor: 'selecciona'},{ valor: "AA"},{ valor: 'AAA' },{ valor: 'A'}]}],
                 ["10 = a",{tag:"select", row:"2", column:"2",text:"99 =",default:[{valor: 'selecciona'},{ valor: "A.9+9"},{ valor: 'A.9-9' },{ valor: 'A/9+9'}]}],
@@ -116,6 +118,44 @@ const def = {
     }
 
 }
+const def2 = {
+    parent: "main_2",
+    artifacts: {
+        artifact_1:{
+            head:[
+                "expresiones","menos expresiones","numero"
+            ],
+            body:[
+                ["(2 + 5) . 8","7.8",56],
+                ["2 + 5 . 8",{tag:"select", row:"2", column:"2",text:"",default:[{valor: 'selecciona'},{ valor: "7.8"},{ valor: '7.3' },{ valor: '8'}]},{tag:"input", row:"3", column:"2",text:""}],
+                ["8 + 5 - 2",{tag:"select", row:"2", column:"3",text:"",default:[{valor: 'selecciona'},{ valor: "7+4"},{ valor: '7.4' },{ valor: '7+5'}]},{tag:"input", row:"3", column:"3",text:""}],
+                ["5 + 8 / 2",{tag:"select", row:"2", column:"4",text:"",default:[{valor: 'selecciona'},{ valor: "13/2"},{ valor: '13/3' },{ valor: '13+2'}]},{tag:"input", row:"3", column:"4",text:""}],
+            ],
+            respuestas:[
+                [{column:"2", row:"2", response:["7.8"]},{column:"2",row:"3",response:["42"]}],
+                [{column:"3", row:"2", response:["7+4"]},{column:"3",row:"3",response:["11"]}],
+                [{column:"4", row:"2", response:["13/2"]},{column:"4",row:"3",response:["6,5"]}]
+            ],
+            engine: engineTable,
+        },
+        artifact_2:{
+            body:[
+                ["100 = z",{tag:"select", row:"2", column:"1",text:"102 =",default:[{valor: 'selecciona'},{ valor: "Z+2"},{ valor: 'AAA' },{ valor: 'A'}]}],
+                ["1 = z",{tag:"select", row:"2", column:"2",text:"3 =",default:[{valor: 'selecciona'},{ valor: "ZZZ"},{ valor: 'ZZ' },{ valor: 'Z'}]}],
+                ["100 = z",{tag:"select", row:"2", column:"3",text:"10000 =",default:[{valor: 'selecciona'},{ valor: "Z.10"},{ valor: 'Z/10' },{ valor: 'Z+10'}]}],
+            ],
+            respuestas:[
+                [{column:"1", row:"2", response:["z+2"]}],
+                [{column:"2", row:"2", response:["zzz"]}],
+                [{column:"3", row:"2", response:["z.10"]}]
+            ],
+            engine: engineTable,
+            
+        },
+    }}
+
 
 const contentMain = new CreateView(def);
+// const contentMain2 = new CreateView(def2)
+
 // console.log(contentMain);
