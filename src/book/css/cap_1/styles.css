@@ -95,6 +95,16 @@
   font-weight: bolder;
   font-size: 26px;
 }
+.back::after {
+  color: var(--color, #000000);
+  content: "\21B6";
+  /* ó    ---> 21BA*/
+  font-weight: bolder;
+  font-size: 26px;
+}
+.back{
+  /* background-color: var(); */
+}
 
 /* estilos dela tabla */
 
@@ -180,6 +190,13 @@
   gap: 2rem;
   margin: 1rem;
 }
+.main_2{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 1rem;
+}
 .headerText{
   text-align: center;
   padding: auto;
@@ -204,9 +221,6 @@
   }
 }
 
-
-
-
 math-field::part(virtual-keyboard-toggle) {
   display: none;
 }
@@ -221,3 +235,4 @@ math-field::part(menu-toggle) {
   background-color: transparent;
 }
 
+/* apatir de aqui miguel */
