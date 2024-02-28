@@ -1,7 +1,8 @@
 
 
-class Artifact {
+class Artifact extends BaseEngine {
     constructor(id, art) {
+      super()
       this.def = {
         artirfacts: {
           artifact_1: {
@@ -49,18 +50,24 @@ class Artifact {
       this.temp1 = document.querySelector('#tmp1')
       this.temp2 = document.querySelector('#tmp2')
       this.baseart = document.querySelector("#temp")
-      this.cloneArt = this.baseart.content.firstElementChild.cloneNode(true)
+      this.htmlNode = this.baseart.content.firstElementChild.cloneNode(true)
       this.artifact=art
       this.artId = id
       this.articnt=document
       this.artiopc(this.artifact)
       this.timerInteraction = 0;
-        this.thmlNode = this.cloneArt.firstElementChild;
+        this.thmlNode = this.htmlNode.firstElementChild;
         this.btnv= document.querySelector(".check")
         this.Timer = null
-         this.initTimer(this.thmlNode,this.btnv)
+        this.initTimer(this.thmlNode)
         this.timerActive = false
-        this.nodo.appendChild(this.cloneArt)
+        this.nodo.appendChild(this.htmlNode)
+    }
+    templateInsert = () => {
+      if (!document.querySelector('#tmp')) {
+          document.body.insertAdjacentHTML('afterend', $templateDefaults);
+      }
+      return this.htmlNode
     }
 
         artiopc(arti){
@@ -79,8 +86,8 @@ class Artifact {
             break;
 }
 
-this.cloneArt.firstElementChild.appendChild(copy);
-this.cloneArt.id=this.artId
+this.htmlNode.firstElementChild.appendChild(copy);
+this.htmlNode.id=this.artId
 })
         
   
@@ -98,8 +105,8 @@ this.cloneArt.id=this.artId
               default:
               break;
   }
-  this.cloneArt.firstElementChild.appendChild(copy);
-  this.cloneArt.id=this.artId
+  this.htmlNode.firstElementChild.appendChild(copy);
+  this.htmlNode.id=this.artId
   })
         
   
@@ -118,8 +125,8 @@ this.cloneArt.id=this.artId
               default:
               break;
   }
-  this.cloneArt.firstElementChild.appendChild(copy);
-  this.cloneArt.id=this.artId
+  this.htmlNode.firstElementChild.appendChild(copy);
+  this.htmlNode.id=this.artId
   })
 
           break
@@ -136,8 +143,8 @@ this.cloneArt.id=this.artId
                 default:
                 break;
     }
-    this.cloneArt.firstElementChild.appendChild(copy);
-    this.cloneArt.id=this.artId
+    this.htmlNode.firstElementChild.appendChild(copy);
+    this.htmlNode.id=this.artId
     })
   
             break
@@ -154,8 +161,8 @@ this.cloneArt.id=this.artId
                   default:
                   break;
       }
-      this.cloneArt.firstElementChild.appendChild(copy);
-      this.cloneArt.id=this.artId
+      this.htmlNode.firstElementChild.appendChild(copy);
+      this.htmlNode.id=this.artId
       })
     
               break;

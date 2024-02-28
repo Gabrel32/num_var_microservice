@@ -48,7 +48,7 @@ init(){
         })
               
   })
-// this.initTimer(this.thmlNode)
+this.initTimer(this.thmlNode)
 
 }
 

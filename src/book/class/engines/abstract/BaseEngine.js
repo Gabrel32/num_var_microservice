@@ -15,7 +15,7 @@ class BaseEngine {
             this.detenerTimer()
         })
         this.htmlNode.addEventListener("click", (event) => {
-            if (event.target.matches(".btnV")) {
+            if (event.target.matches(".btnV") || event.target.matches(".check")) {
                 this.resetTimer()
                 this.detenerTimer()
             } 
