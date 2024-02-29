@@ -155,6 +155,4 @@ const def2 = {
 
 
 const contentMain = new CreateView(def);
-const contentMain2 = new CreateView(def2)
-
-// console.log(contentMain);
+contentMain.initVIew(def2)

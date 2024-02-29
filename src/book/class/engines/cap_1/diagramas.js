@@ -10,17 +10,17 @@ class Engine extends BaseEngine {
     this.boardContent = this.htmlNode.querySelector(".board")
     this.boardContent.id = def.id
     ///////////////////////////////////////////
+
     this.valueDefault = def.valuesDefault
 
-    //////////////////////////////////////////////
+    this.valueDefault.forEach(e=>{
     this.content = document.querySelector(def.content)
     this.bool2 = false
-    this.boardTypes(def.type)
-    //template string
-    this.boardId = def.id
-    //ya no va, se necesita dinamico
+    this.boardTypes(e.type)
+    this.boardId = e.id
     this.content.appendChild(this.htmlNode)
     this.testing()
+  })
   }
   templateInsert = () => {
     if (!document.querySelector(`#${this.idTemplate}`)) {
