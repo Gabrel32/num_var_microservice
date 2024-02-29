@@ -25,7 +25,7 @@ class engineTable extends BaseEngine {
 
         </tbody>
       </table>
-      <div class="contendorButtonTabla">
+      <div class="contendorButtonTabla all-btn">
         <button type="button" class="styleBtn back"></button>
         <button type="button" class="btnR reset styleBtn"></button>
         <button type="button" class="btnV check styleBtn"></button>
@@ -36,12 +36,11 @@ class engineTable extends BaseEngine {
     document.body.insertAdjacentHTML('afterend', $templateDefaults);
     }
     this.htmlNode = document.querySelector(`#${this.idTemplate}`).content.firstElementChild.cloneNode(true);
-    this.init()
     return this.htmlNode
   }
 
 
-init(){
+  initEngine(){
   this.tHead = this.htmlNode.querySelector("#tHead")
   this.tBody = this.htmlNode.querySelector("#tBody")
   this.createHead(this.definition.head)
@@ -66,7 +65,7 @@ init(){
         })
               
   })
-// this.initTimer(this.thmlNode)
+this.initTimer(this.thmlNode)
 
 }
 

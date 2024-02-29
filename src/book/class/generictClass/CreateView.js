@@ -3,6 +3,7 @@ class CreateView {
 
         this.defBoard = defBoard
         this.allArtifacts = [];
+
         if (allDef) {
             this.initVIew(allDef)
             this.setParent(allDef?.parent ?? '')
@@ -20,14 +21,13 @@ class CreateView {
 
         Object.keys(artifacts).forEach(def => {
             const artifact = artifacts[def]
-            return this.addArtefact(
-                { name: def, parent, ...artifact, style, board: this?.defBoard?.[artifact?.board] },
-                fragment)
+            return this.addArtefact({ name: def, ...artifact, parent, style, board: this?.defBoard?.[artifact?.board] }, fragment)
 
         });
 
         let container = document.querySelector(`#${parent},.${parent}`)
         container = container ?? document.querySelector(`.main`)
+
         if (container) {
             container.appendChild(fragment)
         } else {
@@ -38,8 +38,10 @@ class CreateView {
 
     addArtefact = (artifact, fragment) => {
         const { parent } = artifact
+        // const defBoard = this?.defBoard?.[artifact?.board]
         const artClass = new Artifact(artifact, artifact.board)
-        if (!parent && fragment) {
+
+        if (fragment) {
             fragment.appendChild(artClass.htmlNode)
         } else {
             let container = document.querySelector(`#${parent},.${parent}`)

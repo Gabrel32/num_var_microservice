@@ -10,17 +10,16 @@ class Engine extends BaseEngine {
     this.boardContent = this.htmlNode.querySelector(".board")
     this.boardContent.id = def.id
     ///////////////////////////////////////////
-
     this.valueDefault = def.valuesDefault
 
-    this.valueDefault.forEach(e=>{
+    //////////////////////////////////////////////
     this.content = document.querySelector(def.content)
     this.bool2 = false
-    this.boardTypes(e.type)
-    this.boardId = e.id
+    this.boardTypes(def.type)
+    //template string
+    this.boardId = def.id
+    //ya no va, se necesita dinamico
     this.content.appendChild(this.htmlNode)
-    this.testing()
-  })
   }
   templateInsert = () => {
     if (!document.querySelector(`#${this.idTemplate}`)) {
@@ -127,17 +126,33 @@ class Engine extends BaseEngine {
         break;
     }
   }
-  testing() {
+  initEngine() {
     this.initTimer(this.htmlNode)
     //const allPoint = []
 
     this.board = JXG.JSXGraph.initBoard(this.boardContent.id,
       {
         showcopyright: false,
+		shownavigation: false,
         boundingbox: [-5, 5, 5, -5],
         axis: this.bool2,
-        ticks: { visible: false }
-
+        ticks: { visible: false },
+		pan: {
+		enabled: false,   // Allow panning
+		needTwoFingers: true, // panning is done with two fingers on touch devices
+		needShift: true, // mouse panning needs pressing of the shift key
+		},
+		zoom: {
+        needShift: false,
+        pinchHorizontal: false,
+        pinchVertical: false,
+        pinchSensitivity: 0,
+        min: 1000,
+        max: 0,
+        factorX: 0,
+        factorY: 0,
+        wheel: false,
+      },
 
       });
 
@@ -170,7 +185,7 @@ class Engine extends BaseEngine {
         straightFirst: false,
         straightLast: false,
 
-        //fixed: true,
+        fixed: true,
         ...style
       })
 
@@ -179,7 +194,8 @@ class Engine extends BaseEngine {
   createInput1(x, y, text, type = 1) {
     return this.board.create(
       "text",
-      [x, y, `<input value='${text ?? " "}' ${!text ? " ":'disabled'} class='${type == 1 ? `inputClass` : `inputCuadrado`}'></input>`],
+      [x, y, `<math-field value='${text ?? " "}' ${!text ? " ":'disabled'} 
+	  class='${type == 1 ? `inputClass` : `inputCuadrado`}'></math-field>`],
       {
         anchorX: "middle",
         anchorY: "middle",
@@ -192,4 +208,3 @@ class Engine extends BaseEngine {
   }
 
 }
-
