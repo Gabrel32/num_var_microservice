@@ -1,6 +1,6 @@
 
 const def = {
-    // parent: "main_2",
+    // parent: "main",
     artifacts: {
         artifact_1:{
             head:[
@@ -34,7 +34,6 @@ const def = {
             
         },
         artifact_3:{
-            parent:"main_2",
             body:[
                 ["6 = a",{tag:"select", row:"2", column:"1",text:"12 =",default:[{valor: 'selecciona'},{ valor: "AA"},{ valor: 'AAA' },{ valor: 'A'}]}],
                 ["10 = a",{tag:"select", row:"2", column:"2",text:"99 =",default:[{valor: 'selecciona'},{ valor: "A.9+9"},{ valor: 'A.9-9' },{ valor: 'A/9+9'}]}],
@@ -100,21 +99,6 @@ const def = {
             engine: engineTable,
             
         },
-        artifact_7:{
-            body:[
-                ["3 < 5",`correcto`],
-                ["3 > 5",{tag:"select", row:"2", column:"1",text:"",default:[{ posicion: 1, valor: 'selecciona'},{ posicion: 2, valor: 'correcto'},{ posicion: 3, valor: 'incorrecto' }]}],
-                ["5 < 3",{tag:"select", row:"2", column:"2",text:"",default:[{ posicion: 1, valor: 'selecciona'},{ posicion: 2, valor: 'correcto' },{ posicion:3, valor: 'incorrecto'}]}],
-               ,
-            ],
-            respuestas:[
-                [{column:"1", row:"2", response:["incorrecto"]}],
-                [{column:"2", row:"2", response:["incorrecto"]}],
-                [{column:"3", row:"2", response:["incorrecto"]}],
-            ],
-            engine: engineTable,
-            
-        },
     }
 
 }
@@ -152,10 +136,25 @@ const def2 = {
             engine: engineTable,
             
         },
+        artifact_3:{
+            body:[
+                ["3 < 5",`correcto`],
+                ["3 > 5",{tag:"select", row:"2", column:"1",text:"",default:[{ posicion: 1, valor: 'selecciona'},{ posicion: 2, valor: 'correcto'},{ posicion: 3, valor: 'incorrecto' }]}],
+                ["5 < 3",{tag:"select", row:"2", column:"2",text:"",default:[{ posicion: 1, valor: 'selecciona'},{ posicion: 2, valor: 'correcto' },{ posicion:3, valor: 'incorrecto'}]}],
+               ,
+            ],
+            respuestas:[
+                [{column:"1", row:"2", response:["incorrecto"]}],
+                [{column:"2", row:"2", response:["incorrecto"]}],
+                [{column:"3", row:"2", response:["incorrecto"]}],
+            ],
+            engine: engineTable,
+            
+        },
     }}
 
 
 const contentMain = new CreateView(def);
-// const contentMain2 = new CreateView(def2)
+const contentMain2 = new CreateView(def2)
 
 // console.log(contentMain);

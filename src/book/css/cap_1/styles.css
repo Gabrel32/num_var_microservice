@@ -1,37 +1,4 @@
-:root {
-  --blue: #007bff;
-  --purple: #6f42c1;
-  --pink: #e83e8c;
-  --red: #dc3545;
-  --orange: #fd7e14;
-  --yellow: #ffc107;
-  --green: #28a745;
-  --cyan: #17a2b8;
-  --white: #fff;
-  --gray: #6c757d;
-  --gray-dark: #343a40;
-    /* boton de validar */
-    --primaryColor-bg: #006ebb;
-    /* boton de resetear */
-    --secundaryColor-bg: #a4abb1;
-    /* colores de boton terciario */
-    --TertiaryColor-bg: #fff;
-    --TertiaryColor-b: #646363;
-    /* color del hover a algun boton */
-    --keyColor-bg: #797c;
-    --keyColor-sb: #666;
-    /* boton de herramienta o utilidad */
-    --auxBtnColor-bg: #fff;
-    --auxBtnColor-b: #e17055;
-    /* color del unicode de verificar */
-    --checkColor: #fff;
-    /* color del unicode de resetear el artefacto */
-    --resetColor: black;
-    /* color de la clase border dark */
-    --borderDark-bg: #fff;
-    --borderDark-b: #000000;
-    --colorBorder: #696262;
-}
+
 .verticalDiagram {
   max-width: 420px;
   width: 280px;
@@ -103,6 +70,7 @@
   font-size: 26px;
 }
 .back{
+  height: 100%;
   /* background-color: var(); */
 }
 
@@ -190,8 +158,8 @@
   gap: 2rem;
   margin: 1rem;
 }
-.main_2{
-  display: flex;
+.main_2 {
+  display: flex !important;
   justify-content: center;
   flex-wrap: wrap;
   gap: 2rem;
@@ -234,5 +202,13 @@ math-field::part(menu-toggle) {
   outline: none;
   background-color: transparent;
 }
+.footer{
+  text-align: center;
+  font-size: 12px;
+  padding: 2px;
+  margin: 10px;
+  @media (min-width:786px) {
+    font-size: 16px;
+  }
+}
 
-/* apatir de aqui miguel */

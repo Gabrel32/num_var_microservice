@@ -29,9 +29,9 @@ init(){
   this.createHead(this.definition.head)
   this.createBody(this.definition.body)
   this.validation.setHtmlNode(this.htmlNode)
-  this.btnR = this.htmlNode.querySelector(".btnR")
+  this.btnR = this.htmlNode.querySelector(".reset")
   this.btnR.addEventListener("click",()=>this.validation.reset())
-  this.btnV = this.htmlNode.querySelector(".btnV")
+  this.btnV = this.htmlNode.querySelector(".check")
   this.btnV.addEventListener("click",()=>{
       this.inputs = this.htmlNode.querySelectorAll("math-field")
       this.selects = this.htmlNode.querySelectorAll("select")
@@ -48,7 +48,7 @@ init(){
         })
               
   })
-this.initTimer(this.thmlNode)
+// this.initTimer(this.thmlNode)
 
 }
 
@@ -88,7 +88,7 @@ this.initTimer(this.thmlNode)
                    
                 }
                 else if (e.tag) {
-                    let mathfield= document.createElement("math-field")
+                    let mathfield = new MathfieldElement()
                     let tag = document.createElement(e.tag)
                     mathfield.classList.add("mathfield")
                     // tag.classList.add("input")
