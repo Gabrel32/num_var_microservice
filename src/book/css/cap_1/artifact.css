@@ -1,12 +1,12 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: content-box;
-}
 body{
+    margin:0;
+    padding: 0;
     width:100% ;
-    display: flex;
-    place-content: center;
+    display:flex;
+    justify-content: center;
+    flex-wrap:wrap;
+    gap:30px;
+    align-items: center;
 }
 .container{
     width: 270px;
@@ -14,11 +14,13 @@ body{
 
 }
 #nodo{
+    display: flex;
     width: 100%;
     justify-content: center;
-    display: flex;
+    align-items: center;
     gap:30px;
     flex-wrap: wrap;
+    
 }
 .mdlo1 {
     width: 100%;
@@ -48,7 +50,7 @@ body{
     height: max-content;
     background: #fff;
     border: 3px solid #000;
-    border-radius:5%;
+    border-radius:15px;
     box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.49);
     -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.49);
     -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.49);
@@ -127,7 +129,7 @@ body{
     grid-row-end:9;
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     border-top: 2px solid black;
 }
@@ -145,6 +147,21 @@ body{
     box-shadow: 0 3px #999;
     margin: 4px;
 }
+.return{
+        color: #000000;
+        font-weight: bolder;
+        font-size: 26px;
+        width: 40px;
+        height: 40px;
+        background-color: #8f8f8f;
+        border: none;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        outline: none;
+        box-shadow: 0 3px #999;
+        margin: 4px;
+    }
+
 .reset{
     color: black;
     font-weight: bolder;

@@ -684,6 +684,7 @@ agregado estilo de incorrecto y correcto sin opasidad para usarlo en el board
 
 }
 
+
 .settionBtn {
   width: fit-content;
 }
@@ -697,4 +698,14 @@ agregado estilo de incorrecto y correcto sin opasidad para usarlo en el board
 
 .statement-top {
   display: none;
+}
+.text{
+  margin-right: 1rem;
+  font-style: italic;
+  text-align: right;
+  text-transform: uppercase;
+  color: var(--gray-dark);
+  @media (min-height:786px) {
+    margin-right: 2rem;
+  }
 }

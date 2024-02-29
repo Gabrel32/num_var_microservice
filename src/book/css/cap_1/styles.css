@@ -178,16 +178,6 @@
     /*background-color: #f2f597;*/
 }
 
-.text{
-  margin-right: 1rem;
-  font-style: italic;
-  text-align: right;
-  text-transform: uppercase;
-  color: var(--gray-dark);
-  @media (min-height:786px) {
-    margin-right: 2rem;
-  }
-}
 
 math-field::part(virtual-keyboard-toggle) {
   display: none;
