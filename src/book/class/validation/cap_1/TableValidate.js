@@ -1,4 +1,4 @@
-class engineTableValidate {
+class TableValidate {
     constructor(def){
         this.respuestas = def
         this.propertySuccess = []

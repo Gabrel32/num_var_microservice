@@ -2,22 +2,40 @@ class engineTable extends BaseEngine {
   constructor(definition, defBoard) {
     super(defBoard);
     this.defBoard = defBoard
-    this.idTemplate = '#tmpTabla'
+    this.idTemplate = 'tmpTabla'
     this.conditions = definition.conditions;
     this.allPoints = [];
     this.definition = { ...definition };
     this.idboard = definition.name + "_board"
     this.htmlNode = null
-    this.validation = new engineTableValidate(this.definition.respuestas)
+    this.validation = new TableValidate(this.definition.respuestas)
     this.propertySuccess = []
     this.numerosGenerados = [];
   }
   
   templateInsert = () => {
-    if (!document.querySelector('#tmpTabla')) {
-      document.body.insertAdjacentHTML('afterend', $templateDefaults);
+    if (!document.querySelector(this.idTemplate)) {
+      const $templateDefaults = `<template id="tmpTabla">
+      <div class="contenedorTabla">
+      <table class="tabla">
+        <thead id="tHead">
+
+        </thead>
+        <tbody id="tBody"> 
+
+        </tbody>
+      </table>
+      <div class="contendorButtonTabla">
+        <button type="button" class="styleBtn back"></button>
+        <button type="button" class="btnR reset styleBtn"></button>
+        <button type="button" class="btnV check styleBtn"></button>
+      </div>
+      </div>
+      </template>`;
+      
+    document.body.insertAdjacentHTML('afterend', $templateDefaults);
     }
-    this.htmlNode = document.querySelector('#tmpTabla').content.firstElementChild.cloneNode(true);
+    this.htmlNode = document.querySelector(`#${this.idTemplate}`).content.firstElementChild.cloneNode(true);
     this.init()
     return this.htmlNode
   }
