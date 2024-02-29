@@ -11,7 +11,6 @@ class CreateView {
     }
 
     initVIew = (allDef) => {
-
         const { artifacts, parent, style } = allDef ?? {}
         const fragment = new DocumentFragment()
         if (!allDef || Object?.keys(artifacts).length <= 0) {
