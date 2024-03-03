@@ -1,6 +1,5 @@
 class BaseEngine {
   constructor() {
-    this.def = {};
     this.htmlNode = null;
     this.timerInteraction = 0;
     this.Timer = null;
@@ -12,16 +11,13 @@ class BaseEngine {
     /* agregar todos los eventos necesarios o que peudan tener el ejercicio */
     this.htmlNode.addEventListener('mouseenter', this.iniciarTimer);
     this.htmlNode.addEventListener('mouseleave', this.detenerTimer);
-    this.htmlNode.addEventListener("click", (event) => {
-      if (event.target.matches(".check")) {
-        this.resetTimer();
-        this.detenerTimer();
-      }
+    this.htmlNode.addEventListener('input', (e) => {
+      this.validateStatus = false;
+      this.iniciarTimer(e);
     });
-    this.htmlNode.addEventListener('input', this.iniciarTimer);
     this.htmlNode.addEventListener('blur', this.detenerTimer);
 
-  }
+  };
 
   iniciarTimer = (e) => {
 
@@ -56,5 +52,37 @@ class BaseEngine {
     clearInterval(this.Timer);
     this.timerInteraction = 0;
   };
+
+  validate = () => {
+
+    if (this.validateStatus) {
+      //status: posibles estatus
+      //1: Correct
+      //2: incorrect
+      //3: notChange
+
+      return { status: 3 };
+    } else {
+      this.validateStatus = !this.validateStatus
+
+      const dataMod = {
+
+        ...this.validation.iniTMainValidations(this, this.conditions),
+        timer: this.timerInteraction,
+      }
+
+      this.resetTimer();
+      this.detenerTimer();
+      return dataMod
+    }
+  };
+
+  reset() {
+    console.log('reset puede ser?');
+  }
+
+  return() {
+    console.log('return puede ser?');
+  }
 
 }

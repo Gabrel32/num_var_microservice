@@ -9,7 +9,7 @@ class Artifact {
     this.htmlNode.querySelector('#jxgbox').id = def.name + '_board';
     this.htmlNode.classList.add(...def.style?.class ?? '');
   };
-
+ 
   initArtifact = () => {
 
     if (this.status) { return; }
@@ -18,7 +18,7 @@ class Artifact {
 
   };
 
-  addEvents() {
+  addEvents() { 
 
     this.allbtn = this.htmlNode.querySelector('.all-btn');
     this.allbtn.addEventListener('click', (e) => {

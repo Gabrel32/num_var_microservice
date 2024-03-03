@@ -434,15 +434,16 @@ class baseBoards extends BaseEngine {
   }
 
   createInputs(params) {
-    const { inputs } = params;
-    inputs.map((input) => {
+    const { inputs, valid = false } = params;
+    return inputs.map((input) => {
       const { x, y, value, style } = input;
+      const disable = ((value && !style?.disabled) || (!value && style?.disabled === true));
       const newInput = this.board.create(
         "text",
         [
           x + (style?.input?.noiseX ?? 0),
           y + (style?.input?.noiseY ?? 0),
-          `<math-field class='colorInput' style='${style?.mathStyle ?? ""}'  ${((value && !style?.disabled) || (!value && style?.disabled === true)) ? "disabled" : ""}></math-field>`,
+          `<math-field class='colorInput' style='${style?.mathStyle ?? ""}'  ${disable ? "disabled" : ""}></math-field>`,
         ],
         {
           anchorX: "middle",
@@ -469,8 +470,10 @@ class baseBoards extends BaseEngine {
       mathfield.inlineShortcutTimeout = 1;
 
       mathfield.layouts = ["minimalist"];
-    });
-    MathLive.renderMathInDocument();
+      if (!disable || valid) {
+        return { newInput, mathfield }
+      }
+    }).filter((e) => e);
   }
 
   addEllipses(point) {
@@ -480,4 +483,5 @@ class baseBoards extends BaseEngine {
   addTexts(point) {
     this.createPoints({ points: [{ x: 0, y: 0, visible: true, ...point }] });
   }
+  
 }

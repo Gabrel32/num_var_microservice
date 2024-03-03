@@ -5,25 +5,13 @@ class HorizontalSegment extends baseBoards {
     this.idTemplate = def?.template?.id ?? 'temp-segment';
     this.conditions = def.conditions;
     this.allPoints = [];
-    this.def = { ...def };
     this.idboard = def.name + "_board";
     this.htmlNode = def?.template?.node ?? null
     this.validation = new ValidationHorizontal(this.def);
     this.templateInsert();
+    this.intervals = []
   }
-  validate() {
-    if (this.validateStatus) {
 
-      //status: posibles estatus
-      //1: Correct
-      //2: incorrect
-      //3: notCHange
-
-      return { status: 1 };
-    } else {
-      return this.validation.iniMainValidations();
-    }
-  };
 
   templateInsert = () => {
     if (!document.querySelector('#temp-segment')) {
@@ -83,7 +71,8 @@ class HorizontalSegment extends baseBoards {
     fillInterval = true,
   }) {
 
-    this.createLines({
+
+    const lines = this.createLines({
       lines: [
         {
           points: [
@@ -146,7 +135,7 @@ class HorizontalSegment extends baseBoards {
       });
     };
 
-    this.createInputs({
+    const inputs = this.createInputs({
       inputs: [
         {
           x: (interval[0] + interval[1]) / 2,
@@ -157,7 +146,7 @@ class HorizontalSegment extends baseBoards {
         { x: interval[1], y: -1, value: values.c },
       ],
     });
-
+    this.intervals.push({ inputs })
     if (MathLive) {
       MathLive.renderMathInDocument();
     }
