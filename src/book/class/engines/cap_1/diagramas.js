@@ -2,23 +2,13 @@ class Engine extends BaseEngine {
   constructor(def,defBoard) {
     super(defBoard);
     this.defBoard = defBoard
-    this.idTemplate = def.tmp
-    // this.conditions = definition.conditions;
+    this.valueDefaults = def.valuesDefault
     this.allPoints = [];
+    this.idTemplate = def.tmp
     this.tmp = document.querySelector(`#${this.idTemplate}`)
     this.htmlNode = this.tmp.content.firstElementChild.cloneNode(true)
-    this.boardContent = this.htmlNode.querySelector(".board")
-    this.boardContent.id = def.id
-    ///////////////////////////////////////////
-    this.valueDefault = def.valuesDefault
-
-    //////////////////////////////////////////////
-    this.content = document.querySelector(def.content)
-    this.bool2 = false
-    this.boardTypes(def.type)
-    //template string
-    this.boardId = def.id
-    //ya no va, se necesita dinamico
+    this.contentBoards = this.htmlNode.querySelector(".boards")
+    this.content = document.querySelector("body")
     this.content.appendChild(this.htmlNode)
   }
   templateInsert = () => {
@@ -27,7 +17,7 @@ class Engine extends BaseEngine {
     }
     return this.htmlNode
   }
-  boardTypes(type = 1) {
+  boardTypes(type = 1,valueDefault) {
     const {
       inputA,
       inputB,
@@ -36,7 +26,7 @@ class Engine extends BaseEngine {
       inputE,
       inputF,
       inputG,
-    } = this.valueDefault
+    } = valueDefault
     //dejalo quieto
     switch (type) {
       case 1:
@@ -127,58 +117,65 @@ class Engine extends BaseEngine {
     }
   }
   initEngine() {
+    // timer
     this.initTimer(this.htmlNode)
-    //const allPoint = []
+    this.valueDefaults.forEach(value=>{
+      this.boardTypes(value.type,value)
 
-    this.board = JXG.JSXGraph.initBoard(this.boardContent.id,
+      let board = document.createElement("div")
+      board.id = value.id
+      board.classList.add("board")
+      this.contentBoards.appendChild(board)
+
+      board = JXG.JSXGraph.initBoard(value.id,
       {
         showcopyright: false,
-		shownavigation: false,
-        boundingbox: [-5, 5, 5, -5],
-        axis: this.bool2,
-        ticks: { visible: false },
-		pan: {
-		enabled: false,   // Allow panning
-		needTwoFingers: true, // panning is done with two fingers on touch devices
-		needShift: true, // mouse panning needs pressing of the shift key
-		},
-		zoom: {
-        needShift: false,
-        pinchHorizontal: false,
-        pinchVertical: false,
-        pinchSensitivity: 0,
-        min: 1000,
-        max: 0,
-        factorX: 0,
-        factorY: 0,
-        wheel: false,
+        shownavigation: false,
+          boundingbox: [-5, 5, 5, -5],
+          axis: this.bool2,
+          ticks: { visible: false },
+      pan: {
+      enabled: false,   // Allow panning
+      needTwoFingers: true, // panning is done with two fingers on touch devices
+      needShift: true, // mouse panning needs pressing of the shift key
       },
-
+      zoom: {
+          needShift: false,
+          pinchHorizontal: false,
+          pinchVertical: false,
+          pinchSensitivity: 0,
+          min: 1000,
+          max: 0,
+          factorX: 0,
+          factorY: 0,
+          wheel: false,
+        },
       });
-
-
-    this.lines.forEach(element => {
-
-      if (Array.isArray(element)) {
-        this.linesPoint(element)
-      } else {
-        this.linesPoint(element.position, element.styles)
-      }
+      this.lines.forEach(element => {
+  
+        if (Array.isArray(element)) {
+          this.linesPoint(element,{},board)
+        } else {
+          this.linesPoint(element.position, element.styles,board)
+        }
+      })
+      
+      this.array.forEach((element) => {
+  
+        //destructurado
+        const { x, y, value, type } = element
+        //invocación sin "element"
+        this.createInput1(x, y, value, type,board)
+      })
     })
 
-    this.array.forEach((element) => {
-
-      //destructurado
-      const { x, y, value, type } = element
-      //invocación sin "element"
-      this.createInput1(x, y, value, type)
-    })
 
   }
 
 
-  linesPoint(position, style) {
-    this.board.create('line', position,
+  linesPoint(position, style, board) {
+    
+    board.create('line', position,
       {
         strokecolor: 'blue',
         strokeWidth: 2,
@@ -191,8 +188,8 @@ class Engine extends BaseEngine {
 
   }
 
-  createInput1(x, y, text, type = 1) {
-    return this.board.create(
+  createInput1(x, y, text, type = 1,board) {
+    return board.create(
       "text",
       [x, y, `<math-field value='${text ?? " "}' ${!text ? " ":'disabled'} 
 	  class='${type == 1 ? `inputClass` : `inputCuadrado`}'></math-field>`],

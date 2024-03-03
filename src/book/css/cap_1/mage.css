@@ -26,7 +26,7 @@
     
   }
   .cuadrado2{
-    flex-wrap:wrap;
+    flex-wrap:nowrap;
     width: 600px;
     height: 480px;
     background: #fdfcfc;
