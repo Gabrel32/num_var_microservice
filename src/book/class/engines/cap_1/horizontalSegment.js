@@ -6,10 +6,10 @@ class HorizontalSegment extends baseBoards {
     this.conditions = def.conditions;
     this.allPoints = [];
     this.idboard = def.name + "_board";
-    this.htmlNode = def?.template?.node ?? null
+    this.htmlNode = def?.template?.node ?? null;
     this.validation = new ValidationHorizontal(this.def);
     this.templateInsert();
-    this.intervals = []
+    this.intervals = [];
   }
 
 
@@ -67,7 +67,7 @@ class HorizontalSegment extends baseBoards {
   addInterval({
     height = 1.5,
     interval = [-2, 2],
-    values = { a: "", b: "", c: "" },
+    inputs = { a: "", b: "", c: "" },
     fillInterval = true,
   }) {
 
@@ -135,18 +135,29 @@ class HorizontalSegment extends baseBoards {
       });
     };
 
-    const inputs = this.createInputs({
+    const inputsCreate = this.createInputs({
       inputs: [
         {
           x: (interval[0] + interval[1]) / 2,
           y: height + 0.7,
-          value: values.b,
+          value: inputs?.b ?? '',
+          style: inputs?.b?.style ?? {}
         },
-        { x: interval[0], y: -1, value: values.a },
-        { x: interval[1], y: -1, value: values.c },
+        {
+          x: interval[0],
+          y: -1,
+          value: inputs?.a ?? '',
+          style: inputs?.a?.style ?? {}
+        },
+        {
+          x: interval[1],
+          y: -1,
+          value: inputs?.c ?? '',
+          style: inputs?.c?.style ?? {}
+        },
       ],
     });
-    this.intervals.push({ inputs })
+    this.intervals.push({ inputsCreate });
     if (MathLive) {
       MathLive.renderMathInDocument();
     }

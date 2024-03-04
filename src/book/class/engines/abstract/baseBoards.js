@@ -443,7 +443,7 @@ class baseBoards extends BaseEngine {
         [
           x + (style?.input?.noiseX ?? 0),
           y + (style?.input?.noiseY ?? 0),
-          `<math-field class='colorInput' style='${style?.mathStyle ?? ""}'  ${disable ? "disabled" : ""}></math-field>`,
+          `<math-field class='colorInput ${style?.mathClass ?? ""}' style='${style?.mathStyle ?? ""}'  ${disable ? "disabled" : ""}></math-field>`,
         ],
         {
           anchorX: "middle",
@@ -465,13 +465,13 @@ class baseBoards extends BaseEngine {
         });
       }
 
-      mathfield.value = value ?? "";
+      mathfield.value = value?.value ?? value ?? "";
       //resuelve el peo de la escritura de caracteres especiales con el teclado que seria los shorkcuts
       mathfield.inlineShortcutTimeout = 1;
 
       mathfield.layouts = ["minimalist"];
       if (!disable || valid) {
-        return { newInput, mathfield }
+        return { newInput, mathfield };
       }
     }).filter((e) => e);
   }
@@ -483,5 +483,5 @@ class baseBoards extends BaseEngine {
   addTexts(point) {
     this.createPoints({ points: [{ x: 0, y: 0, visible: true, ...point }] });
   }
-  
+
 }
