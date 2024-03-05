@@ -7,7 +7,10 @@ class NodeHtml extends BaseEngine {
         let mathfield = document.createElement("math-field")
         mathfield.classList = params.style.mathStyle
         mathfield.mathVirtualKeyboardPolicy = "manual";
-        mathfield.addEventListener("focusin", () =>  mathVirtualKeyboard.show());
+        mathfield.addEventListener("focusin", () =>  {
+            mathVirtualKeyboard.layouts = ["numeric-only"];
+            mathVirtualKeyboard.show()
+        });
         mathfield.addEventListener("focusout", () =>  mathVirtualKeyboard.hide());
         mathfield.addEventListener("keydown", (evt) => evt.preventDefault(), { capture: true });
         mathfield.addEventListener("focus", () =>  mathVirtualKeyboard.show());
@@ -27,7 +30,6 @@ class NodeHtml extends BaseEngine {
     }
     NumberRamdom(num){
         let numeroAleatorio = Math.floor(Math.random() * num) + 1;
-      
         while (this.numerosGenerados.includes(numeroAleatorio)) {
           return numeroAleatorio = Math.floor(Math.random() * num) + 1;
         }

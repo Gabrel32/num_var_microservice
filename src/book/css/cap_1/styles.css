@@ -95,7 +95,7 @@
   text-transform: capitalize;
   width:fit-content;
   text-align: center;
-  padding: 2px 5px;
+  padding: 2px;
   @media (min-width:786px) {
       height: 30px;
       border: 1.5px solid var(--borderDark-b);
@@ -173,12 +173,20 @@
 
 
 .celdaEncabezado{
-    width:100%;
+  max-width:max-content;
 
+<<<<<<< HEAD
 }
 
 
 math-field::part(virtual-keyboard-numeric) {
+=======
+    /*background-color: #f2f597;*/
+}
+
+
+math-field::part(virtual-keyboard-toggle) {
+>>>>>>> dda43317208f423287650edbef4d145549dac34d
   display: none;
 }
 
@@ -189,7 +197,16 @@ math-field::part(menu-toggle) {
   text-align: center;
   border: none;
   outline: none;
-  background-color: transparent;
+  background-color:transparent;
+}
+.footer{
+  text-align: center;
+  font-size: 12px;
+  padding: 2px;
+  margin: 10px;
+  @media (min-width:786px) {
+    font-size: 16px;
+  }
 }
 .footer{
   text-align: center;
