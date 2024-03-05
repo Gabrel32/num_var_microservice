@@ -45,8 +45,8 @@ class engineTable extends NodeHtml {
   this.tBody = this.htmlNode.querySelector("#tBody")
   this.createHead(this.definition.head)
   this.createBody(this.definition.body)
-  this.inputs = this.htmlNode.querySelectorAll("math-field")
-  this.selects = this.htmlNode.querySelectorAll("select")
+  // this.inputs = this.htmlNode.querySelectorAll("math-field")
+  // this.selects = this.htmlNode.querySelectorAll("select")
   this.initTimer(this.thmlNode)
 
 }
