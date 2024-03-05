@@ -12,25 +12,21 @@ const defBoards = {
                 }
             }
         },
+        points: [
+            {
+                x: 0, y: 0, style: {
+                    visible: true, color: "red",
+                    layer: 100
+                }
+            },
 
-        /*   curves: [
-              {
-                  points: [
-                      { x: -0.49, y: -1.95, style: { visible: true } },
-                      [0.44, 0],
-                      [1.8571428571428572, 2.935251798561151],
-                      [2.1785714285714284, 2.906474820143885],
-                      [2.892857142857143, 0.8633093525179856],
-                      [3.392857142857143, -1.6978417266187051],
-                      [3.5357142857142856, -2.0719424460431655],
-                  ],
-              },
-          ], */
+        ],
+
         intervals: [
             {
                 height: 1,
                 fillInterval: true,
-                values: { a: '1', b: '2' },
+                values: { a: '1' },
                 style: { disabled: true }
             }
         ],
@@ -75,20 +71,34 @@ const defBoards = {
 };
 //si se va a agregar algo al objeto tiene que declararce la propiedad por defecto en el mod.js
 const def = {
-    parent: 'main',
+
     artifacts: {
         /*   artifact_1: { template: { id: 'temp-segment' } },
           artifact_2: { template: { id: 'temp-segment' } }, */
         artifact_1: {
+            parent: 'main_2',
             board: 'board_1',
             engine: HorizontalSegment,
+            //condiciones
+            conditions: {
+                //elementos interval
+                intervals: {
+                    //en los inputs
+                    inputs: {
+                        //si falla tiene este mensaje
+                        text: 'Error desde la def',
+                        //tiene que tener estos valores
+                        values: [
+                            ['x1', 'x2'],
+                            ['x2']
+                        ]
+                    },
+
+                }
+            }
             /*   template: { id: 'temp-segment' } */
         },
-        artifact_5: {
-            board: 'board_2',
-            engine: HorizontalSegment,
-            /*   template: { id: 'temp-segment' } */
-        },
+
     }
 
 }
@@ -107,16 +117,3 @@ contentMain.initVIew({
     }
 
 })
-
-const any = contentMain.addArtefact({
-    parent: 'main_2',
-    board: defBoards.board_1,
-    engine: HorizontalSegment,
-    template: {
-        nodo: document.querySelector('#temp-segment')
-    },
-    name: 'artifact_3'
-})
-
-any.initArtifact()
-any.initEngine()

@@ -1,49 +1,89 @@
+
 class BaseEngine {
-    constructor() {
-        this.def = {}
-        this.htmlNode = null
+  constructor() {
+    this.htmlNode = null;
+    this.timerInteraction = 0;
+    this.Timer = null;
+    this.timerActive = false;
+    this.onFocus = null;
+  }
+
+  initTimer() {
+    /* agregar todos los eventos necesarios o que peudan tener el ejercicio */
+    this.htmlNode.addEventListener('mouseenter', this.iniciarTimer);
+    this.htmlNode.addEventListener('mouseleave', this.detenerTimer);
+    this.htmlNode.addEventListener('input', (e) => {
+    this.validateStatus = false;
+    this.iniciarTimer(e);
+    });
+    this.htmlNode.addEventListener('blur', this.detenerTimer);
+
+  };
+
+  iniciarTimer = (e) => {
+    this.validateStatus = false
+    if (this.timerActive) {
+      // console.log('se llama pero no se crea otro timer');
+      return;
     }
+    this.onFocus = e.target;
+    const onFocus = e.target;
+    this.timerActive = true;
+    this.Timer = setInterval(() => {
 
-    timer(def, mode = true, reset = true) {
-        if (!def) { return; };
-        def.timeInteraction = def?.timeInteraction ?? 0;
-        if (def.statusValidate === undefined) {
-            def.statusValidate = false;
-        };
+      if (this.onFocus.hasFocus && !this.onFocus.hasFocus()) {
+        this.detenerTimer();
+        return;
+      }
 
-        if (!def.statusValidate) {
-            if (mode) {
-                if (!def.timerState) {
+      this.timerInteraction = this.timerInteraction + 1;
+      console.log(this.timerInteraction);
+    }, 1000);
+  };
 
-                    def.timer = setInterval(function () {
-                        if (def.statusValidate) {
-                            clearInterval(def.timer);
-                            def.timeInteraction = 0;
-                            return;
-                        };
-                        def.timeInteraction++;
-                        if (def.debug) {
-                            console.log(def.timeInteraction);
-                        };
-                    }, 1000);
+  detenerTimer = () => {
+    console.log('detener');
+    this.timerActive = false;
+    clearInterval(this.Timer);
+    this.Timer = null;
+  };
 
-                    def.timerState = true;
-                };
-            } else {
-                if (def.timer) {
-                    clearInterval(def.timer);
-                    def.timerState = false;
-                }
-                if (reset) {
-                    def.timeInteraction = 0;
-                    def.statusValidate = true;
-                };
-            };
-        };
+  resetTimer = () => {
+    console.log(`Tiempo transcurrido: ${this.timerInteraction} segundos;`);
+    clearInterval(this.Timer);
+    this.timerInteraction = 0;
+  };
+
+  validate = () => {
+
+    if (this.validateStatus) {
+      //status: posibles estatus
+      //1: Correct
+      //2: incorrect
+      //3: notChange
+
+      return { status: 3 };
+    } else {
+      this.validateStatus = !this.validateStatus
+
+      const dataMod = {
+
+        ...this.validation.iniTMainValidations(this, this.conditions),
+        timer: this.timerInteraction,
+      }
+
+      this.resetTimer();
+      this.detenerTimer();
+      return dataMod
     }
+  };
 
-    addTimer() {
-        console.log('timer');
-    }
+  reset() {
+    this.validation.iniTMainReset(this)
+  }
+
+  return() {
+    this.validation.iniTMainReturn(this)
+  }
 
 }

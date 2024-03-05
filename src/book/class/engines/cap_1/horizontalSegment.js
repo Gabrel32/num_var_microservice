@@ -1,18 +1,17 @@
 class HorizontalSegment extends baseBoards {
   constructor(def, defBoard) {
     super(defBoard);
-    this.defBoard = defBoard
-    this.idTemplate = '#temp-segment'
+    this.defBoard = defBoard;
+    this.idTemplate = def?.template?.id ?? 'temp-segment';
     this.conditions = def.conditions;
     this.allPoints = [];
-    this.def = { ...def };
-    this.idboard = def.name + "_board"
+    this.idboard = def.name + "_board";
+    this.htmlNode = def?.template?.node ?? null
     this.validation = new ValidationHorizontal(this.def);
     this.templateInsert();
+    this.intervals = []
   }
-  validate() {
-    this.validation.iniMainValidations();
-  };
+
 
   templateInsert = () => {
     if (!document.querySelector('#temp-segment')) {
@@ -41,12 +40,13 @@ class HorizontalSegment extends baseBoards {
         </div>
     
       </template>`;
-      this.template ??= $templateDefaults
-      document.body.insertAdjacentHTML('afterend', $templateDefaults);
-    }
-    this.htmlNode ??= document.querySelector('#temp-segment').content.firstElementChild.cloneNode(true);
-    return this.htmlNode
-  }
+      this.template ??= $templateDefaults;
+      document.body.insertAdjacentHTML('afterend', this.template);
+    };
+
+    this.htmlNode ??= document.querySelector('#' + this.idTemplate).content.firstElementChild.cloneNode(true);
+    return this.htmlNode;
+  };
 
   initEngine() {
     if (this.initBoardBase({ id: this.idboard, ...this.defBoard })) {
@@ -54,7 +54,7 @@ class HorizontalSegment extends baseBoards {
         this.createIntervals({ intervals: this.defBoard.intervals });
       }
     }
-    this.addTimer()
+    this.initTimer();
   }
 
   createIntervals(params) {
@@ -71,7 +71,8 @@ class HorizontalSegment extends baseBoards {
     fillInterval = true,
   }) {
 
-    this.createLines({
+
+    const lines = this.createLines({
       lines: [
         {
           points: [
@@ -134,7 +135,7 @@ class HorizontalSegment extends baseBoards {
       });
     };
 
-    this.createInputs({
+    const inputs = this.createInputs({
       inputs: [
         {
           x: (interval[0] + interval[1]) / 2,
@@ -145,7 +146,7 @@ class HorizontalSegment extends baseBoards {
         { x: interval[1], y: -1, value: values.c },
       ],
     });
-
+    this.intervals.push({ inputs })
     if (MathLive) {
       MathLive.renderMathInDocument();
     }

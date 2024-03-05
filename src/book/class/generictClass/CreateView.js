@@ -3,6 +3,7 @@ class CreateView {
 
         this.defBoard = defBoard
         this.allArtifacts = [];
+
         if (allDef) {
             this.initVIew(allDef)
             this.setParent(allDef?.parent ?? '')
