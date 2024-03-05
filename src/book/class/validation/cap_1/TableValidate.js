@@ -16,7 +16,7 @@ class TableValidate {
             status: 1,
             timer: 0,
             userInteraction: {},
-            message: 'esta todo correcto',
+            message: '',
             interaction: {
               correctas: 0,
               inCorrectas: 0,
@@ -52,7 +52,7 @@ class TableValidate {
                             valueValidate.parentElement.style.background = "#e17055"
                             data.interaction.inCorrectas++
                             data.status = 2
-                            data.message = `tiene error en:${data.interaction.inCorrectas}`  
+                            data.message = `tiene: ${data.interaction.inCorrectas} respuestas incorrectas`  
                         }
                     })
                     if (sucess) {

@@ -25,17 +25,13 @@ class Artifact {
   
         const button = e.target;
         if (button.classList.contains('check')) {
-  
           console.log('validate', this.engine.validate());
-  
         } else if (button.classList.contains('reset')) {
-  
-          console.log('reset', this.engine.reset());
-  
+          console.log('reset');
+          this.engine.reset()
         } else if (button.classList.contains('return')) {
-  
-          console.log('return', this.engine.return());
-  
+          console.log('return');
+          this.engine.return()
         };
       });
   
