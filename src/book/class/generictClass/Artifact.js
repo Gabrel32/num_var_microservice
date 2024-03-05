@@ -23,7 +23,7 @@ class Artifact {
     
                 const button = e.target;
                 if (button.classList.contains('check')) {
-                    console.log('validate');
+                    console.log('validate',this.engine.validation);
     
                 } else if (button.classList.contains('reset')) {
                     console.log('reset');
