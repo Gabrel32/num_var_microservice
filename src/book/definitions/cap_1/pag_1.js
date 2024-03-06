@@ -15,7 +15,7 @@ const defBoards = {
     points: [
       {
         x: 0, y: 0, style: {
-          visible: true, color: "red", 
+          visible: true, color: "red",
           layer: 100
         }
       },
@@ -113,7 +113,22 @@ contentMain.initVIew({
     artifact_2: {
       board: 'board_2',
       engine: HorizontalSegment,
-      template: { id: 'temp-segment' }
+      template: { id: 'temp-segment' },
+      conditions: {
+        //elementos interval
+        intervals: {
+          //en los inputs
+          inputs: {
+            //si falla tiene este mensaje
+            text: 'Error desde la def',
+            //tiene que tener estos valores
+            values: [
+              ['x1', 'x2'],
+              ['x2']
+            ]
+          },
+        },
+      },
     },
   }
 

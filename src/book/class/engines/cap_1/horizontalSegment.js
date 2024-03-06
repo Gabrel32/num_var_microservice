@@ -70,9 +70,7 @@ class HorizontalSegment extends baseBoards {
     inputs = { a: "", b: "", c: "" },
     fillInterval = true,
   }) {
-    console.log('add interval');
-    console.log('interval', interval);
-    console.log('inputs', inputs);
+
     const lines = this.createLines({
       lines: [
         {

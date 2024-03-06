@@ -1,5 +1,7 @@
-class Artifact {
+class Artifact extends UX {
+
   constructor(def, board) {
+    super();
     this.name = def.name;
     this.status = false;
     this.engine = new def.engine(def, board);
@@ -9,7 +11,7 @@ class Artifact {
     this.htmlNode.querySelector('#jxgbox').id = def.name + '_board';
     this.htmlNode.classList.add(...def.style?.class ?? '');
   };
- 
+
   initArtifact = () => {
 
     if (this.status) { return; }
@@ -18,7 +20,7 @@ class Artifact {
 
   };
 
-  addEvents() { 
+  addEvents() {
 
     this.allbtn = this.htmlNode.querySelector('.all-btn');
     this.allbtn.addEventListener('click', (e) => {
@@ -26,7 +28,9 @@ class Artifact {
       const button = e.target;
       if (button.classList.contains('check')) {
 
-        console.log('validate', this.engine.validate());
+        const data = this.engine.validate();
+
+        this.visibleModal(true, data);
 
       } else if (button.classList.contains('reset')) {
 

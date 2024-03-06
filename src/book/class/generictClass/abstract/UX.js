@@ -1,6 +1,6 @@
 class UX {
-  constructor(def) {
-
+  constructor() {
+    this.modal();
   }
   //agrega avisos sobre el board
   gAlerts({ def, id, text, type = 1, size = 15, timer = 4 }) {
@@ -100,4 +100,71 @@ class UX {
       params.def.divConfig = divConfig;
     };
   };
+  modal = () => {
+    const modalTmp = `
+     <div id="genericModal" class="modalGeneric">
+      <!-- Modal content -->
+      <div class="modalGeneric-content">
+        <div class="modalGeneric-header">
+          <buttom class="modalGenericClose buttonAux closed"></buttom>
+          <h2>User data</h2>
+          <p id="text-modal">User</p>
+        </div>
+        <div class="modalGeneric-body">
+          <table style="width: 100%;">
+            <tr>
+              <th>typeArtifact</th> <th>status</th> <th>timer</th> <th>interaction</th>
+            </tr>
+            <tr>
+              <td class="type"></td>
+               <td class="status"></td>
+               <td class="timer"></td> <td>
+                  <ul class="interaction" style="text-align: start;">
+                  <ul>Correctas: <span class="correct"></span> </ul>
+                  <ul>Incorrectas: <span class="inCorrect"></span> </ul>
+                  <ul>Por hacer: <span class="forAswer"></span> </ul>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="modalGeneric-footer">
+          <h3>Modal Footer</h3>
+        </div>
+
+      </div>
+    </div> `;
+
+    if (!document.querySelector('#genericModal')) {
+      document.body.insertAdjacentHTML('afterend', modalTmp);
+    };
+
+    this.modalView = document.querySelector('#genericModal');
+    this.modalView.addEventListener('click', (e) => {
+      if (e.target.classList.contains('modalGenericClose')) {
+        this.visibleModal(false);
+      } else {
+        console.log('hola?');
+      }
+    });
+
+    return this.modalView;
+  };
+
+  visibleModal(mode = true, data) {
+    if (data) {
+
+      const { interaction, typeArtifact, status, timer } = data;
+      //console.log(interaction, typeArtifact, message, status, timer);
+      console.log('entra', data);
+      console.log(this.modalView.querySelector('.correct'));
+      this.modalView.querySelector('.inCorrect').innerText = interaction.inCorrectas;
+      this.modalView.querySelector('.forAswer').innerText = interaction.forAswer;
+      this.modalView.querySelector('.correct').innerText = interaction.correctas;
+      this.modalView.querySelector('.type').innerText = typeArtifact;
+      this.modalView.querySelector('.status').innerText = status;
+      this.modalView.querySelector('.timer').innerText = timer;
+    }
+    this.modalView.style.display = mode ? "flex" : 'none';
+  }
 };

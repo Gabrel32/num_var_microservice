@@ -365,7 +365,6 @@
   content: "\2715";
   font-size: 24px;
   position: relative;
-  top: -5px;
 }
 
 /* /////////////////////////////////// unicode motor de caminos //////////////////////*/
@@ -677,4 +676,105 @@ agregado estilo de incorrecto y correcto sin opasidad para usarlo en el board
 
 .statement-top {
   display: none;
+}
+
+
+
+/* estilos del modal general */
+
+.modalGeneric {
+  background-color: rgba(245, 5, 5, 0.4);
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  overflow: auto;
+  display: none;
+  z-index: 200;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+
+}
+
+
+/* Modal Content/Box */
+.modalGeneric-content {
+  min-width: 300px;
+  border-radius: 20px;
+  background-color: #fefefe;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%;
+  height: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+/* Modal header */
+.modalGeneric-header {
+  height: 10%;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-right: 10px;
+  background-color: #5cb85c;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+/* Modal body */
+.modalGeneric-body {
+
+  background-color: #007bff;
+  height: 80%;
+}
+
+/* Modal Footer */
+.modalGeneric-footer {
+  height: 10%;
+
+  background-color: #5cb85c;
+  color: white;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+/* The Close Button */
+.modalGenericClose {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #006ebb;
+  float: right;
+  font-weight: bold;
+}
+
+.modalGenericClose:hover,
+.modalGenericClose:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modalGeneric-body>table {
+  border-collapse: collapse;
+}
+
+.modalGeneric-body>th,
+td {
+  text-align: center;
+  border: 1.5px solid black;
+  padding: 8px;
+}
+
+/* Add Animation */
+@keyframes animatetop {
+  from {
+    opacity: 0
+  }
+
+  to {
+    opacity: 1
+  }
 }

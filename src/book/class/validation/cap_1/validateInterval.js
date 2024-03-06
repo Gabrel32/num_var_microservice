@@ -17,7 +17,7 @@ class ValidationHorizontal {
       }
     } */
     const data = {
-      typeInteraccion: 'standard',//loadPage
+      typeArtifact: 'Standard',//load
       status: 1,
       timer: 0,
       userInteraction: {},
@@ -27,46 +27,46 @@ class ValidationHorizontal {
         inCorrectas: 0,
         forAswer: 0
       }
-    }
-    this.validateIntervals(def, conditions, data)
-    return data
+    };
+    this.validateIntervals(def, conditions, data);
+    return data;
   }
 
   validateIntervals(def, conditions, data) {
-    const { intervals } = conditions
-    const { inputs } = intervals
-    const interaction = data.interaction
+    const { intervals } = conditions;
+    const { inputs } = intervals;
+    const interaction = data.interaction;
 
     const messageDefault = 'El intercalo indicado no es correcto';
-    const intervalsValues = []
+    const intervalsValues = [];
     def.intervals.forEach(interval => {
 
-      const values = []
+      const values = [];
       interval.inputs.forEach((inp, i) => {
         if (inp.mathfield.value !== '') {
           if (this.valudateInputs(inp.mathfield.value, inputs.values[i])) {
             console.log(inp.mathfield);
-            inp.mathfield.classList.add('passInLibrary')
+            inp.mathfield.classList.add('passInLibrary');
             // interaccciones correctas
-            interaction.correctas++
+            interaction.correctas++;
           } else {
-            inp.mathfield.classList.add('failedInLibrary')
-            data.status = 2
+            inp.mathfield.classList.add('failedInLibrary');
+            data.status = 2;
             // interaccciones incorrectas 
-            interaction.inCorrectas++
+            interaction.inCorrectas++;
           }
         } else {
           //interacciones por hacer 
-          interaction.forAswer++
+          interaction.forAswer++;
         };
 
-        values.push(inp.mathfield.value)
+        values.push(inp.mathfield.value);
 
       });
       intervalsValues.push(values);
     });
-    data.message = data.message + '2'
-    data.userInteraction.intervals = intervalsValues
+    data.message = data.message + '2';
+    data.userInteraction.intervals = intervalsValues;
   }
 
   valudateInputs(input, condition) {
