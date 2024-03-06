@@ -58,7 +58,7 @@ class TableValidate {
                     if (sucess) {
                         this.propertySuccess.push(valueValidate)
                     }
-                  return;
+                  return data;
                   }
             })
             }
