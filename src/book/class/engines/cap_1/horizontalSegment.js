@@ -1,4 +1,5 @@
 class HorizontalSegment extends baseBoards {
+
   constructor(def, defBoard) {
     super(defBoard);
     this.defBoard = defBoard;
@@ -11,7 +12,6 @@ class HorizontalSegment extends baseBoards {
     this.templateInsert();
     this.intervals = [];
   }
-
 
   templateInsert = () => {
     if (!document.querySelector('#temp-segment')) {
@@ -70,8 +70,9 @@ class HorizontalSegment extends baseBoards {
     inputs = { a: "", b: "", c: "" },
     fillInterval = true,
   }) {
-
-
+    console.log('add interval');
+    console.log('interval', interval);
+    console.log('inputs', inputs);
     const lines = this.createLines({
       lines: [
         {
@@ -123,7 +124,7 @@ class HorizontalSegment extends baseBoards {
       fillPoints.points.push({
         x: interval[1],
         y: 0,
-        style: { visible: true },
+        style: {},
       });
 
       fillPoints.points.sort((a, b) => a.x - b.x);
@@ -135,31 +136,28 @@ class HorizontalSegment extends baseBoards {
       });
     };
 
-    const inputsCreate = this.createInputs({
+    const newInputs = this.createInputs({
       inputs: [
-        {
-          x: (interval[0] + interval[1]) / 2,
-          y: height + 0.7,
-          value: inputs?.b ?? '',
-          style: inputs?.b?.style ?? {}
-        },
-        {
-          x: interval[0],
-          y: -1,
-          value: inputs?.a ?? '',
-          style: inputs?.a?.style ?? {}
-        },
-        {
-          x: interval[1],
-          y: -1,
-          value: inputs?.c ?? '',
-          style: inputs?.c?.style ?? {}
-        },
+        this.defineInput(interval[0], -1, inputs, 'a'),
+        this.defineInput((interval[0] + interval[1]) / 2, height + 0.7, inputs, 'b'),
+        this.defineInput(interval[1], -1, inputs, 'c')
       ],
     });
-    this.intervals.push({ inputsCreate });
+
+    this.intervals.push({ inputs: newInputs });
     if (MathLive) {
       MathLive.renderMathInDocument();
     }
+  }
+
+  defineInput(x, y, inputs, select = 'a') {
+    return {
+      x, y,
+      value: inputs?.[select]?.value ?? inputs?.[select],
+      style: {
+        mathClass: ((inputs?.[select]?.style?.mathClass ?? "") + (' inp' + select.toUpperCase())),
+        mathStyle: inputs?.[select]?.style?.mathStyle ?? {},
+      }
+    };
   }
 }

@@ -15,7 +15,7 @@ const defBoards = {
     points: [
       {
         x: 0, y: 0, style: {
-          visible: true, color: "red",
+          visible: true, color: "red", 
           layer: 100
         }
       },
@@ -28,7 +28,8 @@ const defBoards = {
         fillInterval: true,
         inputs: {
           a: {
-            value: '1', style: { mathClass: 'esto' }
+            value: '1',
+            style: { mathClass: 'esto' }
           }
         },
       }

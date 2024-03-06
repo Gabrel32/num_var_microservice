@@ -437,6 +437,7 @@ class baseBoards extends BaseEngine {
     const { inputs, valid = false } = params;
     return inputs.map((input) => {
       const { x, y, value, style } = input;
+      console.log(style);
       const disable = ((value && !style?.disabled) || (!value && style?.disabled === true));
       const newInput = this.board.create(
         "text",
@@ -458,9 +459,7 @@ class baseBoards extends BaseEngine {
 
       if (!style?.disabled && !value) {
         mathfield.addEventListener("focusin", () => {
-
           mathVirtualKeyboard.layouts = ["numeric-only"];
-
           mathVirtualKeyboard.show();
         });
       }
