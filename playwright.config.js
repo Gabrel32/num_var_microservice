@@ -1,5 +1,5 @@
 // @ts-check
-const { defineConfig, devices } = require('@playwright/test');
+import { defineConfig, devices } from '@playwright/test';
 
 /**
  * Read environment variables from file.
@@ -11,7 +11,7 @@ const { defineConfig, devices } = require('@playwright/test');
  * @see https://playwright.dev/docs/test-configuration
  */
 
-module.exports = defineConfig({
+export default defineConfig({
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -28,7 +28,7 @@ module.exports = defineConfig({
     headless: false,
     video: {
       mode: 'on',
-      size: { width: 640, height: 480 }
+      size: { width: 840, height: 680 }
     },
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
@@ -44,33 +44,9 @@ module.exports = defineConfig({
       name: 'firefox',
       use: { ...devices['Desktop Firefox'] },
     }, {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    }, /* {
       name: 'Google Chrome',
       use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-    }, */
-
-    /*  {
-       name: 'webkit',
-       use: { ...devices['Desktop Safari'] },
-     }, */
-
-    /* Test against mobile viewports. */
-    // {
-    //   name: 'Mobile Chrome',
-    //   use: { ...devices['Pixel 5'] },
-    // },
-    // {
-    //   name: 'Mobile Safari',
-    //   use: { ...devices['iPhone 12'] },
-    // },
-
-    /* Test against branded browsers. */
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    // },
+    }
 
   ],
 
