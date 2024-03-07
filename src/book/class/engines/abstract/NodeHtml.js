@@ -33,7 +33,7 @@ class NodeHtml extends BaseEngine {
         while (this.numerosGenerados.includes(numeroAleatorio)) {
           return numeroAleatorio = Math.floor(Math.random() * num) + 1;
         }
-        this.numerosGenerados.push(numeroAleatorio);
+        this.numerosGenerados.push(numeroAleatorio); 
         return numeroAleatorio;
       }
 } 

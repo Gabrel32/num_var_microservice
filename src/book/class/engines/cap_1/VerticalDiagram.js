@@ -28,6 +28,22 @@ class DiagramVertical extends BaseEngine {
       </div>
 
   </template>`
+
+  this.clone1=`
+    <div class="mdlo1">
+      <math-field class="mdrigth input_1" ></math-field>
+      <math-field class="mdleft input_2" > </math-field>
+    </div>`
+  this.clone2 =`
+  <div class="mdlo2">
+    <math-field class="rctg1 input_1" ></math-field>
+    <div class="flechas">
+      <div class="arrowDown">🡣</div>
+      <div class="arrowUp md">🡡</div>
+    </div>
+    <math-field class="rctg2 input_2" ></math-field>
+  </div>
+  `
   
     if (!document.querySelector('#temp')) {
       this.template ??= maintTmp
@@ -39,19 +55,18 @@ class DiagramVertical extends BaseEngine {
 
     
   }
-  artiopc() {
+  artiopc(def) {
     const options = {
-      "1": tmp1,
-      "2": tmp2,
+      "1": this.temp1,
+      "2": this.temp2
     };
     this.def.inputs.forEach((item, index) => {
 
-      const clone = options[item.type]
-        .content.firstElementChild.cloneNode(true);
+      const clone = options[item.type].content.firstElementChild.cloneNode(true)
       const clone1= this.htmlNode.firstElementChild
       const input_1 = clone.querySelector(".input_1");
       const input_2 = clone.querySelector(".input_2");
-      const md=clone.querySelector(".md")
+      const md = clone.querySelector(".md")
       const input_up= clone1.querySelector(".input_up")
       const input_down = clone1.querySelector(".input_down")
       input_up.textContent =  item.value3

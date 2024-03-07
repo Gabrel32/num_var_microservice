@@ -1,79 +1,108 @@
 class TableValidate {
-    constructor(){
+    constructor(def){
+        this.conditions = def
         this.propertySuccess = []
+        this.htmlNode = null
+
     }
-    valuesSuccess(data){
+    setHtmlNode(htmlNode){
+        this.htmlNode = htmlNode
+    }
+  
+    valuesSuccess(){
       this.propertySuccess.forEach(sucess=>{
-          sucess.parentElement.style.backgroundColor = "#797c";
-          data.interaction.correctas++
+          sucess.parentElement.style.backgroundColor = "#b6f3bf";
+
         })  
       this.propertySuccess = []
-    } 
-  
-    iniTMainValidations(def,conditions,){
-        const data = {
-            typeInteraccion: 'standard',//loadPage
-            status: 1,
-            timer: 0,
-            userInteraction: {},
-            message: '',
-            interaction: {
-              correctas: 0,
-              inCorrectas: 0,
-              forAswer: 0
-            }
-          }
-
-        
-        if (def.entris.length) {
-            def.entris.forEach(e=>{
-                this.validate(e,conditions,data)
-            })    
-        }
-        this.valuesSuccess(data)
-        return data
-        
-        
     }
-    validate(valueValidate,conditions,data){
+
+
+  iniTMainValidations(def, conditions) {
+    const data = {
+      typeInteraccion: 'standard',
+      status: 1,
+      timer: 0,
+      userInteraction: {
+        inputs:[],
+        selects:[]
+      },
+      message: '',
+      interaction: {
+        correctas: 0,
+        inCorrectas: 0,
+        forAswer: 0
+      }
+    }
+   
+    this.validate(def, conditions, data)
+    return data
+  }
+  
+    validate(def, conditions, data){
+        
+        const interaction = data.interaction
+        this.mathfield = def.htmlNode.querySelectorAll("math-field")
+        this.selects = def.htmlNode.querySelectorAll("select")
+        const arrayEntradas= [...this.mathfield, ...this.selects]
+        
         for (let i = 0; i < conditions.length; i++) {
             conditions[i].forEach(resColumRow=>{
-                if (resColumRow.column == valueValidate.dataset.column && resColumRow.row == valueValidate.dataset.row) {
-                    let sucess = resColumRow.response.some(res=>{
-                        if (valueValidate.value == "selecciona"||valueValidate.value == "") {
-                            valueValidate.parentElement.style.background = "transparent"
-                            data.interaction.forAswer++
-                        }
-                        else if (res == valueValidate.value.trim().toLowerCase()) {
-                            return true
+                arrayEntradas.forEach(e=>{
 
+
+                    if (resColumRow.column == e.dataset.column && resColumRow.row == e.dataset.row) {
+                       
+                        let sucess = resColumRow.response.some(res=>{
+                            if (e.value == "selecciona"||e.value == "") {
+                                e.parentElement.style.background = "transparent"
+                                interaction.forAswer++
+                            }
+                            else if (res == e.value.trim().toLowerCase()) {
+                                return true
+                            }
+                            else{
+                                e.parentElement.style.background = "#eab8a5"
+                                interaction.inCorrectas++
+                                data.status= 2;
+                                data.message="Respuesta incorrecta";
+                            }
+                        })
+
+                        if(e.matches('.mathfield')){
+                            data.userInteraction.inputs.push(e.value)
+                        }else{
+                            data.userInteraction.selects.push(e.value)
                         }
-                        else{
-                            valueValidate.parentElement.style.background = "#e17055"
-                            data.interaction.inCorrectas++
-                            data.status = 2
-                            data.message = `tiene: ${data.interaction.inCorrectas} respuestas incorrectas`  
+                        if (sucess) {
+                            interaction.correctas++
+                            data.status=1;
+                            data.message="Respuesta correcta";
+                            this.propertySuccess.push(e)
                         }
-                    })
-                    if (sucess) {
-                        this.propertySuccess.push(valueValidate)
-                    }
-                  return data;
-                  }
-            })
+                      return;
+                      }
+                })
+
+                })
+                    
+
             }
+            this.valuesSuccess()
+
     }
     iniTMainReset(def){
-        if (def.entris.length) {
-            def.entris.forEach(e=>{
-                e.value = ""
-                e.parentElement.style.background = "transparent"
-                e.selectedIndex = 0
- 
-            })
-        }
-    }
-    iniTMainReturn(){
-    console.log("estamos return... ");
+        this.inputs = def.htmlNode.querySelectorAll("math-field")
+        this.selects = def.htmlNode.querySelectorAll("select")
+        this.inputs.forEach(e=>{
+            e.value = ""
+            e.parentElement.style.background = "transparent" 
+        })
+        this.selects.forEach(e=>{
+            e.selectedIndex = 0
+            e.parentElement.style.background = "transparent" 
+
+        })
     }
 }
+

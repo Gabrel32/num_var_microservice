@@ -173,20 +173,9 @@
 
 
 .celdaEncabezado{
-  max-width:max-content;
-
-<<<<<<< HEAD
+  width: 100%;
 }
-
-
 math-field::part(virtual-keyboard-numeric) {
-=======
-    /*background-color: #f2f597;*/
-}
-
-
-math-field::part(virtual-keyboard-toggle) {
->>>>>>> dda43317208f423287650edbef4d145549dac34d
   display: none;
 }
 
