@@ -8,7 +8,7 @@ class engineTable extends NodeHtml {
     this.definition = { ...definition };
     this.idboard = definition.name + "_board"
     this.htmlNode = null
-    this.validation = new TableValidate(this.definition.conditions)
+    this.validation = new TableValidate()
     this.propertySuccess = []
     this.numerosGenerados = [];
   }
@@ -26,7 +26,6 @@ class engineTable extends NodeHtml {
         </tbody>
       </table>
       <div class="contendorButtonTabla all-btn">
-        <button type="button" class="styleBtn back return"></button>
         <button type="button" class="btnR reset styleBtn"></button>
         <button type="button" class="btnV check styleBtn"></button>
       </div>
@@ -46,7 +45,6 @@ class engineTable extends NodeHtml {
   this.createHead(this.definition.head)
   this.createBody(this.definition.body)
   this.initTimer(this.thmlNode)
-
 }
 
     createHead(head = []){
@@ -103,6 +101,19 @@ class engineTable extends NodeHtml {
             this.tBody.appendChild(tr)
         })
     }
+    iniTMainReset(def){
+      this.inputs = def.htmlNode.querySelectorAll("math-field")
+      this.selects = def.htmlNode.querySelectorAll("select")
+      this.inputs.forEach(e=>{
+          e.value = ""
+          e.parentElement.style.background = "transparent" 
+      })
+      this.selects.forEach(e=>{
+          e.selectedIndex = 0
+          e.parentElement.style.background = "transparent" 
+
+      })
+  }
 }
 
 

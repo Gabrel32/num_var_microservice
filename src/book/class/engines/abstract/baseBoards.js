@@ -10,7 +10,16 @@
      */
       class baseBoards extends BaseEngine {
         constructor(defBoard = {}) {
+      
           super();
+          this.color = {
+            line: {
+              strokeColor: 'black'
+            },
+            points: {
+              color: 'violet'
+            }
+          }
           this.points = defBoard.points ?? [];
           this.curves = defBoard.curves ?? [];
           this.polygons = defBoard.polygons ?? [];
@@ -173,7 +182,7 @@
           const resultPoints = points.map((point, i) => {
             const newPoint = this.addPoint(point);
             if (!Array.isArray(point)) {
-              const style = { ...{ ...styles, visible: false, ...point?.style } };
+              const style = { ...this.color.points, ...{ ...styles, visible: false, ...point?.style } };
               newPoint.setAttribute(style);
             }
             return newPoint;
@@ -205,7 +214,7 @@
             }
       
             const style = {
-              strokeColor: "black",
+              strokeColor: this.color.line.strokeColor,
               fixed: true,
               straightFirst: false,
               straightLast: false,
@@ -443,7 +452,7 @@
               [
                 x + (style?.input?.noiseX ?? 0),
                 y + (style?.input?.noiseY ?? 0),
-                `<math-field class='colorInput' style='${style?.mathStyle ?? ""}'  ${disable ? "disabled" : ""}></math-field>`,
+                `<math-field class='colorInput ${style?.mathClass ?? ""}' style='${style?.mathStyle ?? ""}'  ${disable ? "disabled" : ""}></math-field>`,
               ],
               {
                 anchorX: "middle",
@@ -458,20 +467,18 @@
       
             if (!style?.disabled && !value) {
               mathfield.addEventListener("focusin", () => {
-      
                 mathVirtualKeyboard.layouts = ["numeric-only"];
-      
                 mathVirtualKeyboard.show();
               });
             }
       
-            mathfield.value = value ?? "";
+            mathfield.value = value?.value ?? value ?? "";
             //resuelve el peo de la escritura de caracteres especiales con el teclado que seria los shorkcuts
             mathfield.inlineShortcutTimeout = 1;
       
             mathfield.layouts = ["minimalist"];
             if (!disable || valid) {
-              return { newInput, mathfield }
+              return { newInput, mathfield };
             }
           }).filter((e) => e);
         }
@@ -483,6 +490,6 @@
         addTexts(point) {
           this.createPoints({ points: [{ x: 0, y: 0, visible: true, ...point }] });
         }
-        
+      
       }
       

@@ -79,11 +79,11 @@ class BaseEngine {
   };
 
   reset() {
-    this.validation.iniTMainReset(this)
+    this.iniTMainReset(this)
   }
 
   return() {
-    this.validation.iniTMainReturn(this)
+    this.iniTMainReturn(this)
   }
 
 }

@@ -48,6 +48,8 @@
     "@babel/plugin-transform-runtime": "^7.22.10",
     "@babel/plugin-transform-spread": "^7.22.5",
     "@babel/preset-env": "^7.22.20",
+    "@playwright/test": "^1.42.1",
+    "@types/node": "^20.11.25",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "nodemon": "^3.0.1",

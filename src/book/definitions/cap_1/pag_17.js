@@ -20,36 +20,6 @@ const def = {
             engine: engineTable,
         },
         artifact_2:{
-            body:[
-                ["100 = z",{tag:"select", row:"2", column:"1",text:"102 =",default:[{valor: 'selecciona'},{ valor: "Z+2"},{ valor: 'AAA' },{ valor: 'A'}]}],
-                ["1 = z",{tag:"select", row:"2", column:"2",text:"3 =",default:[{valor: 'selecciona'},{ valor: "ZZZ"},{ valor: 'ZZ' },{ valor: 'Z'}]}],
-                ["100 = z",{tag:"select", row:"2", column:"3",text:"10000 =",default:[{valor: 'selecciona'},{ valor: "Z.10"},{ valor: 'Z/10' },{ valor: 'Z+10'}]}],
-            ],
-            conditions:[
-                [{column:"1", row:"2", response:["z+2"]}],
-                [{column:"2", row:"2", response:["zzz"]}],
-                [{column:"3", row:"2", response:["z.10"]}]
-            ],
-            engine: engineTable,
-            
-        },
-        artifact_3:{
-            body:[
-                ["6 = a",{tag:"select", row:"2", column:"1",text:"12 =",default:[{valor: 'selecciona'},{ valor: "AA"},{ valor: 'AAA' },{ valor: 'A'}]}],
-                ["10 = a",{tag:"select", row:"2", column:"2",text:"99 =",default:[{valor: 'selecciona'},{ valor: "A.9+9"},{ valor: 'A.9-9' },{ valor: 'A/9+9'}]}],
-                ["10 = a",{tag:"select", row:"2", column:"3",text:"30 =",default:[{valor: 'selecciona'},{ valor: "AAA"},{ valor: 'AA . 1' },{ valor: 'AAAA'}]}],
-            ],
-            conditions:[
-                [{column:"1", row:"2", response:["aa"]}],
-                [{column:"2", row:"2", response:["a.9+9"]}],
-                [{column:"3", row:"2", response:["aaa"]}]
-            ],
-            engine: engineTable,
-
-
-            
-        },
-        artifact_4:{
             head:[
                 "expresiones","menos expresiones","numero"
             ],
@@ -69,56 +39,11 @@ const def = {
     
             ],
             engine: engineTable,
+            
+            
+        },
 
-            
-            
-        },
-        artifact_5:{
-            body:[
-                ["A < B ¿Quien es el menor?",`A`],
-                ["A < B ¿Quien es el mayor?",{tag:"select", row:"2", column:"2",text:"",default:[{valor: 'selecciona'},{valor: 'A'},{valor: 'B' }]}],
-    
-            ],
-            conditions:[
-                [{column:"2", row:"2", response:["b"]}],
-            ],
-            engine: engineTable,
-        },
-        artifact_6:{
-            body:[
-                ["A < B ¿Quien es el mayor?",{tag:"select", row:"2", column:"1",text:"",default:[{valor: 'selecciona'},{valor: 'A'},{valor: 'B' },{valor: 'C'}]}],
-                ["A < B ¿Quien es el mayor?",{tag:"select", row:"2", column:"2",text:"",default:[{valor: 'selecciona'},{valor: 'A' },{valor: 'B' },{valor: 'C' }]}],
-                ["A < B ¿Quien es el mayor?",{tag:"select", row:"2", column:"3",text:"",default:[{valor: 'selecciona'},{valor: 'A' },{valor: 'B' },{valor: 'C' }]}],
-            ],
-            conditions:[
-                [{column:"1", row:"2", response:["a"]}],
-                [{column:"2", row:"2", response:["b"]}],
-                [{column:"3", row:"2", response:["b"]}],
-            ],
-            engine: engineTable,
-            
-        },
-        artifact_7:{
-            body:[
-                ["3 < 5",`correcto`],
-                ["3 > 5",{tag:"select", row:"2", column:"1",text:"",default:[{ posicion: 1, valor: 'selecciona'},{ posicion: 2, valor: 'correcto'},{ posicion: 3, valor: 'incorrecto' }]}],
-                ["5 < 3",{tag:"select", row:"2", column:"2",text:"",default:[{ posicion: 1, valor: 'selecciona'},{ posicion: 2, valor: 'correcto' },{ posicion:3, valor: 'incorrecto'}]}],
-               ,
-            ],
-            conditions:[
-                [{column:"1", row:"2", response:["incorrecto"]}],
-                [{column:"2", row:"2", response:["incorrecto"]}],
-                [{column:"3", row:"2", response:["incorrecto"]}],
-            ],
-            engine: engineTable,
-            
-        },
-    }}
-
-    const def2 = {
-        parent: "main_2",
-        artifacts:{
-            artifact_1:{
+        artifact_3:{
                 head:[
                     "expresiones","menos expresiones","numero"
                 ],
@@ -135,6 +60,35 @@ const def = {
                 ],
                 engine: engineTable,
             },
+       
+        
+        artifact_4:{
+            body:[
+                ["A < B ¿Quien es el menor?",`A`],
+                ["A < B ¿Quien es el mayor?",{tag:"select", row:"2", column:"2",text:"",default:[{valor: 'selecciona'},{valor: 'A'},{valor: 'B' }]}],
+    
+            ],
+            conditions:[
+                [{column:"2", row:"2", response:["b"]}],
+            ],
+            engine: engineTable,
+        },
+        artifact_5:{
+            body:[
+                ["A < B ¿Quien es el mayor?",{tag:"select", row:"2", column:"1",text:"",default:[{valor: 'selecciona'},{valor: 'A'},{valor: 'B' },{valor: 'C'}]}],
+                ["A < B ¿Quien es el mayor?",{tag:"select", row:"2", column:"2",text:"",default:[{valor: 'selecciona'},{valor: 'A' },{valor: 'B' },{valor: 'C' }]}],
+                ["A < B ¿Quien es el mayor?",{tag:"select", row:"2", column:"3",text:"",default:[{valor: 'selecciona'},{valor: 'A' },{valor: 'B' },{valor: 'C' }]}],
+            ],
+            conditions:[
+                [{column:"1", row:"2", response:["a"]}],
+                [{column:"2", row:"2", response:["b"]}],
+                [{column:"3", row:"2", response:["b"]}],
+            ],
+            engine: engineTable,
+            
+        },
+
+
             artifact_6:{
                 body:[
                     ["A < B ¿Quien es el mayor?",{tag:"select", row:"2", column:"1",text:"",default:[{valor: 'selecciona'},{valor: 'A'},{valor: 'B' },{valor: 'C'}]}],
@@ -149,6 +103,13 @@ const def = {
                 engine: engineTable,
                 
             },
+    }}
+
+    const def2 = {
+        parent: "main_2",
+        artifacts:{
+            
+            
             artifact_7:{
                 body:[
                     ["3 < 5",`correcto`],
@@ -164,6 +125,55 @@ const def = {
                 engine: engineTable,
                 
             },
+
+
+        artifact_8:{
+            body:[
+                ["3 < 5",`correcto`],
+                ["3 > 5",{tag:"select", row:"2", column:"1",text:"",default:[{ posicion: 1, valor: 'selecciona'},{ posicion: 2, valor: 'correcto'},{ posicion: 3, valor: 'incorrecto' }]}],
+                ["5 < 3",{tag:"select", row:"2", column:"2",text:"",default:[{ posicion: 1, valor: 'selecciona'},{ posicion: 2, valor: 'correcto' },{ posicion:3, valor: 'incorrecto'}]}],
+               ,
+            ],
+            conditions:[
+                [{column:"1", row:"2", response:["incorrecto"]}],
+                [{column:"2", row:"2", response:["incorrecto"]}],
+                [{column:"3", row:"2", response:["incorrecto"]}],
+            ],
+            engine: engineTable,
+            
+        },
+
+        artifact_9:{
+            body:[
+                ["100 = z",{tag:"select", row:"2", column:"1",text:"102 =",default:[{valor: 'selecciona'},{ valor: "Z+2"},{ valor: 'AAA' },{ valor: 'A'}]}],
+                ["1 = z",{tag:"select", row:"2", column:"2",text:"3 =",default:[{valor: 'selecciona'},{ valor: "ZZZ"},{ valor: 'ZZ' },{ valor: 'Z'}]}],
+                ["100 = z",{tag:"select", row:"2", column:"3",text:"10000 =",default:[{valor: 'selecciona'},{ valor: "Z.10"},{ valor: 'Z/10' },{ valor: 'Z+10'}]}],
+            ],
+            conditions:[
+                [{column:"1", row:"2", response:["z+2"]}],
+                [{column:"2", row:"2", response:["zzz"]}],
+                [{column:"3", row:"2", response:["z.10"]}]
+            ],
+            engine: engineTable,
+            
+        },
+
+         artifact_10:{
+            body:[
+                ["6 = a",{tag:"select", row:"2", column:"1",text:"12 =",default:[{valor: 'selecciona'},{ valor: "AA"},{ valor: 'AAA' },{ valor: 'A'}]}],
+                ["10 = a",{tag:"select", row:"2", column:"2",text:"99 =",default:[{valor: 'selecciona'},{ valor: "A.9+9"},{ valor: 'A.9-9' },{ valor: 'A/9+9'}]}],
+                ["10 = a",{tag:"select", row:"2", column:"3",text:"30 =",default:[{valor: 'selecciona'},{ valor: "AAA"},{ valor: 'AA . 1' },{ valor: 'AAAA'}]}],
+            ],
+            conditions:[
+                [{column:"1", row:"2", response:["aa"]}],
+                [{column:"2", row:"2", response:["a.9+9"]}],
+                [{column:"3", row:"2", response:["aaa"]}]
+            ],
+            engine: engineTable,
+
+
+            
+        },
         }
     }
 

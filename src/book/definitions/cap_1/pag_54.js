@@ -4,7 +4,6 @@ const allDef = {
     artifact_1: {
       parent: 'lexico',
       engine: DiagramVertical,
-
       inputs: [
         { type: 1, value1: 'x', value2: '', value3:'',value4:'', style1:"",style2:"" },
          { type: 2, value1: '()+3', value2: '' , value3:'',value4:'',style1:"",style2:"" },

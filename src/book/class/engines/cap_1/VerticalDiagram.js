@@ -7,6 +7,7 @@ class DiagramVertical extends BaseEngine {
     this.def = def
     this.temp1 = document.querySelector('#tmp1')
     this.temp2 = document.querySelector('#tmp2')
+    this.validation = new verticalValidate()
     this.thmlNode = null;
 
   }
@@ -17,8 +18,8 @@ class DiagramVertical extends BaseEngine {
     <div class="container">
 
       <div class="artifact1" id="artifact1">
-        <math-field class="up input_up"></math-field>
-        <math-field class=" down input_down"></math-field>
+        <math-field class="up input_up hblted"></math-field>
+        <math-field class=" down input_down hblted"></math-field>
         <div class="botons all-btn">
         <button class="return">↶</button>
           <button class="reset" id="reset1">↻</button>
@@ -29,21 +30,7 @@ class DiagramVertical extends BaseEngine {
 
   </template>`
 
-  this.clone1=`
-    <div class="mdlo1">
-      <math-field class="mdrigth input_1" ></math-field>
-      <math-field class="mdleft input_2" > </math-field>
-    </div>`
-  this.clone2 =`
-  <div class="mdlo2">
-    <math-field class="rctg1 input_1" ></math-field>
-    <div class="flechas">
-      <div class="arrowDown">🡣</div>
-      <div class="arrowUp md">🡡</div>
-    </div>
-    <math-field class="rctg2 input_2" ></math-field>
-  </div>
-  `
+ 
   
     if (!document.querySelector('#temp')) {
       this.template ??= maintTmp

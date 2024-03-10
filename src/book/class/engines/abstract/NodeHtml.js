@@ -12,7 +12,6 @@ class NodeHtml extends BaseEngine {
             mathVirtualKeyboard.show()
         });
         mathfield.addEventListener("focusout", () =>  mathVirtualKeyboard.hide());
-        mathfield.addEventListener("keydown", (evt) => evt.preventDefault(), { capture: true });
         mathfield.addEventListener("focus", () =>  mathVirtualKeyboard.show());
         this.entris.push(mathfield)
         return mathfield

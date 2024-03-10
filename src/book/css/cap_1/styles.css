@@ -4,16 +4,14 @@
   width: 280px;
 }
 
-.contenedorTabla{
-  width: fit-content;
-  border: 4px solid var(--primaryColor-bg) ;
-  padding: 10px;
-  border-radius: 10px;
+.containerNormal {
+  display: flex;
+  flex-direction: column;
 }
 
-
-
 .contendorButtonTabla{
+  width: max-content;
+  flex-basis: calc(33.33%); /* Ajusta el ancho de cada elemento según tus necesidades */
   display: flex;
   align-items:center;
   justify-content: right;
@@ -21,8 +19,7 @@
   padding:  5px 15px;
   width: 93%;
   margin-top: 10px;
-
-
+  /* border-top: 2px solid var(--primaryColor-bg); */
 
 }
 .styleBtn {
@@ -77,6 +74,7 @@
 /* estilos dela tabla */
 
 .tabla {
+  width: fit-content;
   height: max-content;
   border-collapse: collapse;
   border: 1.5px solid var(--borderDark-b);
@@ -84,6 +82,7 @@
   text-align: center;
   letter-spacing: normal;
   @media(min-width:786px) {
+      width: 80%;
       font-size: 18px;
       font-weight: 500;
   }
@@ -112,13 +111,20 @@
 }
 
 .contenedorTabla{
+  padding-top: 10px;
+  height: fit-content;
+  border: 4px solid var(--primaryColor-bg);
   display: flex;
+  border-radius: 10px;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: fit-content;
-  height: fit-content;
+  min-width: max-content;
+  padding: 10px;
+  @media(min-width: 768px){
+    width: 30%;
+    padding: 10px 0 0 0;
+
+  }
 }
 
 .textCenter {
@@ -146,47 +152,77 @@
   border: none;
   outline: none;
   font-size:12px ;
+  cursor: pointer;
   @media(min-width:786px) {
     font-size: 18px;
   }
-
 }
 .main{
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
-  gap: 2rem;
-  margin: 1rem;
+  gap: 3rem;
+  margin: 2rem;
+  justify-content: center;
+  @media (min-width:768px) {
+    justify-content: space-around;
+    margin: 4rem;
+  }
 }
 .main_2 {
-  display: flex !important;
-  justify-content: center;
+  display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
-  margin: 1rem;
+  gap: 3rem;
+  margin: 2rem;
+  justify-content: center;
+  @media (min-width:1000px) {
+    justify-content: space-around;
+    margin: 4rem;
+  }
 }
 .headerText{
   text-align: center;
   padding: auto;
   text-transform: capitalize;
+  display: block;
 }
 
 
 .celdaEncabezado{
   width: 100%;
 }
-math-field::part(virtual-keyboard-numeric) {
+/* math-field::part(virtual-keyboard-numeric) {
   display: none;
-}
+} */
 
 math-field::part(menu-toggle) {
   display: none;
 }
+/* math-field::part(virtual-keyboard-toggle){
+  display: none;
+} */
+math-field::part(menu-toggle){
+  display: none;
+}
+/* math-field::part(keyboard-sink){
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+/* math-field::part(container){
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+/* math-field::part(content){
+  width:100%;
+} */
 .mathfield{
   text-align: center;
   border: none;
   outline: none;
   background-color:transparent;
+  cursor: pointer;
+
 }
 .footer{
   text-align: center;

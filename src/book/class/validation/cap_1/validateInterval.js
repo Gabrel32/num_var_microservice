@@ -28,6 +28,7 @@ class ValidationHorizontal {
         forAswer: 0
       }
     }
+    console.log(def);
     this.validateIntervals(def, conditions, data)
     return data
   }

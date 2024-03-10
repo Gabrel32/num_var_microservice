@@ -1,20 +1,10 @@
 class TableValidate {
-    constructor(def){
-        this.conditions = def
-        this.propertySuccess = []
-        this.htmlNode = null
-
-    }
-    setHtmlNode(htmlNode){
-        this.htmlNode = htmlNode
-    }
-  
-    valuesSuccess(){
-      this.propertySuccess.forEach(sucess=>{
-          sucess.parentElement.style.backgroundColor = "#b6f3bf";
-
-        })  
-      this.propertySuccess = []
+    constructor(){
+      this.color = {
+        succes:"#b6f3bf",
+        failed:"#eab8a5",
+        forAswer:"transparent"
+      }
     }
 
 
@@ -40,47 +30,37 @@ class TableValidate {
   }
   
     validate(def, conditions, data){
-        
         const interaction = data.interaction
-        this.mathfield = def.htmlNode.querySelectorAll("math-field")
-        this.selects = def.htmlNode.querySelectorAll("select")
-        const arrayEntradas= [...this.mathfield, ...this.selects]
-        
         for (let i = 0; i < conditions.length; i++) {
             conditions[i].forEach(resColumRow=>{
-                arrayEntradas.forEach(e=>{
-
-
+                def.entris.forEach(e=>{
                     if (resColumRow.column == e.dataset.column && resColumRow.row == e.dataset.row) {
-                       
-                        let sucess = resColumRow.response.some(res=>{
+                      let sucess = resColumRow.response.some(res=>{
                             if (e.value == "selecciona"||e.value == "") {
-                                e.parentElement.style.background = "transparent"
+                                e.parentElement.style.background = this.color.forAswer
                                 interaction.forAswer++
                             }
                             else if (res == e.value.trim().toLowerCase()) {
                                 return true
                             }
                             else{
-                                e.parentElement.style.background = "#eab8a5"
+                                e.parentElement.style.background = this.color.failed
                                 interaction.inCorrectas++
                                 data.status= 2;
-                                data.message="Respuesta incorrecta";
                             }
                         })
-
                         if(e.matches('.mathfield')){
                             data.userInteraction.inputs.push(e.value)
                         }else{
                             data.userInteraction.selects.push(e.value)
                         }
+                        // data.userInteraction[e.tagName.toLowerCase()] = [e.value,...data.userInteraction[e.tagName.toLowerCase()]??[]]
                         if (sucess) {
                             interaction.correctas++
                             data.status=1;
-                            data.message="Respuesta correcta";
-                            this.propertySuccess.push(e)
+                            e.parentElement.style.backgroundColor = this.color.succes;
                         }
-                      return;
+                      return data;
                       }
                 })
 
@@ -88,21 +68,8 @@ class TableValidate {
                     
 
             }
-            this.valuesSuccess()
 
     }
-    iniTMainReset(def){
-        this.inputs = def.htmlNode.querySelectorAll("math-field")
-        this.selects = def.htmlNode.querySelectorAll("select")
-        this.inputs.forEach(e=>{
-            e.value = ""
-            e.parentElement.style.background = "transparent" 
-        })
-        this.selects.forEach(e=>{
-            e.selectedIndex = 0
-            e.parentElement.style.background = "transparent" 
-
-        })
-    }
+    
 }
 

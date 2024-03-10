@@ -45,12 +45,24 @@
       </div>
       <!-- <div class="board"></div>
       <div class="board2"></div> -->
-      <p class="texto1">¿Dio el mismo resultado? Si <input type="radio" name="opcion" value="si"> No <input
+      <div class="borders">
+        <p class="texto1">¿Dio el mismo resultado? Si <input type="radio" name="opcion" value="si"> No <input
           name="opcion" type="radio" value="no"></button> </p>
-      <p class="texto1">Entonces: <input class="textoU" type="text"></p>
-      <p class="texto1">La Operacion <input class="textoU" type="text"></p>
+      </div>
+        
+        <div class="borders">
+          
+      <p class="texto1">Entonces: <math-field class="show textoU" type="text"></p>
+        </div>
+        <div class="borders">
+          
+      <p class="texto1">La Operacion <math-field class="show textoU" type="text"></p>
+        </div>
 
       <div class="divControllerButton all-btn">
+          <div>
+            
+          </div>
         <button class="reset buttonSecundary button-marg buttonKey"></button>
         <button class="check buttonPrimary button-marg buttonKey"></button>
       </div>
@@ -60,12 +72,14 @@
   <script src="../../../libraries/jsxgraphcore.js"></script>
   <script src="../../../class/engines/abstract/BaseEngine.js"></script>
     <script src="../../../class/engines/abstract/baseBoards.js"></script>
+    <script src="../../../class/validation/cap_1/DiagramaValidate.js"></script>
     <script src="../../../class/engines/cap_1/diagramas.js"></script>
     <script src="../../../libraries/computeEngine.js"></script>
     <script src="../../../libraries/mathLive.js"></script>
     <script src="../../../class/generictClass/Artifact.js"></script>
     <script src="../../../class/generictClass/CreateView.js"></script>
     <script src="../../../definitions/cap_1/pag_6.js"></script>
+   
 </body>
 
 </html>
