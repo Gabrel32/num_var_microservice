@@ -34,8 +34,8 @@ class engineTable extends NodeHtml {
       
     document.body.insertAdjacentHTML('afterend', $templateDefaults);
     }
-    this.htmlNode = document.querySelector(`#${this.idTemplate}`).content.firstElementChild.cloneNode(true);
-    return this.htmlNode
+    this.htmlNode ??= document.querySelector(`#${this.idTemplate}`).content.firstElementChild.cloneNode(true);
+    return this.htmlNode 
   }
 
 
