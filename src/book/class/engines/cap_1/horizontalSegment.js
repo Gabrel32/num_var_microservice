@@ -44,6 +44,9 @@ class HorizontalSegment extends baseBoards {
       document.body.insertAdjacentHTML('afterend', this.template);
     };
 
+
+
+    
     this.htmlNode ??= document.querySelector('#' + this.idTemplate).content.firstElementChild.cloneNode(true);
     return this.htmlNode;
   };

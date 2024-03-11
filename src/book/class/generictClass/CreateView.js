@@ -39,7 +39,7 @@ class CreateView {
     addArtefact = (artifact, fragment) => {
 
         const { parent } = artifact
-        const artClass = new Artifact(artifact, artifact.board)
+        const artClass = new Artifact(artifact, artifact.board) 
 
         if (fragment) {
             fragment.appendChild(artClass.htmlNode)
@@ -83,6 +83,4 @@ class CreateView {
             this.contentMain.style.display = 'none';
         }
     };
-
-
 }

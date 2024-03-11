@@ -43,6 +43,7 @@ describe("Test text handling", function () {
 
     document.getElementsByTagName("body")[0].innerHTML =
         '<div id="jxgbox" style="width: 100px; height: 100px;"></div>';
+
     board = JXG.JSXGraph.initBoard("jxgbox", {
         renderer: "svg",
         axis: false,
@@ -109,7 +110,7 @@ describe("Test text handling", function () {
         var A = board.create("point", [2, 4]),
             el = board.create(
                 "button",
-                [-3, 3, () => "Press " + A.X().toFixed(3), function () {}],
+                [-3, 3, () => "Press " + A.X().toFixed(3), function () { }],
                 {}
             );
         expect(el.rendNodeButton.innerHTML).toEqual("Press 2.000");
@@ -119,7 +120,7 @@ describe("Test text handling", function () {
         var A = board.create("point", [2, 4]),
             el = board.create(
                 "button",
-                [-3, 3, "\\(\\int\\) <value>X(A)</value>", function () {}],
+                [-3, 3, "\\(\\int\\) <value>X(A)</value>", function () { }],
                 { useMathJax: true }
             );
         expect(el.rendNodeButton.innerHTML).toEqual("\\(\\int\\) 2.00");
@@ -185,7 +186,7 @@ describe("Test text handling", function () {
     });
 
     it("button", function () {
-        var txt = board.create('button', [0, 0, 'test', ()=>{}], {visible: false});
+        var txt = board.create('button', [0, 0, 'test', () => { }], { visible: false });
         expect(JXG.exists(txt.rendNodeButton)).toBeTrue();
     });
 

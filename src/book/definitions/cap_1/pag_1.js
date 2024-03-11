@@ -15,7 +15,7 @@ const defBoards = {
     points: [
       {
         x: 0, y: 0, style: {
-          visible: true, color: "red",
+          visible: true,
           layer: 100
         }
       },

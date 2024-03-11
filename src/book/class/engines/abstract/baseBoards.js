@@ -10,7 +10,16 @@
      */
 class baseBoards extends BaseEngine {
   constructor(defBoard = {}) {
+
     super();
+    this.color = {
+      line: {
+        strokeColor: 'black'
+      },
+      points: {
+        color: 'violet'
+      }
+    }
     this.points = defBoard.points ?? [];
     this.curves = defBoard.curves ?? [];
     this.polygons = defBoard.polygons ?? [];
@@ -173,7 +182,7 @@ class baseBoards extends BaseEngine {
     const resultPoints = points.map((point, i) => {
       const newPoint = this.addPoint(point);
       if (!Array.isArray(point)) {
-        const style = { ...{ ...styles, visible: false, ...point?.style } };
+        const style = { ...this.color.points, ...{ ...styles, visible: false, ...point?.style } };
         newPoint.setAttribute(style);
       }
       return newPoint;
@@ -205,7 +214,7 @@ class baseBoards extends BaseEngine {
       }
 
       const style = {
-        strokeColor: "black",
+        strokeColor: this.color.line.strokeColor,
         fixed: true,
         straightFirst: false,
         straightLast: false,
