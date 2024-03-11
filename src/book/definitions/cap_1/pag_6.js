@@ -4,7 +4,7 @@ const def = {
       valuesDefault: [
 
         {
-          type: 5,
+          type: 2,
 
           inputA: '6',
           inputB: '3',
@@ -19,7 +19,7 @@ const def = {
         },
 
         {
-          type: 6,
+          type: 1,
 
           inputA: '6',
           inputB: '3',
@@ -35,7 +35,7 @@ const def = {
         },
       ],
       conditions: [
-        '7', '13', '9'
+        ['7'],['13'],['9'],['13']
       ],
       tmp: "tmp2",
       engine: Engine,
@@ -56,7 +56,7 @@ const def = {
           id: "jsxgraph3",
         }],
       conditions: [
-        '9', '17'
+        ['9'], ['17']
       ],
       tmp: "tmp",
       engine: Engine,
@@ -76,7 +76,7 @@ const def = {
           id: "jsxgraph4",
         }],
       conditions: [
-        '12'
+        ['12']
       ],
       tmp: "tmp",
       engine: Engine,
@@ -94,7 +94,7 @@ const def = {
           id: "jsxgraph5",
         }],
       conditions: [
-        '12'
+        ['12']
       ],
       tmp: "tmp",
       engine: Engine,

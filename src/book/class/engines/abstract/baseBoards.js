@@ -452,7 +452,7 @@
               [
                 x + (style?.input?.noiseX ?? 0),
                 y + (style?.input?.noiseY ?? 0),
-                `<math-field class='colorInput ${style?.mathClass ?? ""}' style='${style?.mathStyle ?? ""}'  ${disable ? "disabled" : ""}></math-field>`,
+                `<math-field class=' ${style?.mathClass ?? ""} ${style?.mathRest ?? ""} ' style='${style?.mathStyle ?? ""}'  ${disable ? "disabled" : ""}></math-field>`,
               ],
               {
                 anchorX: "middle",
@@ -465,13 +465,15 @@
       
             const mathfield = newInput.rendNode.childNodes[0];
       
-            if (!style?.disabled && !value) {
-              mathfield.addEventListener("focusin", () => {
+            mathfield.addEventListener("focusin", () => {
+              if (!disable) {
                 mathVirtualKeyboard.layouts = ["numeric-only"];
                 mathVirtualKeyboard.show();
-              });
-            }
+              } else {
+                mathVirtualKeyboard.hide();
+              }
       
+            });
             mathfield.value = value?.value ?? value ?? "";
             //resuelve el peo de la escritura de caracteres especiales con el teclado que seria los shorkcuts
             mathfield.inlineShortcutTimeout = 1;
@@ -479,6 +481,8 @@
             mathfield.layouts = ["minimalist"];
             if (!disable || valid) {
               return { newInput, mathfield };
+            } else {
+              mathVirtualKeyboard.hide();
             }
           }).filter((e) => e);
         }

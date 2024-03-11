@@ -2,8 +2,7 @@ class ValidationDiagrama {
   constructor() {
 
   }
-  iniTMainValidations(def, conditions,) {
-    this.inputs = def.htmlNode.querySelectorAll(".show")
+  iniTMainValidations(def, conditions) {
     const data = {
       typeInteraccion: 'standard',
       status: 1,
@@ -16,30 +15,30 @@ class ValidationDiagrama {
         forAswer: 0
       }
     }
-    const interaction = data.interaction
-    conditions.forEach(condicion => {
-      this.inputs.forEach(input => {
-        if (input.value == condicion) {
-          input.classList.add('passInLibrary')
-          interaction.correctas++
-
-        } else {
-          input.classList.add('failedInLibrary')
-
-          // interaccciones incorrectas 
-
-          interaction.inCorrectas++
-        }
-      })
-    })
-
-return data
-
+    this.validateDiagrama(def, conditions, data)
+    return data
+  
   }
-  iniTMainReset() {
-
-  }
-
-
+  validateDiagrama(def, conditions, data){
+  const interaction = data.interaction
+  //Se itera el array que ya contiene las respuestas
+  def.inputsValidate.forEach((input, i) => {
+    const condicion = conditions[i];
+    if (input.mathfield.value == '') {
+      interaction.forAswer++;
+    }else{
+      if (condicion.includes(input.mathfield.value)) {
+        input.mathfield.classList.add('passInLibrary');
+        interaction.correctas++;
+    }else {
+        input.mathfield.classList.add('failedInLibrary');
+        data.status = 2;
+        interaction.inCorrectas++;
+    }
+    }
+});
 
 }
+
+}
+7

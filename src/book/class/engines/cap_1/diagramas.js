@@ -3,6 +3,7 @@ class Engine extends baseBoards {
     super();
     this.valueDefaults = def.valuesDefault
     this.conditions = def.conditions;
+    this.inputsValidate = []
     this.allPoints = [];
     this.validation = new ValidationDiagrama();
     this.idTemplate = def.tmp
@@ -15,14 +16,6 @@ class Engine extends baseBoards {
     this.content.appendChild(this.htmlNode)
   }
 
-  resetInputs() {
-    const inputFields = this.htmlNode.querySelectorAll('.show');
-    inputFields.forEach((inputField) => {
-      inputField.value = '';
-      inputField.style.backgroundColor = 'transparent'
-    });
-  }
-
   templateInsert = () => {
     if (!document.querySelector(`#${this.idTemplate}`)) {
       document.body.insertAdjacentHTML('afterend', $templateDefaults);
@@ -30,6 +23,15 @@ class Engine extends baseBoards {
     return this.htmlNode
   }
 
+  iniTMainReset() {
+    const inputFields = this.htmlNode.querySelectorAll('.show');
+    inputFields.forEach((inputField) => {
+      inputField.value = '';
+      inputField.classList.remove('passInLibrary')
+      inputField.classList.remove('failedInLibrary')
+    });
+
+  }
   initEngine() {
     // timer
 
@@ -41,9 +43,9 @@ class Engine extends baseBoards {
       board.id = value.id
       board.classList.add("board")
       this.contentBoards.appendChild(board)
-
       board = JXG.JSXGraph.initBoard(value.id,
         {
+          grid: false,
           showcopyright: false,
           shownavigation: false,
           boundingbox: [-7, 10, 7, -9],
@@ -66,6 +68,7 @@ class Engine extends baseBoards {
             wheel: false,
           },
         });
+      this.board = board;
       this.lines.forEach(element => {
 
         if (Array.isArray(element)) {
@@ -77,16 +80,122 @@ class Engine extends baseBoards {
 
       this.array.forEach((element) => {
 
-        // destructurado
+        //destructurado
         const { x, y, value, type } = element
-        //invocación sin "element"
-        this.createInputs(x, y, value, type, board)
+        //aqui
+        //agrega a loss inputs a validar 
+        this.inputsValidate.push(...this.defineInput(x, y, value, type))
+
       })
     })
-
-
   }
 
+  boardTypes(type = 1, valueDefault) {
+    const {
+      inputA,
+      inputB,
+      inputC,
+      inputD,
+      inputE,
+      inputF,
+      inputG,
+      inputH,
+    } = valueDefault
+    //dejalo quieto
+    switch (type) {
+      case 1:
+
+        this.lines = [
+          [[5, 3], [5, -4.2]],
+          [[-0, 1.5], [-0, 3]],
+          [[-4.9, 1.5], [-0, 1.5]],
+          [[-2.3, -4.2], [5, -4.2]],
+          { styles: { lastArrow: true }, position: [[1.3, -4.2], [1.3, -5.7]] },
+          { styles: { lastArrow: true }, position: [[-2.3, 1.5], [-2.3, -0]] },
+          [[-4.9, 1.5], [-4.9, 3]],
+          [[-2.3, -4.2], [-2.3, -3.3]],
+          { styles: { color: 'black' }, position: [[-7, -9], [-7, 11]] },
+          { styles: { color: 'black' }, position: [[7, -9], [7, 11]] },
+
+        ]
+        this.array = [
+          { x: -4.8, y: 4.6, value: inputA },
+          { x: 0, y: 4.6, value: inputB },
+          { x: 5, y: 4.6, value: inputC },
+          { x: -2.3, y: -1.6, value: inputD },
+          { x: 1.3, y: -7.3, value: inputE },
+          { x: -2.4, y: 2.7, value: inputF, type: 2 },
+          { x: 1.3, y: -2.5, value: inputG, type: 2 },
+        ]
+
+        break;
+      case 2:
+
+        this.lines = [
+          [[5, 3], [5, 1.5]],
+          [[-0.4, 1.5], [-0.4, 3]],
+          [[-0.4, 1.5], [5, 1.5]],
+          [[-4.9, -4.2], [2.3, -4.2]],
+          { styles: { lastArrow: true }, position: [[-1.3, -4.2], [-1.3, -5.7]] },
+          { styles: { lastArrow: true }, position: [[2.3, 1.5], [2.3, -0]] },
+          [[-4.9, 3], [-4.9, -4.2]],
+          [[2.3, -4.2], [2.3, -3.3]],
+          { styles: { color: 'black' }, position: [[-7, -9], [-7, 11]] },
+          { styles: { color: 'black' }, position: [[7, -9], [7, 11]] },
+        ]
+        this.array = [
+          { x: -4.8, y: 4.6, value: inputA },
+          { x: -0.4, y: 4.6, value: inputB },
+          { x: 5, y: 4.6, value: inputC },
+          { x: 2.3, y: -1.6, value: inputD },
+          { x: -1.3, y: -7.3, value: inputE },
+          { x: 2.3, y: 2.7, value: inputF, type: 2 },
+          { x: -1.3, y: -2.5, value: inputG, type: 2 },
+        ]
+
+        break;
+      case 3:
+        this.lines = [
+          [[-2.8, 4], [-2.8, 1.8]],
+          [[3.2, 4], [3.2, 1.8]],
+          [[-2.8, 1.8], [3.2, 1.8]],
+          { styles: { lastArrow: true }, position: [[0.3, 1.8], [0.3, -0.1]] },
+          { styles: { lastArrow: true }, position: [[0.3, -3.3], [0.3, -5]] },
+          { styles: { color: 'black' }, position: [[-7, -9], [-7, 11]] },
+          { styles: { color: 'black' }, position: [[7, -9], [7, 11]] },
+        ]
+        this.array = [
+          { x: -2.8, y: 5.6, value: inputA },
+          { x: 3.2, y: 5.6, value: inputB },
+          { x: 0.3, y: -6.6, value: inputC },
+          { x: 0.4, y: -1.7, value: inputD, type: 3 },
+          { x: 0.4, y: 3, value: inputE, type: 2 },
+        ]
+        break
+      case 4:
+        this.lines = [
+          [[-2.8, 4], [-2.8, 1.8]],
+          [[3.2, 4], [3.2, 1.8]],
+          [[-2.8, 1.8], [3.2, 1.8]],
+          { styles: { lastArrow: true }, position: [[0.3, 1.8], [0.3, -0.1]] },
+          { styles: { color: 'black' }, position: [[-7, -9], [-7, 11]] },
+          { styles: { color: 'black' }, position: [[7, -9], [7, 11]] },
+
+        ]
+        this.array = [
+          { x: -2.8, y: 5.6, value: inputA },
+          { x: 3.2, y: 5.6, value: inputB },
+          { x: 0.4, y: -1.7, value: inputC },
+          { x: 0.3, y: 3, value: inputD, type: 2 },
+        ]
+        break
+      
+
+      //si
+      default:
+        break;
+    }
+  }
 
   linesPoint(position, style, board) {
 
@@ -102,40 +211,22 @@ class Engine extends baseBoards {
       })
 
   }
-
-  createInputs(x, y, text, type = 1, board) {
-    this.htmlNode.addEventListener("keydown", (evt) =>
-      evt.preventDefault(), { capture: true });
-
-    this.htmlNode.mathVirtualKeyboardPolicy = "auto";
-    this.htmlNode.addEventListener("focusin", (e) => {
-
-      if (e.target.matches('.show')) {
-        mathVirtualKeyboard.show()
-      } else {
-
-        mathVirtualKeyboard.hide()
-      }
-
-      this.iniciarTimer
+  //aqui
+  defineInput(x, y, text, type = 1) {/* toma las caracteristicas por input individual retorna un array */
+    return this.createInputs({
+      inputs: [{
+        x, y,
+        value: text,
+        style: {
+          mathClass:
+            type == 1 ?
+              `inputClass` : (type == 2 ? `inputCuadrado` :
+                (type == 3 ? `inputXpansion` : `inputFormula`)),
+          mathRest:
+            text !== "" ? " " : 'show',
+        }
+      }]
     });
-    return board.create(
-      "fo",
-      [`<math-field value='${text ?? " "}' ${!text ? " " : 'disabled'} 
-	  class='${text ? " " : 'show'}
-${type == 1 ? `inputClass` :
-          (type == 2 ? `inputCuadrado` :
-            (type == 3 ? `inputXpansion` : `inputFormula`))
-        }'></math-field>`, [x, y]],
-      {
-        anchorX: "middle",
-        anchorY: "middle",
-        fixed: true,
-        layer: 70,
-        fontSize: 8,
-        fontUnit: 'vmin',
-      }
-    );
   }
 
 }
