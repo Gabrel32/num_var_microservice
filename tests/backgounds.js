@@ -9,7 +9,10 @@ test('should clear text input field when an item is added', async ({ page }) => 
     "artifact_4",
     "artifact_5",
     "artifact_6",
-    "artifact_7"
+    "artifact_7",
+    "artifact_8",
+    "artifact_9",
+    "artifact_10"
   ]
   await page.goto("http://127.0.0.1:5503/src/book/mobile/view/cap_1/pag_17.html");
   
@@ -19,7 +22,18 @@ test('should clear text input field when an item is added', async ({ page }) => 
     for (const selectElement of tds) {
       await selectElement.selectOption({ index: 2 });
     }
-    await page.locator("#artifact_1 .check").click()
+    await page.locator(`#${artifact} .check`).click()
+    for(const selectElement of tds){
+      const padre = await selectElement.evaluateHandle((el) => el.parentElement);
+      const bgColor = await padre.evaluate((el) => {
+        const styles = window.getComputedStyle(el);
+        return styles.backgroundColor;
+      })
+      const expectedColors = ['rgb(234, 184, 165)', 'rgb(182, 243, 191)'];
+      await expect(expectedColors).toContainEqual(bgColor);
+    }
+
   }
+
   
 });
