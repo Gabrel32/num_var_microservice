@@ -1,5 +1,5 @@
 import {test, expect} from "@playwright/test";
-
+import "dotenv/config";
 
 test('should clear text input field when an item is added', async ({ page }) => {
   const artifacts = [
