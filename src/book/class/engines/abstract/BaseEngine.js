@@ -1,3 +1,4 @@
+
 class BaseEngine {
   constructor() {
     this.htmlNode = null;
@@ -12,15 +13,14 @@ class BaseEngine {
     this.htmlNode.addEventListener('mouseenter', this.iniciarTimer);
     this.htmlNode.addEventListener('mouseleave', this.detenerTimer);
     this.htmlNode.addEventListener('input', (e) => {
-      this.validateStatus = false;
-      this.iniciarTimer(e);
+    this.validateStatus = true;
+    this.iniciarTimer(e);
     });
     this.htmlNode.addEventListener('blur', this.detenerTimer);
 
   };
 
   iniciarTimer = (e) => {
-
     if (this.timerActive) {
       // console.log('se llama pero no se crea otro timer');
       return;
@@ -41,7 +41,7 @@ class BaseEngine {
   };
 
   detenerTimer = () => {
-    console.log('detener');
+    // console.log('detener');
     this.timerActive = false;
     clearInterval(this.Timer);
     this.Timer = null;
@@ -55,7 +55,7 @@ class BaseEngine {
 
   validate = () => {
 
-    if (this.validateStatus) {
+    if (!this.validateStatus) {
       //status: posibles estatus
       //1: Correct
       //2: incorrect
@@ -78,11 +78,11 @@ class BaseEngine {
   };
 
   reset() {
-    console.log('reset puede ser?');
+    this.iniTMainReset(this)
   }
 
   return() {
-    console.log('return puede ser?');
+    this.iniTMainReturn(this)
   }
 
 }

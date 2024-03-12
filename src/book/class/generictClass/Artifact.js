@@ -8,7 +8,7 @@ class Artifact extends UX {
     this.board = board;
     this.htmlNode = this.engine.templateInsert();
     this.htmlNode.id = def.name;
-    this.htmlNode.querySelector('#jxgbox').id = def.name + '_board';
+    this.htmlNode.querySelector('#jxgbox')?this.htmlNode.querySelector('#jxgbox').id = def.name + '_board':null
     this.htmlNode.classList.add(...def.style?.class ?? '');
   };
 

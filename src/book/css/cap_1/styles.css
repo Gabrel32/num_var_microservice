@@ -1,4 +1,245 @@
+
 .verticalDiagram {
   max-width: 420px;
   width: 280px;
 }
+
+.containerNormal {
+  display: flex;
+  flex-direction: column;
+}
+
+.contendorButtonTabla{
+  width: max-content;
+  flex-basis: calc(33.33%); /* Ajusta el ancho de cada elemento según tus necesidades */
+  display: flex;
+  align-items:center;
+  justify-content: right;
+  gap: 4px;
+  padding:  5px 15px;
+  width: 93%;
+  margin-top: 10px;
+  /* border-top: 2px solid var(--primaryColor-bg); */
+
+}
+.styleBtn {
+  box-shadow: 0 3px var(--keyColor-sb);
+  border-radius: 0.25rem;
+  display: inline-block;
+  line-height: normal;
+  cursor: pointer;
+  outline: none;
+  height: 40px;
+  width: 40px;
+  
+}
+/* cuando se pulsa un boton */
+.styleBtn:active {
+  background-color: var(--keyColor-bg);
+  box-shadow: 0 2px var(--keyColor-sb);
+  transform: translateY(2px);
+}
+.btnV ,.btnTableV{
+  height: 100%;
+  background-color:var(--primaryColor-bg);
+}
+.btnV::after, .btnTableV::after {
+  color: var(--checkColor);
+  content: " ✓";
+  font-weight: bolder;
+  font-size: 26px;
+}
+.btnR ,.btnTableR{
+  height: 100%;
+  background-color: var(--keyColor-sb);
+}
+.btnR::after ,.btnTableR::after {
+  color: var(--resetColor);
+  content: "\021bb";
+  font-weight: bolder;
+  font-size: 26px;
+}
+.back::after {
+  color: var(--color, #000000);
+  content: "\21B6";
+  /* ó    ---> 21BA*/
+  font-weight: bolder;
+  font-size: 26px;
+}
+.back{
+  height: 100%;
+  /* background-color: var(); */
+}
+
+/* estilos dela tabla */
+
+.tabla {
+  width: fit-content;
+  height: max-content;
+  border-collapse: collapse;
+  border: 1.5px solid var(--borderDark-b);
+  font-size: 13px;
+  text-align: center;
+  letter-spacing: normal;
+  @media(min-width:786px) {
+      width: 80%;
+      font-size: 18px;
+      font-weight: 500;
+  }
+}
+
+.th,.td {
+
+  border: 1px solid var(--borderDark-b);
+  text-transform: capitalize;
+  width:fit-content;
+  text-align: center;
+  padding: 2px;
+  @media (min-width:786px) {
+      height: 30px;
+      border: 1.5px solid var(--borderDark-b);
+  }
+}
+
+
+
+.secctionBtn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.contenedorTabla{
+  padding-top: 10px;
+  height: fit-content;
+  border: 4px solid var(--primaryColor-bg);
+  display: flex;
+  border-radius: 10px;
+  flex-direction: column;
+  align-items: center;
+  min-width: max-content;
+  padding: 10px;
+  @media(min-width: 768px){
+    width: 30%;
+    padding: 10px 0 0 0;
+
+  }
+}
+
+.textCenter {
+  text-align: center;
+  font-size: 12px;
+  padding: 2px;
+}
+
+.input{
+  height: 100%;
+  width: 40px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  text-align: center;
+  font-size:11px ;
+  @media(min-width:786px) {
+    font-size: 18px;
+    width: 100px;
+  }
+}
+.select{
+  background-color: transparent;
+  height: 100%;
+  border: none;
+  outline: none;
+  font-size:12px ;
+  cursor: pointer;
+  @media(min-width:786px) {
+    font-size: 18px;
+  }
+}
+.main{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  margin: 2rem;
+  justify-content: center;
+  @media (min-width:768px) {
+    justify-content: space-around;
+    margin: 4rem;
+  }
+}
+.main_2 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  margin: 2rem;
+  justify-content: center;
+  @media (min-width:1000px) {
+    justify-content: space-around;
+    margin: 4rem;
+  }
+}
+.headerText{
+  text-align: center;
+  padding: auto;
+  text-transform: capitalize;
+  display: block;
+}
+
+
+.celdaEncabezado{
+  width: 100%;
+}
+/* math-field::part(virtual-keyboard-numeric) {
+  display: none;
+} */
+
+math-field::part(menu-toggle) {
+  display: none;
+}
+/* math-field::part(virtual-keyboard-toggle){
+  display: none;
+} */
+math-field::part(menu-toggle){
+  display: none;
+}
+/* math-field::part(keyboard-sink){
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+/* math-field::part(container){
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+/* math-field::part(content){
+  width:100%;
+} */
+.mathfield{
+  text-align: center;
+  border: none;
+  outline: none;
+  background-color:transparent;
+  cursor: pointer;
+
+}
+.footer{
+  text-align: center;
+  font-size: 12px;
+  padding: 2px;
+  margin: 10px;
+  @media (min-width:786px) {
+    font-size: 16px;
+  }
+}
+.footer{
+  text-align: center;
+  font-size: 12px;
+  padding: 2px;
+  margin: 10px;
+  @media (min-width:786px) {
+    font-size: 16px;
+  }
+}
+

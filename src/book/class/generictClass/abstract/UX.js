@@ -157,13 +157,14 @@ class UX {
       const { interaction, typeArtifact, status, timer } = data;
       //console.log(interaction, typeArtifact, message, status, timer);
       console.log('entra', data);
-      console.log(this.modalView.querySelector('.correct'));
-      this.modalView.querySelector('.inCorrect').innerText = interaction.inCorrectas;
-      this.modalView.querySelector('.forAswer').innerText = interaction.forAswer;
-      this.modalView.querySelector('.correct').innerText = interaction.correctas;
-      this.modalView.querySelector('.type').innerText = typeArtifact;
-      this.modalView.querySelector('.status').innerText = status;
-      this.modalView.querySelector('.timer').innerText = timer;
+      if (data.status !== 3) {
+        this.modalView.querySelector('.inCorrect').innerText = interaction.inCorrectas;
+        this.modalView.querySelector('.forAswer').innerText = interaction.forAswer;
+        this.modalView.querySelector('.correct').innerText = interaction.correctas;
+        this.modalView.querySelector('.type').innerText = typeArtifact;
+        this.modalView.querySelector('.status').innerText = status;
+        this.modalView.querySelector('.timer').innerText = timer;
+      }
     }
     this.modalView.style.display = mode ? "flex" : 'none';
   }
