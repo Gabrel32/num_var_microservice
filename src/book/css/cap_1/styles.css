@@ -242,4 +242,10 @@ math-field::part(menu-toggle){
     font-size: 16px;
   }
 }
+.text{
+  text-align: right;
+  color: var(--colorBorder);
+  text-transform: capitalize;
+  font-style: italic;
+}
 
