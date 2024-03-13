@@ -779,6 +779,16 @@ td {
   border: 1.5px solid black;
   padding: 8px;
 }
+.text{
+  margin-right: 1rem;
+  font-style: italic;
+  text-align: right;
+  text-transform: uppercase;
+  color: var(--gray-dark);
+  @media (min-height:786px) {
+    margin-right: 2rem;
+  }
+}
 
 /* Add Animation */
 @keyframes animatetop {

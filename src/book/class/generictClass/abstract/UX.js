@@ -156,7 +156,6 @@ class UX {
       const { interaction, typeArtifact, status, timer } = data;
       //console.log(interaction, typeArtifact, message, status, timer);
       console.log('entra', data);
-      console.log(this.modalView.querySelector('.correct'));
       if (data.status !== 3) {
         this.modalView.querySelector('.inCorrect').innerText = interaction.inCorrectas;
         this.modalView.querySelector('.forAswer').innerText = interaction.forAswer;
